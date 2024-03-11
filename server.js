@@ -9,6 +9,8 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
+const morgan = require('morgan'); // Add morgan for request logging
+const logger = require('./utilities/logger');
 
 const saltRounds = 10;
 const pool = mysql.createPool({
@@ -25,6 +27,20 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Use morgan for request logging
+app.use(morgan('combined'));
+
+// Middleware for logging requests
+app.use((req, res, next) => {
+    const startTime = new Date();
+    res.on('finish', () => {
+        const endTime = new Date();
+        const duration = endTime - startTime;
+        logger.info(`[${req.method}] ${req.url} - ${res.statusCode} (${duration}ms)`);
+    });
+    next();
+});
+
 // Wrap the table creation code in an async function
 (async () => {
     try {
@@ -33,7 +49,7 @@ app.use(session({
             username VARCHAR(100) NOT NULL UNIQUE,
             password VARCHAR(100) NOT NULL
         )`);
-        console.log("Created users table");
+        logger.info("Created users table");
 
         // Specify the paths to your SSL certificate and private key
         const sslOptions = {
@@ -43,28 +59,37 @@ app.use(session({
 
         // Start the HTTPS server
         https.createServer(sslOptions, app).listen(PORT, () => {
-            console.log(`Server is running on https://localhost:${PORT}`);
+            logger.info(`Server is running on https://localhost:${PORT}`);
         });
     } catch (err) {
-        console.error(`An error occurred while creating the users table: ${err}`);
+        logger.error(`An error occurred while creating the users table: ${err}`);
     }
 })();
+
+// Middleware for logging errors
+app.use((err, req, res, next) => {
+    logger.error(`Error: ${err.message}`);
+    next(err);
+});
 
 app.post('/signup', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
     const { username, password } = req.body;
     const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
     if (existingUser) {
         res.status(409).send('Username already taken');
+        logger.warn(`Username "${username}" already taken`);
     } else if (password.length < 8) {
         res.status(400).send('Password must be at least 8 characters long');
+        logger.warn(`Invalid password length for username "${username}"`);
     } else {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
             if (err) {
                 res.status(500).send('Failed to register');
-                console.error(`An error occurred while signing up: ${err}`);
+                logger.error(`An error occurred while signing up: ${err}`);
             } else {
                 res.status(200).send('Registered');
+                logger.info(`User registered: ${username}`);
             }
         });
     }
@@ -73,29 +98,33 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
 app.post('/login', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
     const { username, password } = req.body;
     const [user] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
-    console.log(user);
     if (user && user.password && await bcrypt.compare(password, user.password)) {
         req.session.user = user;
         res.status(200).send('Logged in');
+        logger.info(`User logged in: ${username}`);
     } else {
         res.status(401).send('Username or password incorrect');
+        logger.warn(`Failed login attempt for username: ${username}`);
     }
 });
 
 app.post('/create-post', async (req, res) => {
     if (!req.session.user) {
         return res.status(401).send('You must be logged in to create a post');
+        logger.warn('Unauthorized attempt to create a post');
     }
 
     const { title, content } = req.body;
     const result = await pool.query('INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)', [req.session.user.id, title, content]);
 
     res.send('Post created successfully');
+    logger.info(`Post created by user: ${req.session.user.username}`);
 });
 
 app.get('/posts', async (req, res) => {
     const [posts] = await pool.query('SELECT * FROM posts ORDER BY created_at DESC');
     res.json(posts);
+    logger.info('Posts retrieved');
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -110,6 +139,7 @@ app.get('/:page', (req, res) => {
             // Handle 404 error by sending the contents of 404.html
             const notFoundPagePath = path.join(__dirname, 'public', '404.html');
             res.sendFile(notFoundPagePath);
+            logger.warn(`Requested page "${page}" not found`);
         }
     });
 });
