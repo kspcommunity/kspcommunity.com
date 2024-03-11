@@ -98,6 +98,6 @@ app.get('/posts', async (req, res) => {
     res.json(posts);
 });
 
-app.use(express.static(path.join(__dirname, 'public_html')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 3000;
