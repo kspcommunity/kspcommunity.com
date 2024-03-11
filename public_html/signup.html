@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <script>
+        async function signup(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            const response = await fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            if (response.ok) {
+                window.location.href = '/login.html';
+            } else {
+                alert('Error signing up');
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <p><i>Feed me your credentials, daddy</i></p>
+    <form id="signupForm" onsubmit="return signup(event);">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Register</button>
+    </form>    
+</body>
+</html>
