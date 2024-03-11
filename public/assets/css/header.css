@@ -49,7 +49,7 @@ nav ul ul {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--header-bg-color);
+    background-color: #101010c9;
     border: 1px solid var(--nav-text-color);
     padding: 10px;
     border-radius: 5px; 
