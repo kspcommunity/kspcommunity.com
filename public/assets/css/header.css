@@ -4,12 +4,13 @@ header {
     color: var(--header-text-color);
     padding: var(--padding-small-width);
     position: relative;
-    width: 100%;
+    width:auto;
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease, padding 0.3s ease;
     border-radius: 10px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 /* Navigation menu styles */
@@ -23,20 +24,23 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    margin: 0;
 }
 
 nav li {
     position: relative;
+    margin: 0;
 }
 
 nav a {
     text-decoration: none;
     color: var(--nav-text-color);
-    padding: 10px;
+    padding: 15px;
     transition: color 0.3s ease, background-color 0.3s ease;
     white-space: nowrap;
-    max-height: 20px; 
-    overflow: hidden; 
+    max-height: 20px;
+    overflow: hidden;
+    display: block;
 }
 
 /* Dropdown styles */
@@ -47,6 +51,8 @@ nav ul ul {
     left: 0;
     background-color: var(--header-bg-color);
     border: 1px solid var(--nav-text-color);
+    padding: 10px;
+    border-radius: 5px; 
 }
 
 nav li:hover > ul {
@@ -75,10 +81,11 @@ nav li:hover > ul {
 
     nav ul {
         margin-top: 10px;
+        gap: 10px; /* Adjust the gap for better spacing */
     }
 
     nav a {
-        padding: 8px;
+        padding: 12px; /* Adjust padding for better touch interaction */
         max-height: none; /* Reset max height for smaller screens */
     }
 }
