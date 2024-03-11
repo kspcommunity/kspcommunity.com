@@ -1,7 +1,59 @@
+/* Reset some default styles for the footer */
 footer {
+    margin-top: 20px;
+    padding: 20px;
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
-    padding: var(--padding-small-width);
+    text-align: center;
 }
 
-/* Additional styling for footer content goes here */
+.footer-nav {
+    margin-bottom: 10px;
+}
+
+/* Style navigation links in the footer */
+.footer-nav a {
+    color: var(--link-text-color);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-nav a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Style the GitHub sponsor button */
+.footer-sponsor {
+    margin-top: 10px;
+}
+
+/* Style the fan-made website disclaimer */
+.footer p {
+    margin-bottom: 10px;
+}
+
+/* Style the copyright information */
+.footer-copyright {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Style the layout of navigation links */
+.footer-nav a {
+    display: inline-block;
+}
+
+/* Separate different sections with margin */
+.footer-sponsor,
+.footer p,
+.footer-copyright {
+    margin-top: 20px;
+}
+
+/* Center all text content within the footer */
+.footer-nav,
+.footer-sponsor,
+.footer p,
+.footer-copyright {
+    text-align: center;
+}
