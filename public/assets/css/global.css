@@ -1,0 +1,115 @@
+:root {
+    --primary-bg-color: #333;
+    --text-color: #fff;
+    --heading-text-color: #0b5bbe;
+    --base-font: 'Arial', sans-serif;
+    --padding-unit: 20px;
+    --border-width: 0.5px;
+    --link-color: #007bff;
+    --email-color: #28a745;
+
+    --header-bg-color: #232323;
+    --darker-gray: #1b1a1a76;
+    --dark-gray: #302e2e7a;
+    --footer-bg-color: var(--darker-gray);
+    --link-text-color: var(--text-color);
+    --nav-hover-bg-color: #555;
+    --body-bg-color: #121212;
+    --section-bg-color: #1e1e1e96;
+
+    --stars-color: #ffffff;
+    --stars-density: 5;
+}
+
+/* Body Styling */
+body {
+    font-family: var(--base-font);
+    margin: 20px;
+    padding: 30px;
+    background: var(--body-bg-color) url('/assets/images/space-background.jpg') fixed;
+    background-size: cover;
+    color: var(--text-color);
+    animation: spaceAnimation 60s linear infinite;
+}
+
+main {
+    margin-top: 10px;
+    background-color: #58585830;
+    padding: var(--padding-unit);
+}
+/* Space Animation */
+@keyframes spaceAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-text-color);
+}
+
+/* Links Styling */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Email Addresses Styling */
+a[href^="mailto:"] {
+    color: var(--email-color);
+}
+
+/* Section Styling */
+section {
+    background-color: var(--section-bg-color);
+    padding: var(--padding-unit);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* Scrollbar Styling */
+body::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #333; /* Set the color of the thumb (the draggable part) */
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #000; /* Set the color of the track (the area behind the thumb) */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: var(--padding-unit);
+        border: none;
+    }
+}
