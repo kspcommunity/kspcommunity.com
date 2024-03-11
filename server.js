@@ -107,8 +107,9 @@ app.get('/:page', (req, res) => {
         if (!err) {
             res.sendFile(filePath);
         } else {
-            // Handle 404 error
-            res.status(404).send('Page not found');
+            // Handle 404 error by sending the contents of 404.html
+            const notFoundPagePath = path.join(__dirname, 'public', '404.html');
+            res.sendFile(notFoundPagePath);
         }
     });
 });
