@@ -4,12 +4,10 @@
     --footer-bg-color: #03030a;
 
     --primary-text-color: #b8b8b8;
-    --header-text-color: #6c6c6c;
-    --footer-text-color: #8a8a8a;
+    --header-text-color: #adadad;
+    --footer-text-color: #444444;
     --link-text-color: #0099ff;
     --link-hover-color: #00ccff;
-    --link-visited-color: #b400ff;
-    --link-visited-hover-color: #d100e0;
     --email-color: #00ff66;
 
     --padding-large-width: 20px;
@@ -38,4 +36,18 @@ body {
 /* Apply the Red Hat font to specific elements as needed */
 h1, h2, h3, p, a {
     font-family: var(--font-family);
+}
+
+/* Apply link colors and email color to body text */
+body a {
+    color: var(--link-text-color);
+}
+
+body a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Apply email color to specific elements if needed */
+body .email {
+    color: var(--email-color);
 }
