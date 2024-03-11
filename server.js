@@ -99,5 +99,18 @@ app.get('/posts', async (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/:page', (req, res) => {
+    const page = req.params.page;
+    const filePath = path.join(__dirname, 'public', page + '.html');
+
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+        if (!err) {
+            res.sendFile(filePath);
+        } else {
+            // Handle 404 error
+            res.status(404).send('Page not found');
+        }
+    });
+});
 
 const PORT = process.env.PORT || 3000;
