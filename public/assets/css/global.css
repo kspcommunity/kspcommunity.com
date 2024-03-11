@@ -1,35 +1,41 @@
 :root {
     --primary-bg-color: #000000;
-    --header-bg-color: #232323;
-    --footer-bg-color: #23223232;
+    --header-bg-color: #050505;
+    --footer-bg-color: #03030a;
 
-    --primary-text-color: #ffffff;
-    --header-text-color: #030b65;
-    --footer-text-color: #ffffff;
-    --link-text-color: #007bfe;
-    --link-hover-color: #00bfff;
-    --link-visited-color: #9300ee;
-    --link-visited-hover-color: #aa01c8;
-    --email-color: #30b408;
+    --primary-text-color: #b8b8b8;
+    --header-text-color: #6c6c6c;
+    --footer-text-color: #8a8a8a;
+    --link-text-color: #0099ff;
+    --link-hover-color: #00ccff;
+    --link-visited-color: #b400ff;
+    --link-visited-hover-color: #d100e0;
+    --email-color: #00ff66;
 
-    --padding-large-width: 30px;
-    --padding-medium-width: 20px;
+    --padding-large-width: 20px;
+    --padding-medium-width: 15px;
     --padding-small-width: 10px;
 
-    --margin-large-width: 30px;
-    --margin-medium-width: 20px;
+    --margin-large-width: 20px;
+    --margin-medium-width: 15px;
     --margin-small-width: 10px;
 
-    --section-border-width: 2px;
-    --section-border-color: #ffffff;
-    --section-border-radius: 4px;
+    --section-border-width: 1px;
+    --section-border-color: #666666;
+    --section-border-radius: 6px;
+
+    --font-family: 'Red Hat Display', sans-serif;
 }
 
 body {
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
-    padding: var(--padding-medium-width);
-    margin: 0;
+    margin: var(--margin-large-width);
+    padding: var(--padding-large-width);
+    font-family: var(--font-family);
 }
 
-/* Additional styling for main content goes here */
+/* Apply the Red Hat font to specific elements as needed */
+h1, h2, h3, p, a {
+    font-family: var(--font-family);
+}
