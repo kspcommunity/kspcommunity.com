@@ -1,3 +1,5 @@
+const fs = require('fs');
+const https = require('https');
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -32,8 +34,19 @@ app.use(session({
             password VARCHAR(100) NOT NULL
         )`);
         console.log("Created users table");
+
+        // Specify the paths to your SSL certificate and private key
+        const sslOptions = {
+            key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
+            cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
+        };
+
+        // Start the HTTPS server
+        https.createServer(sslOptions, app).listen(PORT, () => {
+            console.log(`Server is running on https://localhost:${PORT}`);
+        });
     } catch (err) {
-        console.error(`An error occured while creating the users table: ${err}`);
+        console.error(`An error occurred while creating the users table: ${err}`);
     }
 })();
 
@@ -49,12 +62,12 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
         pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
             if (err) {
                 res.status(500).send('Failed to register');
-                console.error(`An error occured while signing up: ${err}`);
+                console.error(`An error occurred while signing up: ${err}`);
             } else {
                 res.status(200).send('Registered');
             }
         });
-    };
+    }
 });
 
 app.post('/login', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
@@ -88,6 +101,3 @@ app.get('/posts', async (req, res) => {
 app.use(express.static(path.join(__dirname, 'public_html')));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
