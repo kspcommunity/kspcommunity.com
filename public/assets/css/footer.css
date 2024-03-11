@@ -25,6 +25,7 @@ footer {
 /* Style the GitHub sponsor button */
 .footer-sponsor {
     margin-top: 10px;
+    border: none !important;
 }
 
 /* Style the fan-made website disclaimer */
