@@ -104,8 +104,8 @@ app.post('/login', body('username').trim().escape(), body('password').trim().esc
 
 app.post('/create-post', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).send('You must be logged in to create a post');
         logger.warn('Unauthorized attempt to create a post');
+        return res.status(401).send('You must be logged in to create a post');
     }
 
     const { title, content } = req.body;
