@@ -9,9 +9,25 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
-const morgan = require('morgan'); // Add morgan for request logging
+const morgan = require('morgan');
+const multer = require('multer');
 const logger = require('./utilities/logger');
+const { v4: uuidv4 } = require('uuid');
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, uuidv4() + path.extname(file.originalname));
+    }
+});
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    }
+});
 const saltRounds = 10;
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
@@ -107,10 +123,11 @@ app.post('/create-post', async (req, res) => {
         logger.warn('Unauthorized attempt to create a post');
         return res.status(401).send('You must be logged in to create a post');
     }
-
-    const { title, content } = req.body;
-    const result = await pool.query('INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)', [req.session.user.id, title, content]);
-
+    const images = req.files.image;
+    const craftFiles = req.files.craft[0];
+    const { title, description, image, craft } = req.body;
+    const sanitizedTitle = title.replace(/[^a-zA-Z0-9-_]/g, '_');
+    const result = await pool.query('INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)', [req.session.user.id, title, description, imagePath, craftPath]);
     res.send('Post created successfully');
     logger.info(`Post created by user: ${req.session.user.username}`);
 });
