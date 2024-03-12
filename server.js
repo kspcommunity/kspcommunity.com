@@ -66,12 +66,6 @@ app.use((req, res, next) => {
     }
 })();
 
-// Middleware for logging errors
-app.use((err, req, res, next) => {
-    logger.error(`Error: ${err.message}`);
-    next(err);
-});
-
 app.post('/signup', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
     const { username, password } = req.body;
     const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
@@ -142,6 +136,12 @@ app.get('/:page', (req, res) => {
             logger.warn(`Requested page "${page}" not found`);
         }
     });
+});
+
+// Middleware for logging errors
+app.use((err, req, res, next) => {
+    logger.error(`Error: ${err.message}`);
+    next(err);
 });
 
 const PORT = process.env.PORT || 3000;
