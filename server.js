@@ -86,12 +86,22 @@ app.use((req, res, next) => {
 
 (async () => {
     try {
-        await pool.query(`CREATE TABLE IF NOT EXISTS users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(100) NOT NULL UNIQUE,
-            password VARCHAR(100) NOT NULL
-        )`);
-        logger.info("Created users table");
+        if (DB1_online === "true") {
+            await pool.query(`CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(100) NOT NULL UNIQUE,
+                password VARCHAR(100) NOT NULL
+            )`);
+            logger.info("Created users table on main DB");
+        }
+        if (DB2_online === "true") {
+            await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(100) NOT NULL UNIQUE,
+                password VARCHAR(100) NOT NULL
+            )`);
+            logger.info("Created users table on backup DB");
+        }
 
         const sslOptions = {
             key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
