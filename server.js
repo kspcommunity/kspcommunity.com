@@ -43,6 +43,24 @@ const backup_pool = mysql.createPool({
     database: process.env.BACKUP_MYSQL_NAME
 });
 
+// Verify if DB is up
+(async () => {
+    try {
+        await pool.query('SELECT *');
+        logger.info('Main database is up');
+    } catch (err) {
+        logger.error(`Main database is down: ${err}`);
+    }
+    if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+        try {
+            await backup_pool.query('SELECT *');
+            logger.info('Backup database is up');
+        } catch (err) {
+            logger.error(`Backup database is down: ${err}`);
+        }
+    }
+})();
+
 app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
