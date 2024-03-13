@@ -26,6 +26,7 @@
     --font-family: 'Red Hat Display', sans-serif;
 }
 
+
 body {
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
