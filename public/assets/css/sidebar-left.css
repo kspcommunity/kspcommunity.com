@@ -35,14 +35,14 @@
 
 #sidebar-left a {
     text-decoration: none;
-    color: var(--link-text-color);
+    color: var(--sidebar-link-color);
     font-weight: bold;
     transition: color 0.2s ease;
     display: block;
 }
 
 #sidebar-left a:hover {
-    color: var(--link-hover-color);
+    color: var(--sidebar-hover-color);
 }
 
 /* New styles for dropdown */
