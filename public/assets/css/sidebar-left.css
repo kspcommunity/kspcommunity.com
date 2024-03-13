@@ -6,14 +6,16 @@
     padding-top: 50px;
     width: 100%;
     max-width: 200px;
-    height: 100vh;
+    height: 93.5%;
     position: fixed;
     left: 0;
     top: 0;
     overflow-y: auto;
     z-index: 1000;
     border-radius: var(--section-border-radius);
-    transition: width 0.3s ease; /* Added transition for width */
+    transition: width 0.3s ease; 
+    margin-top: var(--margin-medium-width);
+    margin-bottom: var(--margin-medium-width);
 }
 
 #sidebar-left h2 {
@@ -50,7 +52,7 @@
     top: 0;
     left: 100%;
     background-color: var(--sidebar-bg-color);
-    border-radius: 0 5px 5px 0;
+    border-radius: var(--section-border-radius);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
