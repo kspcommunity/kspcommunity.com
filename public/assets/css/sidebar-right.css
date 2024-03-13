@@ -3,7 +3,8 @@
     color: #fff;
     padding: 10px;
     padding-left: 20px;
-    width: 200px; 
+    width: 100%; 
+    max-width: 200px;
     height: 93.5%;
     position: fixed;
     right: 0; 
