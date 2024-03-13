@@ -58,6 +58,7 @@ footer {
 .footer p,
 .footer-copyright {
     text-align: center;
+    align-items: center;
 }
 
 /* Set max size for social media icons and logo */
