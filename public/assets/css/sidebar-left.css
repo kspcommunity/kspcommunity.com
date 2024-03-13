@@ -3,21 +3,22 @@
     color: #fff;
     padding: 10px;
     padding-left: 20px;
-    width: 200px;
-    height: 93.5%;
+    padding-top: 50px;
+    width: 100%;
+    max-width: 200px;
+    height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     overflow-y: auto;
     z-index: 1000;
-    margin-top: var(--margin-medium-width);
-    margin-bottom: var(--margin-medium-width);
     border-radius: var(--section-border-radius);
+    transition: width 0.3s ease; /* Added transition for width */
 }
 
 #sidebar-left h2 {
-    font-size: 1em;
-    margin-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 15px;
 }
 
 #sidebar-left ul {
@@ -26,7 +27,8 @@
 }
 
 #sidebar-left li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    position: relative;
 }
 
 #sidebar-left a {
@@ -34,8 +36,42 @@
     color: var(--link-text-color);
     font-weight: bold;
     transition: color 0.2s ease;
+    display: block;
 }
 
 #sidebar-left a:hover {
     color: var(--link-hover-color);
+}
+
+/* New styles for dropdown */
+#sidebar-left ul ul {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: var(--sidebar-bg-color);
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+#sidebar-left li:hover > ul {
+    display: block;
+}
+
+/* Animation for dropdown */
+#sidebar-left ul ul {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#sidebar-left li:hover > ul {
+    opacity: 1;
+}
+
+/* Media Query for responsiveness */
+@media only screen and (min-width: 600px) {
+    #sidebar-left {
+        width: 200px;
+    }
 }
