@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading header:', error));
 
+    // Load Sidebar Left
+    const sidebarLeftContainer = document.getElementById('sidebar-left-container');
+    fetch('assets/common/sidebar-left.html')
+        .then(response => response.text())
+        .then(html => {
+            sidebarLeftContainer.innerHTML = html;
+        })
+        .catch(error => console.error('Error loading sidebar left:', error));
+
     // Load Footer
     const footerContainer = document.getElementById('footer-container');
     fetch('assets/common/footer.html')

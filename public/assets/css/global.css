@@ -1,6 +1,7 @@
 :root {
     --primary-bg-color: #000000;
     --header-bg-color: #3031323c;
+    --sidebar-bg-color: #3031323c;
     --footer-bg-color: #3031323c;
 
     --primary-text-color: #b8b8b8;
@@ -28,7 +29,8 @@
 body {
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
-    margin: var(--margin-large-width);
+    margin-left: 250px;
+    margin-right: 250px;
     padding: var(--padding-large-width);
     font-family: var(--font-family);
 }
