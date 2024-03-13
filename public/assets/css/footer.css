@@ -59,3 +59,10 @@ footer {
 .footer-copyright {
     text-align: center;
 }
+
+/* Set max size for social media icons and logo */
+.footer-social img,
+.footer-logo {
+    max-width: 40px; /* Adjust the value as needed */
+    max-height: 40px; /* Adjust the value as needed */
+}
