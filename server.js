@@ -36,17 +36,20 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_NAME
 });
 
+const backup_pool = mysql.createPool({
+    host: process.env.BACKUP_MYSQL_HOST,
+    user: process.env.BACKUP_MYSQL_USER,
+    password: process.env.BACKUP_MYSQL_PASS,
+    database: process.env.BACKUP_MYSQL_NAME
+});
+
 app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
-
-// Use morgan for request logging
 app.use(morgan('combined'));
-
-// Middleware for logging requests
 app.use((req, res, next) => {
     const startTime = new Date();
     res.on('finish', () => {
@@ -57,7 +60,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Wrap the table creation code in an async function
 (async () => {
     try {
         await pool.query(`CREATE TABLE IF NOT EXISTS users (
@@ -67,18 +69,22 @@ app.use((req, res, next) => {
         )`);
         logger.info("Created users table");
 
-        // Specify the paths to your SSL certificate and private key
         const sslOptions = {
             key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
             cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
         };
 
-        // Start the HTTPS server
-        https.createServer(sslOptions, app).listen(PORT, () => {
-            logger.info(`Server is running on https://localhost:${PORT}`);
-        });
+        if (process.env.USE_HTTP === false) {
+            https.createServer(sslOptions, app).listen(PORT, () => {
+                logger.info(`Server is running on https://localhost:${PORT}`);
+            });
+        };
+
+        if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+            logger.info('Using backup database alongside main database');
+        };
     } catch (err) {
-        logger.error(`An error occurred while creating the users table: ${err}`);
+        logger.error(`An error occurred while setting up: ${err}`);
     }
 })();
 
@@ -93,7 +99,7 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
         logger.warn(`Invalid password length for username "${username}"`);
     } else {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
+        await pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
             if (err) {
                 res.status(500).send('Failed to register');
                 logger.error(`An error occurred while signing up: ${err}`);
@@ -102,6 +108,15 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
                 logger.info(`User registered: ${username}`);
             }
         });
+        if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+            await backup_pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
+                if (err) {
+                    logger.error(`An error occurred while signing up: ${err}`);
+                } else {
+                    logger.info(`Replicated user:  ${username} to backup database`);
+                }
+            });
+        }
     }
 });
 
@@ -127,7 +142,7 @@ app.post('/create-post', async (req, res) => {
     const craftFiles = req.files.craft[0];
     const { title, description, image, craft } = req.body;
     const sanitizedTitle = title.replace(/[^a-zA-Z0-9-_]/g, '_');
-    const result = await pool.query('INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)', [req.session.user.id, title, description, imagePath, craftPath]);
+    const result = await pool.query('INSERT INTO posts (user_id, title, descrption, imagePath, craftPath) VALUES (?, ?, ?)', [req.session.user.id, title, description, imagePath, craftPath]);
     res.send('Post created successfully');
     logger.info(`Post created by user: ${req.session.user.username}`);
 });
@@ -162,3 +177,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+if (process.env.USE_HTTP === true) {
+    app.listen(PORT, () => {
+        logger.info(`Server is running on http://localhost:${PORT}`);
+    });
+}
