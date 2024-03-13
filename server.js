@@ -13,6 +13,8 @@ const morgan = require('morgan');
 const multer = require('multer');
 const logger = require('./utilities/logger');
 const { v4: uuidv4 } = require('uuid');
+var DB1_online = false;
+var DB2_online = false;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -47,15 +49,19 @@ const backup_pool = mysql.createPool({
 (async () => {
     try {
         await pool.query('SELECT *');
+        DB1_online = true;
         logger.info('Main database is up');
     } catch (err) {
+        DB1_online = false;
         logger.error(`Main database is down: ${err}`);
     }
     if (process.env.USE_BACKUP_DB_TOGETHER === true) {
         try {
             await backup_pool.query('SELECT *');
+            DB2_online = true;
             logger.info('Backup database is up');
         } catch (err) {
+            DB2_online = false;
             logger.error(`Backup database is down: ${err}`);
         }
     }
