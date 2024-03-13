@@ -17,6 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading sidebar left:', error));
 
+    // Load Sidebar Right
+    const sidebarRightContainer = document.getElementById('sidebar-right-container');
+    fetch('assets/common/sidebar-right.html')
+        .then(response => response.text())
+        .then(html => {
+            sidebarRightContainer.innerHTML = html;
+        })
+        .catch(error => console.error('Error loading sidebar right:', error));
+
     // Load Footer
     const footerContainer = document.getElementById('footer-container');
     fetch('assets/common/footer.html')
