@@ -108,7 +108,7 @@ app.use((req, res, next) => {
             cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
         };
 
-        if (process.env.USE_HTTP === false) {
+        if (process.env.USE_HTTP === "false") {
             https.createServer(sslOptions, app).listen(PORT, () => {
                 logger.info(`Server is running on https://localhost:${PORT}`);
             });
@@ -124,7 +124,7 @@ app.use((req, res, next) => {
 
 app.post('/signup', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
     const { username, password } = req.body;
-    const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+    const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]) || await backup_pool.query('SELECT * FROM users WHERE username = ?', [username]);
     if (existingUser) {
         res.status(409).send('Username already taken');
         logger.warn(`Username "${username}" already taken`);
@@ -156,7 +156,7 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
 
 app.post('/login', body('username').trim().escape(), body('password').trim().escape(), async (req, res) => {
     const { username, password } = req.body;
-    const [user] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+    const [user] = await pool.query('SELECT * FROM users WHERE username = ?', [username]) || await backup_pool.query('SELECT * FROM users WHERE username = ?', [username]);
     if (user && user.password && await bcrypt.compare(password, user.password)) {
         req.session.user = user;
         res.status(200).send('Logged in');
@@ -211,8 +211,40 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-if (process.env.USE_HTTP === true) {
+if (process.env.USE_HTTP === "true") {
     app.listen(PORT, () => {
         logger.info(`Server is running on http://localhost:${PORT}`);
     });
 }
+
+const checkDatabaseStatus = async () => {
+    try {
+        await pool.query('SELECT *');
+        // If the query succeeds, the database is up
+        if (!DB1_online) {
+            DB1_online = true;
+            logger.info('Main database is up');
+        }
+    } catch (err) {
+        if (DB1_online) {
+            DB1_online = false;
+            logger.error(`Main database is down: ${err}`);
+        }
+    }
+    try {
+        await backup_pool.query('SELECT *');
+        // If the query succeeds, the database is up
+        if (!DB2_online) {
+            DB2_online = true;
+            logger.info('Backup database is up');
+        }
+    } catch (err) {
+        if (DB2_online) {
+            DB2_online = false;
+            logger.error(`Backup database is down: ${err}`);
+        }
+    }
+};
+
+// Check the database status every 5 minutes
+setInterval(checkDatabaseStatus, 5 * 60 * 1000);
