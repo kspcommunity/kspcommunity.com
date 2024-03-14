@@ -48,7 +48,11 @@ const backup_pool = mysql.createPool({
 // Verify if DB is up
 (async () => {
     try {
-        await pool.query('SELECT *');
+        await pool.query(`CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(100) NOT NULL UNIQUE,
+            password VARCHAR(100) NOT NULL
+        )`);
         DB1_online = true;
         logger.info('Main database is up');
     } catch (err) {
@@ -57,7 +61,11 @@ const backup_pool = mysql.createPool({
     }
     if (process.env.USE_BACKUP_DB_TOGETHER === true) {
         try {
-            await backup_pool.query('SELECT *');
+            await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(100) NOT NULL UNIQUE,
+                password VARCHAR(100) NOT NULL
+            )`);
             DB2_online = true;
             logger.info('Backup database is up');
         } catch (err) {
@@ -86,23 +94,6 @@ app.use((req, res, next) => {
 
 (async () => {
     try {
-        if (DB1_online === "true") {
-            await pool.query(`CREATE TABLE IF NOT EXISTS users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(100) NOT NULL UNIQUE,
-                password VARCHAR(100) NOT NULL
-            )`);
-            logger.info("Created users table on main DB");
-        }
-        if (DB2_online === "true") {
-            await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(100) NOT NULL UNIQUE,
-                password VARCHAR(100) NOT NULL
-            )`);
-            logger.info("Created users table on backup DB");
-        }
-
         const sslOptions = {
             key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
             cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
@@ -204,7 +195,6 @@ app.get('/:page', (req, res) => {
     });
 });
 
-// Middleware for logging errors
 app.use((err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
     next(err);
@@ -219,8 +209,7 @@ if (process.env.USE_HTTP === "true") {
 
 const checkDatabaseStatus = async () => {
     try {
-        await pool.query('SELECT *');
-        // If the query succeeds, the database is up
+        await pool.query('SELECT * FROM users');
         if (!DB1_online) {
             DB1_online = true;
             logger.info('Main database is up');
@@ -228,12 +217,11 @@ const checkDatabaseStatus = async () => {
     } catch (err) {
         if (DB1_online) {
             DB1_online = false;
-            logger.error(`Main database is down: ${err}`);
+            logger.error(`Main database is inaccessible, is it down?: ${err}`);
         }
     }
     try {
-        await backup_pool.query('SELECT *');
-        // If the query succeeds, the database is up
+        await backup_pool.query('SELECT * FROM users');
         if (!DB2_online) {
             DB2_online = true;
             logger.info('Backup database is up');
@@ -241,10 +229,9 @@ const checkDatabaseStatus = async () => {
     } catch (err) {
         if (DB2_online) {
             DB2_online = false;
-            logger.error(`Backup database is down: ${err}`);
+            logger.error(`Backup database is inaccessible, is it down?: ${err}`);
         }
     }
 };
 
-// Check the database status every 5 minutes
 setInterval(checkDatabaseStatus, 5 * 60 * 1000);
