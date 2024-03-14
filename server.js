@@ -59,7 +59,7 @@ const backup_pool = mysql.createPool({
         DB1_online = false;
         logger.error(`Main database is inaccessible, is it down?: ${err}`);
     }
-    if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+    if (process.env.USE_BACKUP_DB_TOGETHER === "true") {
         try {
             await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,7 +105,7 @@ app.use((req, res, next) => {
             });
         };
 
-        if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+        if (process.env.USE_BACKUP_DB_TOGETHER === "true") {
             logger.info('Using backup database alongside main database');
         };
     } catch (err) {
@@ -133,7 +133,7 @@ app.post('/signup', body('username').trim().escape(), body('password').trim().es
                 logger.info(`User registered: ${username}`);
             }
         });
-        if (process.env.USE_BACKUP_DB_TOGETHER === true) {
+        if (process.env.USE_BACKUP_DB_TOGETHER === "true") {
             await backup_pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, results) => {
                 if (err) {
                     logger.error(`An error occurred while signing up: ${err}`);
