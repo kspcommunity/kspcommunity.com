@@ -57,7 +57,7 @@ const backup_pool = mysql.createPool({
         logger.info('Main database is up');
     } catch (err) {
         DB1_online = false;
-        logger.error(`Main database is down: ${err}`);
+        logger.error(`Main database is inaccessible, is it down?: ${err}`);
     }
     if (process.env.USE_BACKUP_DB_TOGETHER === true) {
         try {
@@ -70,7 +70,7 @@ const backup_pool = mysql.createPool({
             logger.info('Backup database is up');
         } catch (err) {
             DB2_online = false;
-            logger.error(`Backup database is down: ${err}`);
+            logger.error(`Backup database is inaccessible, is it down?: ${err}`);
         }
     }
 })();
