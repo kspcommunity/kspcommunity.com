@@ -31,6 +31,19 @@ app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
 
+// Serve pages without .html extension
+app.get('/:page', (req, res, next) => {
+    const page = req.params.page;
+    const pagePath = path.join(__dirname, 'public', `${page}.html`);
+    fs.access(pagePath, fs.constants.F_OK, (err) => {
+        if (err) {
+            next(); // Pass the request to the next middleware
+        } else {
+            res.sendFile(pagePath);
+        }
+    });
+});
+
 // Handle 404
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
