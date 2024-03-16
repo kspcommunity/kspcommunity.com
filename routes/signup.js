@@ -17,26 +17,37 @@ router.post('/',
 
             const { username, password } = req.body;
 
-            // Check if the username already exists
-            const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+            try {
+                // Check if the username already exists
+                const [existingUser] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
 
-            if (existingUser.length > 0) {
-                return res.status(409).send('Username already taken');
+                if (existingUser.length > 0) {
+                    return res.status(409).send('Username already taken');
+                }
+
+                // Hash the password
+                const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+                // Insert the new user into the database
+                await pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
+
+                res.status(200).send('Registered');
+                logger.info(`User registered: ${username}`);
+            } catch (registrationError) {
+                res.status(500).send('Failed to register');
+                logger.error(`An error occurred while registering user ${username}: ${registrationError.stack || registrationError}`);
             }
-
-            // Hash the password
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-            // Insert the new user into the database
-            await pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
-
-            res.status(200).send('Registered');
-            logger.info(`User registered: ${username}`);
-        } catch (err) {
-            res.status(500).send('Failed to register');
-            logger.error(`An error occurred while signing up: ${err}`);
+        } catch (validationError) {
+            res.status(400).json({ errors: [{ msg: 'Invalid input data', param: validationError.param }] });
+            logger.error(`Validation error during user registration: ${validationError.stack || validationError}`);
         }
     }
 );
+
+// Error handling middleware
+router.use((err, req, res, next) => {
+    res.status(500).send('Something went wrong');
+    logger.error(`Unhandled error occurred: ${err.stack || err}`);
+});
 
 module.exports = router;

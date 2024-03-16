@@ -10,28 +10,43 @@ router.post('/',
     body('password').trim().escape(), 
     async (req, res) => {
         try {
+            // Check for validation errors
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
+                logger.error('Login validation failed:', errors.array());
                 return res.status(400).json({ errors: errors.array() });
             }
 
+            // Extract username and password from request body
             const { username, password } = req.body;
 
-            // Retrieve the user from the database
-            const [user] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+            // Retrieve user from the database
+            const [userResult] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
 
-            if (user.length === 0 || !await bcrypt.compare(password, user[0].password)) {
+            // Check if user exists
+            if (userResult.length === 0) {
+                logger.error(`User not found: ${username}`);
+                return res.status(401).send('Username or password incorrect');
+            }
+
+            const user = userResult[0];
+
+            // Compare passwords
+            const passwordMatch = await bcrypt.compare(password, user.password);
+            if (!passwordMatch) {
+                logger.error(`Incorrect password for user: ${username}`);
                 return res.status(401).send('Username or password incorrect');
             }
 
             // Set the user session
             req.session.user = user;
 
+            // Send success response
             res.status(200).send('Logged in');
             logger.info(`User logged in: ${username}`);
         } catch (err) {
+            logger.error('Login failed:', err);
             res.status(500).send('Failed to login');
-            logger.error(`An error occurred while logging in: ${err}`);
         }
     }
 );

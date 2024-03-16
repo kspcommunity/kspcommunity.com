@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     logger.warn(`Requested page "${req.url}" not found`);
 });
 
-// Error handling middleware
+// Centralized Error Handling Middleware
 app.use((err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
     res.status(500).send('Internal Server Error');
@@ -58,3 +58,15 @@ if (process.env.USE_HTTP === "true") {
         logger.info(`Server is running on https://localhost:${PORT}`);
     });
 }
+
+// Error handling for uncaught exceptions
+process.on('uncaughtException', (err) => {
+    logger.error(`Uncaught Exception: ${err.message}`);
+    process.exit(1);
+});
+
+// Error handling for unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+    logger.error(`Unhandled Promise Rejection: ${err.message}`);
+    process.exit(1);
+});
