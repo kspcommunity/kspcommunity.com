@@ -50,6 +50,7 @@ footer {
 .footer p,
 .footer-copyright {
     margin-top: 20px;
+    border: none;
 }
 
 /* Center all text content within the footer */
@@ -66,4 +67,5 @@ footer {
 .footer-logo {
     max-width: 40px; /* Adjust the value as needed */
     max-height: 40px; /* Adjust the value as needed */
+    border: none;
 }
