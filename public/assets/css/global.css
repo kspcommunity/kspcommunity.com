@@ -57,3 +57,41 @@ body a:hover {
 body .email {
     color: var(--email-color);
 }
+
+/* Define scrollbar track */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Define scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #0067eed6; /* Electronic blue color */
+    border-radius: 1px; /* Rounded corners */
+}
+
+/* Define scrollbar track when scrolling */
+::-webkit-scrollbar-track {
+    background-color: #000000; /* Black background color */
+}
+
+/* Define scrollbar thumb when hovering */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1c82fe; /* Lighter shade of blue */
+}
+
+/* Define scrollbar thumb when active (clicking and dragging) */
+::-webkit-scrollbar-thumb:active {
+    background-color: #003f80; /* Darker shade of blue */
+}
+
+/* Define scrollbar thumb when animating */
+@keyframes scrollAnimation {
+    0% { background-color: #0067eed6; } /* Start color */
+    50% { background-color: #1c82fe; } /* Middle color */
+    100% { background-color: #0067eed6; } /* End color */
+}
+
+/* Apply animation to scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    animation: scrollAnimation 2s infinite; /* Apply animation */
+}
