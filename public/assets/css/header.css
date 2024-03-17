@@ -1,6 +1,5 @@
 /* General styles for the header */
 header {
-    background-color: var(--header-bg-color);
     color: var(--header-text-color);
     padding: var(--padding-small-width);
     position: relative;
