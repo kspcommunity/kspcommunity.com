@@ -62,7 +62,7 @@ if (process.env.USE_HTTP === "true") {
     app.listen(PORT, () => {
         logger.info(`Server is running on http://localhost:${PORT}`);
     });
-} else {
+} else if (process.env.USE_HTTP === "false"){
     const sslOptions = {
         key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
         cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
@@ -70,6 +70,9 @@ if (process.env.USE_HTTP === "true") {
     https.createServer(sslOptions, app).listen(PORT, () => {
         logger.info(`Server is running on https://localhost:${PORT}`);
     });
+} else {
+    logger.error('Neither HTTP nor HTTPS is enabled, please set it up in the .env file');
+    process.exit(1);
 }
 
 // Error handling for uncaught exceptions

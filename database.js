@@ -20,7 +20,11 @@ let db2Online = false;
 
 const checkDatabaseStatus = async () => {
     try {
-        await pool.query('SELECT 1');
+        await pool.query(`CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(100) NOT NULL UNIQUE,
+            password VARCHAR(100) NOT NULL
+        )`);
         db1Online = true;
         logger.info('Main database is up');
     } catch (err) {
@@ -30,7 +34,11 @@ const checkDatabaseStatus = async () => {
 
     if (process.env.USE_BACKUP_DB_TOGETHER === "true") {
         try {
-            await backupPool.query('SELECT 1');
+            await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(100) NOT NULL UNIQUE,
+                password VARCHAR(100) NOT NULL
+            )`);
             db2Online = true;
             logger.info('Backup database is up');
         } catch (err) {
