@@ -1,7 +1,7 @@
 :root {
     --primary-bg-color: #000000;
     --header-bg-color: #15151571;
-    --sidebar-bg-color: #3031323c;
+    --sidebar-bg-color: #11171de6;
     --footer-bg-color: #15151571;
 
     --primary-text-color: #b8b8b8;
@@ -32,11 +32,23 @@
 
 body {
     background-color: var(--primary-bg-color);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--primary-text-color);
     margin-left: 250px;
     margin-right: 250px;
     padding: var(--padding-large-width);
     font-family: var(--font-family);
+}
+
+.fixed-background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 /* Apply the Red Hat font to specific elements as needed */
