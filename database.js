@@ -34,7 +34,7 @@ const checkDatabaseStatus = async () => {
 
     if (process.env.USE_BACKUP_DB_TOGETHER === "true") {
         try {
-            await backup_pool.query(`CREATE TABLE IF NOT EXISTS users (
+            await backupPool.query(`CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(100) NOT NULL UNIQUE,
                 password VARCHAR(100) NOT NULL
