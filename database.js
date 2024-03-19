@@ -22,9 +22,7 @@ let firstRun = true;
 const syncUsers = async () => {
     try {
         logger.info('Synchronizing users between primary and backup databases...');
-        // Query to get all users from the primary database
         const [primaryUsers] = await pool.query('SELECT * FROM users');
-        // Query to get all users from the backup database
         const [backupUsers] = await backupPool.query('SELECT * FROM users');
 
         // Convert user lists to maps for easier comparison
