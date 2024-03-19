@@ -67,3 +67,7 @@
         width: 200px;
     }
 }
+
+#sidebar-left.hidden {
+    display: none; /* Hide sidebar when .hidden class is applied */
+}

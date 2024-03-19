@@ -70,6 +70,10 @@ body .email {
     color: var(--email-color);
 }
 
+.hamburger-icon {
+    z-index: 10010;
+}
+
 /* Define scrollbar track */
 ::-webkit-scrollbar {
     width: 10px; /* Width of the scrollbar */

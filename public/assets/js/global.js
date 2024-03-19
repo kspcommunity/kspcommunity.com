@@ -54,3 +54,22 @@ updateBackgroundPosition();
 
 // Add scroll event listener
 document.addEventListener("scroll", handleScroll);
+
+// Hamburgers
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburgerIcons = document.querySelectorAll('.hamburger-icon');
+    const sidebars = document.querySelectorAll('.sidebar');
+
+    // Function to toggle sidebar visibility
+    function toggleSidebar(sidebar) {
+        sidebar.classList.toggle('hidden'); // Toggle the 'hidden' class
+    }
+
+    // Add click event listeners to hamburger icons
+    hamburgerIcons.forEach(function (hamburgerIcon, index) {
+        hamburgerIcon.addEventListener('click', function () {
+            toggleSidebar(sidebars[index]); // Toggle the sidebar corresponding to the clicked hamburger icon
+        });
+    });
+});
+
