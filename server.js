@@ -5,7 +5,6 @@ const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
 const logger = require('./utilities/logger');
 const database = require('./database');
 
@@ -58,19 +57,9 @@ app.use((err, req, res, next) => {
 
 // Server setup
 const PORT = process.env.PORT || 3000;
-if (process.env.USE_HTTP === "true") {
-    app.listen(PORT, () => {
-        logger.info(`Server is running on http://localhost:${PORT}`);
-    });
-} else {
-    const sslOptions = {
-        key: fs.readFileSync(path.resolve(__dirname, './ssl/private-key.pem')),
-        cert: fs.readFileSync(path.resolve(__dirname, './ssl/certificate.pem'))
-    };
-    https.createServer(sslOptions, app).listen(PORT, () => {
-        logger.info(`Server is running on https://localhost:${PORT}`);
-    });
-}
+app.listen(PORT, () => {
+    logger.info(`Server is running on http://localhost:${PORT}`);
+});
 
 // Error handling for uncaught exceptions
 process.on('uncaughtException', (err) => {
