@@ -1,8 +1,8 @@
 :root {
     --primary-bg-color: #000000;
-    --header-bg-color: #15151571;
-    --sidebar-bg-color: #11171de6;
-    --footer-bg-color: #15151571;
+    --header-bg-color: transparent;
+    --sidebar-bg-color: #0000008f;
+    --footer-bg-color: #00000061;
 
     --primary-text-color: #b8b8b8;
     --header-text-color: #adadad;
@@ -68,6 +68,10 @@ body a:hover {
 /* Apply email color to specific elements if needed */
 body .email {
     color: var(--email-color);
+}
+
+.hamburger-icon {
+    z-index: 10010;
 }
 
 /* Define scrollbar track */
