@@ -21,7 +21,7 @@ router.post('/',
             const { username, password } = req.body;
 
             // Retrieve user from the database
-            const [userResult] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+            const [userResult] = await pool.poolQuery('SELECT * FROM users WHERE username = ?', [username]);
 
             // Check if user exists
             if (userResult.length === 0) {
