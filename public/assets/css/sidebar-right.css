@@ -41,3 +41,8 @@
 #sidebar-right a:hover {
     color: var(--sidebar-hover-color);
 }
+
+
+#sidebar-right.hidden {
+    display: none; /* Hide sidebar when .hidden class is applied */
+}
