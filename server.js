@@ -5,6 +5,7 @@ const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
+const multer = require('multer');
 const logger = require('./utilities/logger');
 const database = require('./database');
 
@@ -23,12 +24,43 @@ app.use(session({
 }));
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadPath = path.join(__dirname, 'uploads');
+        fs.ensureDir(uploadPath, (err) => {
+            if (err) {
+                logger.error(`Error creating uploads directory: ${err.message}`);
+            }
+            cb(null, uploadPath);
+        });
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
 
 // Use routes
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
+app.post('/uploadFiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { name: 'craft', maxCount: 1 }]), async (req, res) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    const images = req.files['images[]'];
+    const craft = req.files['craft'][0];
+    //const userId = req.session.userId;
+    logger.info(`Received files with title ${title}, ${images.length} images and a craft file`);
+    // Save the files to the database
+    try {
+        //const result = await database.saveFiles(title, description, images, craft, userId);
+        res.status(200).json({ message: 'Files uploaded successfully' });
+    } catch (err) {
+        logger.error(`Error saving files to the database: ${err.message}`);
+        res.status(500).json({ error: 'Failed to save files to the database' });
+    }
+});
 
 // Serve pages without .html extension
 app.get('/:page', (req, res, next) => {
