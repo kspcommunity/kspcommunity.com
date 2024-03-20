@@ -23,7 +23,13 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(morgan('combined'));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Define static files directory and cache control
+const staticFilesOptions = {
+    maxAge: '1d' // Cache files for 1 day
+};
+app.use(express.static(path.join(__dirname, 'public'), staticFilesOptions));
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         const uploadPath = path.join(__dirname, 'uploads');
@@ -73,6 +79,7 @@ app.post('/uploadfiles', async (req, res) => {
             return;
         }
     }
+
     
     // Save the files to the database
     try {
