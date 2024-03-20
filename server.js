@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const multer = require('multer');
 const logger = require('./utilities/logger');
 const database = require('./database');
@@ -45,13 +45,13 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.post('/uploadFiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { name: 'craft', maxCount: 1 }]), async (req, res) => {
+app.post('/uploadfiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { name: 'craft', maxCount: 1 }]), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const images = req.files['images[]'];
     const craft = req.files['craft'][0];
     //const userId = req.session.userId;
-    logger.info(`Received files with title ${title}, ${images.length} images and ${craft.length} craft file`);
+    logger.info(`Received files with title ${title}, ${images.length} images and 1 craft file`);
     if (title === undefined || description === undefined) {
         res.status(400).json({ error: 'Invalid request' });
         return;

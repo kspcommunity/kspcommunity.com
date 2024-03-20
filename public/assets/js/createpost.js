@@ -1,6 +1,3 @@
-const uploadButton = document.getElementById("uploadButton");
-uploadButton.addEventListener("click", uploadFiles);
-
 function uploadFiles(event) {
   event.preventDefault();
 
@@ -19,22 +16,24 @@ function uploadFiles(event) {
     return alert("Please select a craft file to upload.");
   } else if (craftInput.length > 1) {
     return alert("Please select only one craft file to upload.");
+  } else if (craftInput.files[0].name.endsWith('.craft') === false) {
+    return alert("Please select a .craft file to upload.");
   } else {
     const formData = new FormData();
     formData.append("title", titleInput.value);
     formData.append("description", descriptionInput.value);
-    for (let i = 0; i < selectedFiles.length; i++) {
+    for (let i = 0; i < imagesInput.files.length; i++) {
       formData.append("images[]", imagesInput.files[i]);
     }
     formData.append("craft", craftInput.files[0]);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/uploadFiles", true);
+    xhr.open("POST", "/uploadfiles", true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           // Handle successful response from the server
-          console.log("Files uploaded successfully!");
+          console.log("Uploaded successfully!");
         } else {
           // Handle error response from the server
           console.error("Failed to upload files.");
@@ -44,3 +43,7 @@ function uploadFiles(event) {
     xhr.send(formData);
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("uploadButton").addEventListener("click", uploadFiles);
+});
