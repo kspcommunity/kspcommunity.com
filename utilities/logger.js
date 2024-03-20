@@ -54,17 +54,32 @@ async function processQueue() {
 
 // Function to create an embed for log message
 function createEmbed(level, message) {
-  const color =
-    level === logLevels.ERROR
-      ? 0xFF0000 // Red for error
-      : level === logLevels.WARNING
-      ? 0xFFFF00 // Yellow for warning
-      : 0x00FF00; // Green for info
+  let title = '';
+  let color = 0x000000; // Default color for unknown levels
+
+  // Determine title and color based on log level
+  switch (level) {
+    case logLevels.INFO:
+      title = '✅ Info';
+      color = 0x00FF00; // Green for info
+      break;
+    case logLevels.WARNING:
+      title = '⚠️ Warning';
+      color = 0xFFFF00; // Yellow for warning
+      break;
+    case logLevels.ERROR:
+      title = '❌ Error';
+      color = 0xFF0000; // Red for error
+      break;
+    default:
+      title = 'ℹ️ Unknown';
+      break;
+  }
 
   const trimmedMessage = message.length > 2048 ? message.slice(0, 2045) + '...' : message; // Trim message if it exceeds 2048 characters
 
   const embed = {
-    title: level === logLevels.INFO ? '✅ Info' : level === logLevels.WARNING ? '⚠️ Warning' : '❌ Error',
+    title: title,
     description: trimmedMessage,
     color: color,
   };
