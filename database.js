@@ -108,14 +108,14 @@ const poolQuery = async (...args) => {
         try {
             return await pool.query(...args);
         } catch (error) {
-            logger.error(`Error querying main database: ${error}`);
+            logger.error(`Error occured while querying main database: ${error}`);
             checkDatabaseStatus();
         }
     } else if (!db1Online && db2Online) {
         try {
             return await backupPool.query(...args);
         } catch (error) {
-            logger.error(`Error querying backup database: ${error}`);
+            logger.error(`Error occures while querying backup database: ${error}`);
             checkDatabaseStatus();
         }
     } else if (db1Online && !db2Online) {

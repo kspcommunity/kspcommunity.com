@@ -4,6 +4,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const logger = require('../utilities/logger');
 const pool = require('../database');
+const saltRounds = 10;
 
 router.post('/', 
     body('username').trim().escape(),
