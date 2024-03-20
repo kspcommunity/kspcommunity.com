@@ -51,7 +51,29 @@ app.post('/uploadFiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { na
     const images = req.files['images[]'];
     const craft = req.files['craft'][0];
     //const userId = req.session.userId;
-    logger.info(`Received files with title ${title}, ${images.length} images and a craft file`);
+    logger.info(`Received files with title ${title}, ${images.length} images and ${craft.length} craft file`);
+    if (title === undefined || description === undefined) {
+        res.status(400).json({ error: 'Invalid request' });
+        return;
+    } else if (images.length < 1 || craft.length < 1) {
+        res.status(400).json({ error: 'Please select images and a craft file to upload' });
+        return;
+    } else if (images.length > 10) {
+        res.status(400).json({ error: 'Please select 10 or fewer images to upload' });
+        return;
+    } else if (craft.originalname.endsWith('.craft') === false) {
+        res.status(400).json({ error: 'Please select a .craft file to upload' });
+        return;
+    } else if (craft.size > 5 * 1024 * 1024) {
+        res.status(400).json({ error: 'Please select a craft file smaller than 5 MB to upload' });
+        return;
+    }
+    for (let i = 0; i < images.length; i++) {if (images[i].size > 5 * 1024 * 1024) {
+            res.status(400).json({ error: 'Please select images smaller than 5 MB to upload' });
+            return;
+        }
+    }
+    
     // Save the files to the database
     try {
         //const result = await database.saveFiles(title, description, images, craft, userId);
