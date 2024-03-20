@@ -1,7 +1,9 @@
+/* Root Variables */
 :root {
     --primary-bg-color: #000000;
     --header-bg-color: transparent;
     --sidebar-bg-color: #0000008f;
+    --sidebar-small-device-bg-color: #000000c5;
     --footer-bg-color: #00000061;
 
     --primary-text-color: #b8b8b8;
@@ -26,22 +28,27 @@
     --section-border-radius: 6px;
     --section-bg-color: #20212292;
 
+    --sidebar-pc-width: 200px;
+    --sidebar-tab-width: 200px;
+    --sidebar-mobile-width: 200px;
+
     --font-family: 'Red Hat Display', sans-serif;
 }
 
-
+/* Body Styles */
 body {
     background-color: var(--primary-bg-color);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: var(--primary-text-color);
-    margin-left: 250px;
-    margin-right: 250px;
-    padding: var(--padding-large-width);
+    padding: var(--padding-medium-width);
     font-family: var(--font-family);
+    margin-left: calc(var(--sidebar-pc-width) + 2*var(--margin-large-width));
+    margin-right: calc(var(--sidebar-pc-width) + 2*var(--margin-large-width));
 }
 
+/* Fixed Background */
 .fixed-background {
     height: 100%;
     width: 100%;
@@ -51,12 +58,12 @@ body {
     z-index: -1;
 }
 
-/* Apply the Red Hat font to specific elements as needed */
+/* Font Usage */
 h1, h2, h3, p, a {
     font-family: var(--font-family);
 }
 
-/* Apply link colors and email color to body text */
+/* Link Styles */
 body a {
     color: var(--link-text-color);
 }
@@ -65,48 +72,51 @@ body a:hover {
     color: var(--link-hover-color);
 }
 
-/* Apply email color to specific elements if needed */
 body .email {
     color: var(--email-color);
 }
 
+/* Hamburger Icon */
 .hamburger-icon {
     z-index: 10010;
 }
 
-/* Define scrollbar track */
+/* Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 4px;
 }
 
-/* Define scrollbar thumb */
 ::-webkit-scrollbar-thumb {
     background-color: #202020d6;
 }
 
-/* Define scrollbar track when scrolling */
 ::-webkit-scrollbar-track {
     background-color: #000000;
 }
 
-/* Define scrollbar thumb when hovering */
 ::-webkit-scrollbar-thumb:hover {
     background-color: #393939d6; 
 }
 
-/* Define scrollbar thumb when active (clicking and dragging) */
 ::-webkit-scrollbar-thumb:active {
     background-color: #595959d6;
 }
 
-/* Define scrollbar thumb when animating */
 @keyframes scrollAnimation {
     0% { background-color: #0067eed6; }
     50% { background-color: #1c82fe; }
     100% { background-color: #0067eed6; }
 }
 
-/* Apply animation to scrollbar thumb */
 ::-webkit-scrollbar-thumb {
     animation: scrollAnimation 2s infinite;
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: var(--padding-small-width);
+        margin-left: 8px;
+        margin-right: 8px;
+    }
 }
