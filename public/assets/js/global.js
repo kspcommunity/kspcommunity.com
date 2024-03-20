@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.text())
         .then(html => {
             sidebarLeftContainer.innerHTML = html;
+            initializeHamburgerIconL();
         })
         .catch(error => console.error('Error loading sidebar left:', error));
 
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.text())
         .then(html => {
             sidebarRightContainer.innerHTML = html;
+            initializeHamburgerIconR();
         })
         .catch(error => console.error('Error loading sidebar right:', error));
 
@@ -55,21 +57,34 @@ updateBackgroundPosition();
 // Add scroll event listener
 document.addEventListener("scroll", handleScroll);
 
-// Hamburgers
-document.addEventListener('DOMContentLoaded', function () {
-    const hamburgerIcons = document.querySelectorAll('.hamburger-icon');
-    const sidebars = document.querySelectorAll('.sidebar');
+// Function to initialize hamburger icon
+function initializeHamburgerIconL() {
+    const hamburgerIconsL = document.querySelectorAll('.hamburger-icon-L');
+    const sidebarLeft = document.getElementById('sidebar-left');
 
-    // Function to toggle sidebar visibility
-    function toggleSidebar(sidebar) {
-        sidebar.classList.toggle('hidden'); // Toggle the 'hidden' class
+    // Function to toggle sidebar visibility and adjust width
+    function toggleSidebarL() {
+        sidebarLeft.classList.toggle('hidden');
     }
 
     // Add click event listeners to hamburger icons
-    hamburgerIcons.forEach(function (hamburgerIcon, index) {
-        hamburgerIcon.addEventListener('click', function () {
-            toggleSidebar(sidebars[index]); // Toggle the sidebar corresponding to the clicked hamburger icon
-        });
+    hamburgerIconsL.forEach(function (hamburgerIcon) {
+        hamburgerIcon.addEventListener('click', toggleSidebarL);
     });
-});
 
+}
+function initializeHamburgerIconR() {
+    const hamburgerIconsR = document.querySelectorAll('.hamburger-icon-R');
+    const sidebarRight = document.getElementById('sidebar-right');
+
+    // Function to toggle sidebar visibility and adjust width
+    function toggleSidebarR() {
+        sidebarRight.classList.toggle('hidden');
+    }
+
+    // Add click event listeners to hamburger icons
+    hamburgerIconsR.forEach(function (hamburgerIcon) {
+        hamburgerIcon.addEventListener('click', toggleSidebarR);
+    });
+
+}

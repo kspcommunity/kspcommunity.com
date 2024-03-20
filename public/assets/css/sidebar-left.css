@@ -3,7 +3,7 @@
     color: #fff;
     padding: 10px;
     padding-left: 30px;
-    width: 100%;
+    width: 30px; /* Adjusted width for sidebar */
     max-width: 200px;
     height: 93.5%;
     position: fixed;
@@ -15,6 +15,18 @@
     margin-bottom: var(--margin-medium-width);
     border-radius: var(--section-border-radius);
     transition: width 0.3s ease; 
+}
+
+#sidebar-left .hamburger-icon-L {
+    display: block;
+}
+
+#sidebar-left.hidden {
+    width: 20px;
+}
+
+#sidebar-left.hidden nav ul {
+    display: none; /* Hide navigation when sidebar is hidden */
 }
 
 #sidebar-left h2 {
@@ -57,17 +69,12 @@
 
 #sidebar-left li:hover > ul {
     display: block;
-    opacity: 1; /* Add opacity for animation */
-    transition: opacity 0.3s ease-in-out; /* Add transition for animation */
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 
-/* Media Query for responsiveness */
 @media only screen and (min-width: 600px) {
     #sidebar-left {
         width: 200px;
     }
-}
-
-#sidebar-left.hidden {
-    display: none; /* Hide sidebar when .hidden class is applied */
 }

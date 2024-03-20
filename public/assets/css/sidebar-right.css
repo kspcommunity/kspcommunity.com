@@ -17,6 +17,18 @@
     transition: width 0.3s ease; 
 }
 
+#sidebar-right .hamburger-icon-R {
+    display: block;
+}
+
+#sidebar-right.hidden {
+    width: 20px;
+}
+
+#sidebar-right.hidden nav {
+    display: none; /* Added to hide everything in the nav */
+}
+
 #sidebar-right h2 {
     font-size: 1em;
     margin-bottom: 10px;
@@ -42,7 +54,26 @@
     color: var(--sidebar-hover-color);
 }
 
+/* New styles for dropdown */
+#sidebar-right ul ul {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background-color: var(--sidebar-bg-color);
+    border-radius: var(--section-border-radius);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
 
-#sidebar-right.hidden {
-    display: none; /* Hide sidebar when .hidden class is applied */
+#sidebar-right li:hover > ul {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+@media only screen and (min-width: 600px) {
+    #sidebar-right {
+        width: 200px;
+    }
 }
