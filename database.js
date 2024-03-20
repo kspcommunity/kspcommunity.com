@@ -22,7 +22,7 @@ let firstRun = true;
 const syncMissingUsers = async (missingUsers, sourcePool, targetPool) => {
     for (const user of missingUsers) {
         logger.info(`Synchronizing user ${user.id} from ${sourcePool === pool ? 'primary' : 'backup'} database to ${targetPool === pool ? 'primary' : 'backup'} database`)
-        await targetPool.query('INSERT INTO users (id, username, password, lastmodified) VALUES (?, ?, ?, ?)', [user.id, user.username, user.password, user.lastmodified]);
+        await targetPool.query('INSERT INTO users (id, username, password) VALUES (?, ?, ?)', [user.id, user.username, user.password]);
     }
 };
 
