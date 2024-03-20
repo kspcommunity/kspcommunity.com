@@ -25,9 +25,9 @@ function getCurrentDate() {
 }
 
 // Function to send log message to Discord webhook
-async function sendToDiscord(message) {
+async function sendToDiscord(embed) {
   try {
-    await axios.post(process.env.LOGGING_WEBHOOK_URL, { content: message });
+    await axios.post(process.env.LOGGING_WEBHOOK_URL, { embeds: [embed] });
   } catch (error) {
     console.error('Error sending log message to Discord:', error.message);
   }
@@ -41,9 +41,9 @@ let isSending = false;
 async function processQueue() {
   if (!isSending && discordQueue.length > 0) {
     isSending = true;
-    const logMessage = discordQueue.shift();
+    const embed = discordQueue.shift();
     try {
-      await sendToDiscord(logMessage);
+      await sendToDiscord(embed);
     } catch (error) {
       console.error('Error sending log message to Discord:', error.message);
     }
@@ -52,7 +52,27 @@ async function processQueue() {
   }
 }
 
-// Function to write log messages to console and log file
+// Function to create an embed for log message
+function createEmbed(level, message) {
+  const color =
+    level === logLevels.ERROR
+      ? 0xFF0000 // Red for error
+      : level === logLevels.WARNING
+      ? 0xFFFF00 // Yellow for warning
+      : 0x00FF00; // Green for info
+
+  const trimmedMessage = message.length > 2048 ? message.slice(0, 2045) + '...' : message; // Trim message if it exceeds 2048 characters
+
+  const embed = {
+    title: level === logLevels.INFO ? '✅ Info' : level === logLevels.WARNING ? '⚠️ Warning' : '❌ Error',
+    description: trimmedMessage,
+    color: color,
+  };
+
+  return embed;
+}
+
+// Function to write log messages to console and log file, and add to Discord queue
 async function log(level, message) {
   const formattedDate = getCurrentDate();
   const logMessage = `[${level}] [${formattedDate}] ${message}`;
@@ -64,18 +84,17 @@ async function log(level, message) {
   const logFilePath = path.join(logsFolder, `${formattedDate}.log`);
   fs.appendFileSync(logFilePath, logMessage + '\n');
 
-  // Send to Discord for WARNING and ERROR levels
-  if (level === logLevels.WARNING || level === logLevels.ERROR) {
-    discordQueue.push(logMessage);
-    processQueue();
-  }
+  // Create embed and add to Discord queue
+  const embed = createEmbed(level, message);
+  discordQueue.push(embed);
+  processQueue();
 }
 
 // Logger with different log levels
 const logger = {
   info: (message) => log(logLevels.INFO, message),
-  warn: (message) => log(logLevels.WARNING, `Warning: ${message}`),
-  error: (message) => log(logLevels.ERROR, `Error: ${message}`),
+  warn: (message) => log(logLevels.WARNING, message),
+  error: (message) => log(logLevels.ERROR, message),
   customWarn: (type, message) => log(logLevels.WARNING, `[${type} Warning]: ${message}`),
 };
 
