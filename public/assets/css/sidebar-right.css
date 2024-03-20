@@ -19,6 +19,18 @@
 
 #sidebar-right .hamburger-icon-R {
     display: block;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-size: 12px;
+}
+
+.user-icon {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    background-color: rgb(48, 48, 48);
 }
 
 #sidebar-right.hidden {
@@ -26,7 +38,7 @@
 }
 
 #sidebar-right.hidden nav {
-    display: none; /* Added to hide everything in the nav */
+    display: none;
 }
 
 #sidebar-right h2 {
@@ -75,13 +87,22 @@
 @media only screen and (min-width: 500px) and (max-width: 900px) {
     #sidebar-right {
         width: 90px;
+        height: fit-content;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .user-menu {
+        background-color: rgb(50, 50, 50);
+        max-width: 30px;
+        max-height: 30px;
+        border-radius: 2px;
     }
 
     .separator {
         display: none;
     }
     
-
     #sidebar-right.hidden {
         height: 21px;
         width: 15px;
