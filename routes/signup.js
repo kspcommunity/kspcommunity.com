@@ -13,7 +13,7 @@ router.post('/',
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                logger.log('WARNING', 'User registration request failed due to validation errors');
+                logger.warn('User registration request failed due to validation errors');
                 return res.status(400).json({ errors: errors.array() });
             }
 
@@ -23,7 +23,7 @@ router.post('/',
             const [existingUser] = await pool.poolQuery('SELECT * FROM users WHERE username = ?', [username]);
 
             if (existingUser.length > 0) {
-                logger.log('WARNING', 'User registration request failed: Username already taken');
+                logger.warn('User registration request failed: Username already taken');
                 return res.status(409).send('Username already taken');
             }
 
@@ -34,9 +34,9 @@ router.post('/',
             await pool.poolQuery('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
 
             res.status(200).send('Registered');
-            logger.log('INFO', `User registered: ${username}`);
+            logger.info(`User registered: ${username}`);
         } catch (err) {
-            logger.log('ERROR', `An error occurred while signing up: ${err}`);
+            logger.error(`An error occurred while signing up: ${err}`);
             res.status(500).send('Failed to register');
         }
     }
