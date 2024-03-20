@@ -6,7 +6,7 @@ const pool = require('../database');
 router.get('/', async (req, res) => {
     try {
         // Retrieve all posts from the database
-        const [posts] = await pool.query('SELECT * FROM posts ORDER BY created_at DESC');
+        const [posts] = await pool.poolQuery('SELECT * FROM posts ORDER BY created_at DESC');
         
         if (posts.length === 0) {
             logger.warn('No posts found in the database');
