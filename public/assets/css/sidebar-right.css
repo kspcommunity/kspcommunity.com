@@ -2,9 +2,9 @@
     background-color: var(--sidebar-bg-color);
     color: #fff;
     padding: 10px;
-    padding-left: 20px;
+    padding-left: 30px;
     width: 100%; 
-    max-width: 200px;
+    max-width: var(--sidebar-pc-width);
     height: 93.5%;
     position: fixed;
     right: 0; 
@@ -72,8 +72,20 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) and (max-width: 900px) {
     #sidebar-right {
-        width: 200px;
+        width: 90px;
+    }
+
+    .separator {
+        display: none;
+    }
+    
+
+    #sidebar-right.hidden {
+        height: 21px;
+        width: 15px;
+        padding-right: 4px;
+        margin-right: 5px;
     }
 }

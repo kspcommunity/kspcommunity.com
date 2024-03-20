@@ -6,13 +6,16 @@ footer {
     color: var(--footer-text-color);
     text-align: center;
     border-radius: var(--section-border-radius);
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Style navigation links in the footer */
 .footer-nav {
     margin-bottom: 10px;
 }
 
-/* Style navigation links in the footer */
 .footer-nav a {
     color: var(--link-text-color);
     text-decoration: none;
@@ -21,12 +24,13 @@ footer {
 
 .footer-nav a:hover {
     color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
 /* Style the GitHub sponsor button */
 .footer-sponsor {
     margin-top: 10px;
-    border: none !important;
+    border: none;
 }
 
 /* Style the fan-made website disclaimer */
@@ -45,21 +49,11 @@ footer {
     display: inline-block;
 }
 
-/* Separate different sections with margin */
-.footer-sponsor,
-.footer p,
-.footer-copyright {
-    margin-top: 20px;
-    border: none;
-}
-
 /* Center all text content within the footer */
 .footer-nav,
-.footer-sponsor,
 .footer p,
 .footer-copyright {
     text-align: center;
-    align-items: center;
 }
 
 /* Set max size for social media icons and logo */
@@ -68,4 +62,17 @@ footer {
     max-width: 40px; /* Adjust the value as needed */
     max-height: 40px; /* Adjust the value as needed */
     border: none;
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 768px) {
+    footer {
+        padding: 10px;
+    }
+    
+    .footer-social img,
+    .footer-logo {
+        max-width: 30px;
+        max-height: 30px;
+    }
 }

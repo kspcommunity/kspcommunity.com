@@ -3,8 +3,8 @@
     color: #fff;
     padding: 10px;
     padding-left: 30px;
-    width: 30px; /* Adjusted width for sidebar */
-    max-width: 200px;
+    width: 100%;
+    max-width: var(--sidebar-pc-width);
     height: 93.5%;
     position: fixed;
     left: 0;
@@ -26,7 +26,7 @@
 }
 
 #sidebar-left.hidden nav ul {
-    display: none; /* Hide navigation when sidebar is hidden */
+    display: none;
 }
 
 #sidebar-left h2 {
@@ -73,8 +73,15 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) and (max-width: 900px) {
     #sidebar-left {
-        width: 200px;
+        width: 90px;
+        background-color: rgba(0, 0, 0, 0.734);
     }
+
+    #sidebar-left.hidden {
+        height: 21px;
+        width: 15px;
+    }
+    
 }
