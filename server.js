@@ -45,7 +45,7 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.post('/uploadfiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { name: 'craft', maxCount: 1 }]), async (req, res) => {
+app.post('/uploadfiles', async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const images = req.files['images[]'];
