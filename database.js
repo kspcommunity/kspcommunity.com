@@ -19,6 +19,13 @@ let db1Online = false;
 let db2Online = false;
 let firstRun = true;
 
+const syncMissingUsers = async (missingUsers, sourcePool, targetPool) => {
+    for (const user of missingUsers) {
+        logger.info(`Synchronizing user ${user.id} from ${sourcePool === pool ? 'primary' : 'backup'} database to ${targetPool === pool ? 'primary' : 'backup'} database`)
+        await targetPool.query('INSERT INTO users (id, username, password, lastModified) VALUES (?, ?, ?, ?)', [user.id, user.username, user.password, user.lastModified]);
+    }
+};
+
 const syncUsers = async () => {
     try {
         logger.info('Synchronizing users between primary and backup databases...');
@@ -42,13 +49,6 @@ const syncUsers = async () => {
         }
     } catch (err) {
         console.error('Error synchronizing users:', err);
-    }
-};
-
-const syncMissingUsers = async (missingUsers, sourcePool, targetPool) => {
-    for (const user of missingUsers) {
-        logger.info(`Synchronizing user ${user.id} from ${sourcePool === pool ? 'primary' : 'backup'} database to ${targetPool === pool ? 'primary' : 'backup'} database`)
-        await targetPool.query('INSERT INTO users (id, username, password, lastModified) VALUES (?, ?, ?, ?)', [user.id, user.username, user.password, user.lastModified]);
     }
 };
 
