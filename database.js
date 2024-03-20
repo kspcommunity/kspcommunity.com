@@ -22,7 +22,7 @@ let firstRun = true;
 const syncMissingUsers = async (missingUsers, sourcePool, targetPool) => {
     for (const user of missingUsers) {
         logger.info(`Synchronizing user ${user.id} from ${sourcePool === pool ? 'primary' : 'backup'} database to ${targetPool === pool ? 'primary' : 'backup'} database`)
-        await targetPool.query('INSERT INTO users (id, username, password, lastModified) VALUES (?, ?, ?, ?)', [user.id, user.username, user.password, user.lastModified]);
+        await targetPool.query('INSERT INTO users (id, username, password, lastmodified) VALUES (?, ?, ?, ?)', [user.id, user.username, user.password, user.lastmodified]);
     }
 };
 
@@ -58,7 +58,7 @@ const checkDatabaseStatus = async () => {
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(100) NOT NULL UNIQUE,
             password VARCHAR(100) NOT NULL,
-            lastModified DATETIME DEFAULT CURRENT_TIMESTAMP
+            lastmodified DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
         if (!firstRun && !db1Online) {
             logger.info('Main database is back up, syncing data...');
@@ -78,7 +78,7 @@ const checkDatabaseStatus = async () => {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(100) NOT NULL UNIQUE,
                 password VARCHAR(100) NOT NULL,
-                lastModified DATETIME DEFAULT CURRENT_TIMESTAMP
+                lastmodified DATETIME DEFAULT CURRENT_TIMESTAMP
             )`);
             if (!firstRun && !db2Online) {
                 logger.info('Backup database is back up, syncing data...');
