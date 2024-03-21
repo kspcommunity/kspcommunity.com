@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(html => {
             sidebarLeftContainer.innerHTML = html;
             initializeHamburgerIconL();
+            checkDeviceWidth(); // Check device width after loading sidebar
         })
         .catch(error => console.error('Error loading sidebar left:', error));
 
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(html => {
             sidebarRightContainer.innerHTML = html;
             initializeHamburgerIconR();
+            checkDeviceWidth(); // Check device width after loading sidebar
         })
         .catch(error => console.error('Error loading sidebar right:', error));
 
@@ -36,55 +38,66 @@ document.addEventListener('DOMContentLoaded', function () {
             footerContainer.innerHTML = html;
         })
         .catch(error => console.error('Error loading footer:', error));
+
+    // Function to check device width and toggle sidebar if needed
+    function checkDeviceWidth() {
+        const deviceWidth = window.innerWidth;
+        const sidebarLeft = document.getElementById('sidebar-left');
+        const sidebarRight = document.getElementById('sidebar-right');
+        if (deviceWidth >= 300 && deviceWidth <= 900) {
+            sidebarLeft.classList.add('hidden');
+            sidebarRight.classList.add('hidden');
+        }
+    }
+
+    // Function to update background position based on scroll
+    function updateBackgroundPosition() {
+        var scrollTop = window.scrollY;
+        var scrollSpeed = 0.3; // Adjust this value to change the scrolling speed
+        var backgroundPosition = 'center ' + (-scrollTop * scrollSpeed) + 'px';
+        document.body.style.backgroundPosition = backgroundPosition;
+    }
+
+    // Function to handle scroll event
+    function handleScroll() {
+        requestAnimationFrame(updateBackgroundPosition);
+    }
+
+    // Initialize background position
+    updateBackgroundPosition();
+
+    // Add scroll event listener
+    document.addEventListener("scroll", handleScroll);
+
+    // Function to initialize hamburger icon for left sidebar
+    function initializeHamburgerIconL() {
+        const hamburgerIconsL = document.querySelectorAll('.hamburger-icon-L');
+        const sidebarLeft = document.getElementById('sidebar-left');
+
+        // Function to toggle sidebar visibility and adjust width
+        function toggleSidebarL() {
+            sidebarLeft.classList.toggle('hidden');
+        }
+
+        // Add click event listeners to hamburger icons
+        hamburgerIconsL.forEach(function (hamburgerIcon) {
+            hamburgerIcon.addEventListener('click', toggleSidebarL);
+        });
+    }
+
+    // Function to initialize hamburger icon for right sidebar
+    function initializeHamburgerIconR() {
+        const hamburgerIconsR = document.querySelectorAll('.hamburger-icon-R');
+        const sidebarRight = document.getElementById('sidebar-right');
+
+        // Function to toggle sidebar visibility and adjust width
+        function toggleSidebarR() {
+            sidebarRight.classList.toggle('hidden');
+        }
+
+        // Add click event listeners to hamburger icons
+        hamburgerIconsR.forEach(function (hamburgerIcon) {
+            hamburgerIcon.addEventListener('click', toggleSidebarR);
+        });
+    }
 });
-
-// Function to update background position based on scroll
-function updateBackgroundPosition() {
-    var scrollTop = window.scrollY;
-    var scrollSpeed = 0.3; // Adjust this value to change the scrolling speed
-    var backgroundPosition = 'center ' + (-scrollTop * scrollSpeed) + 'px';
-    document.body.style.backgroundPosition = backgroundPosition;
-}
-
-// Function to handle scroll event
-function handleScroll() {
-    requestAnimationFrame(updateBackgroundPosition);
-}
-
-// Initialize background position
-updateBackgroundPosition();
-
-// Add scroll event listener
-document.addEventListener("scroll", handleScroll);
-
-// Function to initialize hamburger icon
-function initializeHamburgerIconL() {
-    const hamburgerIconsL = document.querySelectorAll('.hamburger-icon-L');
-    const sidebarLeft = document.getElementById('sidebar-left');
-
-    // Function to toggle sidebar visibility and adjust width
-    function toggleSidebarL() {
-        sidebarLeft.classList.toggle('hidden');
-    }
-
-    // Add click event listeners to hamburger icons
-    hamburgerIconsL.forEach(function (hamburgerIcon) {
-        hamburgerIcon.addEventListener('click', toggleSidebarL);
-    });
-
-}
-function initializeHamburgerIconR() {
-    const hamburgerIconsR = document.querySelectorAll('.hamburger-icon-R');
-    const sidebarRight = document.getElementById('sidebar-right');
-
-    // Function to toggle sidebar visibility and adjust width
-    function toggleSidebarR() {
-        sidebarRight.classList.toggle('hidden');
-    }
-
-    // Add click event listeners to hamburger icons
-    hamburgerIconsR.forEach(function (hamburgerIcon) {
-        hamburgerIcon.addEventListener('click', toggleSidebarR);
-    });
-
-}
