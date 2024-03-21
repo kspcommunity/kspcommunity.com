@@ -2,25 +2,25 @@
 var teamMembers = [
     {
         "username": "G9 Aerospace",
-        "iconPath": "assets/images/dev-pfps/g9aerospace.png",
+        "iconPath": "assets/images/dev-pfps/g9aerospace.svg",
         "role": "Owner",
         "description": "I coded most of the frontend"
     },
     {
         "username": "Dave",
-        "iconPath": "assets/images/dev-pfps/dave.png",
+        "iconPath": "assets/images/dev-pfps/dave.svg",
         "role": "Developer",
         "description": "I coded most of the backend"
     },
     {
         "username": "Lucsoft",
-        "iconPath": "assets/images/dev-pfps/lucsoft.png",
+        "iconPath": "assets/images/dev-pfps/lucsoft.svg",
         "role": "Contributor",
         "description": "I contributed a lot of stuff!"
     },
     {
         "username": "Kakashi",
-        "iconPath": "assets/images/dev-pfps/kakashi.png",
+        "iconPath": "assets/images/dev-pfps/kakashi.svg",
         "role": "Developer",
         "description": "I contributed nothing, yet"
     }
