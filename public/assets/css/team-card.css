@@ -1,0 +1,48 @@
+/* CSS for team member cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Display four columns */
+    grid-gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #cccccc9b;
+    border-radius: 8px;
+    background-color: var(--section-bg-color);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card-details h2 {
+    margin-bottom: 5px;
+}
+
+.card-details p {
+    margin-bottom: 10px;
+}
+
+/* Role-specific classes */
+.owner {
+    color: #FF5733; 
+}
+
+.developer {
+    color: #36A2EB;
+}
+
+.security {
+    color: #009402;
+}
+
+.contributor {
+    color: #FFC300;
+}
