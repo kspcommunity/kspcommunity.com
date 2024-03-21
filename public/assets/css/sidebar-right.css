@@ -88,9 +88,7 @@
     #sidebar-right {
         width: 90px;
         height: fit-content;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+        }
 
     .user-menu {
         background-color: rgb(50, 50, 50);
@@ -102,11 +100,14 @@
     .separator {
         display: none;
     }
+
+    #sidebar-right .hamburger-icon-R {
+        padding: 0px;
+        margin: 0px;
+    }
     
     #sidebar-right.hidden {
         height: 21px;
         width: 15px;
-        padding-right: 4px;
-        margin-right: 5px;
     }
 }
