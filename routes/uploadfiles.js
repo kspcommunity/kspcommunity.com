@@ -39,7 +39,7 @@ const craftupload = multer({ storage: multer.diskStorage({
     }
 }), limits: { fileSize: 5 * 1024 * 1024 } });
 
-router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), craftupload([{ name: 'craft', maxCount: 1}]), async (req, res) => {
+router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req, res) => {
     logger.info('Received POST request to /uploadfiles');
     const title = req.body.title;
     const description = req.body.description;
