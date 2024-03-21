@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs-extra');
 const multer = require('multer');
+const { v4:uuidv4 } = require('uuid');
 const logger = require('./utilities/logger');
 const database = require('./database');
 
@@ -41,22 +42,56 @@ const storage = multer.diskStorage({
         });
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname);
+        const newFilename = uuidv4() + path.extname(file.originalname);
+        cb(null, file.newFilename);
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage})
+const imageUpload = multer({ storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+        var uploadPath = path.join(__dirname, 'uploads');
+        uploadPath = path.join(__dirname, 'images');
+        fs.ensureDir(uploadPath, (err) => {
+            if (err) {
+                logger.error(`Error creating uploads directory: ${err.message}`);
+            }
+            cb(null, uploadPath);
+        });
+    },
+    filename: function (req, file, cb) {
+        const newFilename = uuidv4() + path.extname(file.originalname);
+        cb(null, file.newFilename);
+    }
+})});
+const craftUpload = multer({ storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+        var uploadPath = path.join(__dirname, 'uploads');
+        uploadPath = path.join(__dirname, 'crafts');
+        fs.ensureDir(uploadPath, (err) => {
+            if (err) {
+                logger.error(`Error creating uploads directory: ${err.message}`);
+            }
+            cb(null, uploadPath);
+        });
+    },
+    filename: function (req, file, cb) {
+        const newFilename = uuidv4() + path.extname(file.originalname);
+        cb(null, file.newFilename);
+    }
+})});
 
 // Use routes
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.post('/uploadfiles', async (req, res) => {
+    app.post('/uploadfiles', upload.fields([{ name: 'images[]', maxCount: 10 }, { name: 'craft', maxCount: 1 }]), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const images = req.files['images[]'];
     const craft = req.files['craft'][0];
     //const userId = req.session.userId;
+    console.log(req.files);
     logger.info(`Received files with title ${title}, ${images.length} images and 1 craft file`);
     if (title === undefined || description === undefined) {
         res.status(400).json({ error: 'Invalid request' });
@@ -80,8 +115,16 @@ app.post('/uploadfiles', async (req, res) => {
         }
     }
 
-    
-    // Save the files to the database
+    const renamedFiles = [];
+    for (let i = 0; i < images.length; i++) {
+        const images = images[i];
+        const newFilename = `${uuidv4()}${path.extname(images.originalname)}`;
+        fs.renameSync(images.path, path.join(__dirname, 'uploads', newFilename));
+        renamedFiles.push(newFilename);
+    }
+    const newCraftFilename = `${uuidv4()}${path.extname(craft.originalname)}`;
+    fs.renameSync(craft.path, path.join(__dirname, 'uploads', newCraftFilename));
+    renamedFiles.files.push(newCraftFilename);
     try {
         //const result = await database.saveFiles(title, description, images, craft, userId);
         res.status(200).json({ message: 'Files uploaded successfully' });
