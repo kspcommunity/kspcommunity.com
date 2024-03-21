@@ -21,6 +21,12 @@
     display: block;
 }
 
+#sidebar-left.hidden .hamburger-icon-L i {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+
 #sidebar-left.hidden {
     width: 20px;
 }
