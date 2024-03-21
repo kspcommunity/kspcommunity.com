@@ -6,24 +6,6 @@ const fs = require('fs-extra');
 const logger = require('../utilities/logger');
 const database = require('../database');
 
-console.log(__dirname);
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, 'uploads', 'images');
-        fs.ensureDir(uploadPath, (err) => {
-            if (err) {
-                logger.error(`Error creating uploads directory: ${err.message}`);
-                cb(err);
-            } else {
-                logger.info(`Uploads directory created successfully at: ${uploadPath}`);
-                cb(null, uploadPath);
-            }
-        });
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-});
 const imageupload = multer({ storage: multer.diskStorage({
     destination: function (req, file, cb) {
         const uploadPath = path.join(__dirname, '..', 'uploads', 'images');
@@ -40,7 +22,8 @@ const imageupload = multer({ storage: multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, file.originalname);
     }
-})});
+}), limits: { fileSize: 5 * 1024 * 1024 } });
+
 const craftupload = multer({ storage: multer.diskStorage({
     destination: function (req, file, cb) {
         const uploadPath = path.join(__dirname, '..', 'uploads', 'craft');
@@ -54,7 +37,7 @@ const craftupload = multer({ storage: multer.diskStorage({
             }
         });
     }
-})});
+}), limits: { fileSize: 5 * 1024 * 1024 } });
 
 router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), craftupload([{ name: 'craft', maxCount: 1}]), async (req, res) => {
     logger.info('Received POST request to /uploadfiles');
