@@ -25,7 +25,7 @@ router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req
     logger.info('Received POST request to /uploadcraft');
     const craft = req.files['craft'][0];
     //const userId = req.session.userId;
-    logger.info(`Received files with title "${title}", ${images.length} images and 1 craft file`);
+    logger.info(`Received a craft file`);
 
     try {
         if (!craft.originalname.endsWith('.craft')) {
