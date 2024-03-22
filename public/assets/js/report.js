@@ -2,19 +2,27 @@ async function submitReport(event) {
   event.preventDefault();
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
-  response = await fetch("/api/report", {
+  if (title.length > 64) {
+      alert("Title is too long. Please keep it under 64 characters.");
+      return;
+  } else if (description.length > 1024) {
+      alert("Description is too long. Please keep it under 256 characters.");
+      return;
+  } else {
+    response = await fetch("/api/report", {
       method: "POST",
       headers: {
-          "Content-Type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ title, description }),
-  });
-  if (response.ok) {
+    });
+    if (response.ok) {
       alert("Report sent!");
       document.getElementById("title").value = "";
       document.getElementById("description").value = "";
-  } else {
+    } else {
       alert("Something went wrong. Please try again later.");
+    }
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
