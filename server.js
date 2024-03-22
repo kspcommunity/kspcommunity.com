@@ -15,6 +15,7 @@ const createPostRouter = require('./routes/createpost');
 const postsRouter = require('./routes/posts');
 const uploadcraftRouter = require('./routes/uploadcraft');
 const createpostRouter = require('./routes/createpost');
+const contributemodRouter = require('./routes/contributemod');
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
 app.use('/uploadcraft', uploadcraftRouter);
 app.use('/createpost', createpostRouter);
+app.use('/api/contributemod', contributemodRouter);
 
 // Serve pages without .html extension
 app.get('/:page', (req, res, next) => {
