@@ -4,12 +4,14 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const logger = require('../utilities/logger');
 const pool = require('../database');
-const saltRounds = 10;
 
 router.post('/', 
     body('username').trim().escape(),
     body('password').trim().escape(), 
     async (req, res) => {
+        if (!req.body.username || !req.body.password) {
+            return res.status(400).send('Username and password are required');
+        }
         try {
             // Check for validation errors
             const errors = validationResult(req);

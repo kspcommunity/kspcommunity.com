@@ -5,15 +5,17 @@ const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs-extra');
-const multer = require('multer');
 const logger = require('./utilities/logger');
 const database = require('./database');
 
 // Import routes
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
-const createPostRouter = require('./routes/create-post');
+const createPostRouter = require('./routes/createpost');
 const postsRouter = require('./routes/posts');
+const uploadcraftRouter = require('./routes/uploadcraft');
+const createpostRouter = require('./routes/createpost');
+const contributemodRouter = require('./routes/contributemod');
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -30,66 +32,14 @@ const staticFilesOptions = {
 };
 app.use(express.static(path.join(__dirname, 'public'), staticFilesOptions));
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, 'uploads');
-        fs.ensureDir(uploadPath, (err) => {
-            if (err) {
-                logger.error(`Error creating uploads directory: ${err.message}`);
-            }
-            cb(null, uploadPath);
-        });
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-});
-const upload = multer({ storage: storage });
-
 // Use routes
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.post('/uploadfiles', async (req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    const images = req.files['images[]'];
-    const craft = req.files['craft'][0];
-    //const userId = req.session.userId;
-    logger.info(`Received files with title ${title}, ${images.length} images and 1 craft file`);
-    if (title === undefined || description === undefined) {
-        res.status(400).json({ error: 'Invalid request' });
-        return;
-    } else if (images.length < 1 || craft.length < 1) {
-        res.status(400).json({ error: 'Please select images and a craft file to upload' });
-        return;
-    } else if (images.length > 10) {
-        res.status(400).json({ error: 'Please select 10 or fewer images to upload' });
-        return;
-    } else if (craft.originalname.endsWith('.craft') === false) {
-        res.status(400).json({ error: 'Please select a .craft file to upload' });
-        return;
-    } else if (craft.size > 5 * 1024 * 1024) {
-        res.status(400).json({ error: 'Please select a craft file smaller than 5 MB to upload' });
-        return;
-    }
-    for (let i = 0; i < images.length; i++) {if (images[i].size > 5 * 1024 * 1024) {
-            res.status(400).json({ error: 'Please select images smaller than 5 MB to upload' });
-            return;
-        }
-    }
-
-    
-    // Save the files to the database
-    try {
-        //const result = await database.saveFiles(title, description, images, craft, userId);
-        res.status(200).json({ message: 'Files uploaded successfully' });
-    } catch (err) {
-        logger.error(`Error saving files to the database: ${err.message}`);
-        res.status(500).json({ error: 'Failed to save files to the database' });
-    }
-});
+app.use('/uploadcraft', uploadcraftRouter);
+app.use('/createpost', createpostRouter);
+app.use('/api/contributemod', contributemodRouter);
 
 // Serve pages without .html extension
 app.get('/:page', (req, res, next) => {
