@@ -26,7 +26,8 @@ router.post('/',
             fields: [
                 { name: 'Mod Name', value: modName },
                 { name: 'Mod Link', value: modLink }
-            ]
+            ],
+            color: 0xFFA500,
         };
 
         // Send the embed to the Discord webhook
