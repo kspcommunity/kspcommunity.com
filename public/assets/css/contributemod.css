@@ -1,0 +1,47 @@
+/* Styling for the main content container */
+.main-content-container {
+    padding: 20px; /* Reduced padding for responsiveness */
+    background-color: #b7b7b71b; /* Darker background color */
+    border-radius: 10px; /* Increased border radius for smoother corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increased shadow effect */
+    backdrop-filter: blur(20px);
+}
+
+/* Styling for form elements within the container */
+.main-content-container input[type="text"],
+.main-content-container button {
+    margin: 10px 0; /* Increased margin for spacing */
+    padding: 15px; /* Increased padding for better appearance */
+    width: calc(100% - 30px); /* Responsive width accounting for padding */
+    border: none; /* Removed border */
+    border-radius: 10px; /* Increased border radius for smoother corners */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.main-content-container input[type="text"] {
+    background-color: #555; /* Darker background color for text input */
+    color: #fff; /* Text color */
+}
+
+.main-content-container button {
+    background-color: #2596be; /* Background color of the button */
+    color: #fff; /* Text color */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Hover effect for button */
+.main-content-container button:hover {
+    background-color: #2079a0; /* Darker background color on hover */
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Focus effect for input */
+.main-content-container input[type="text"]:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on focus */
+    color: #ffffff;
+}
+
+.main-content-container ::placeholder {
+    color: #b9b9b9;
+}

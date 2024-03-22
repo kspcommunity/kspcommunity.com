@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="assets/css/sidebar-left.css">
         <link rel="stylesheet" href="assets/css/sidebar-right.css">
         <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/contributemod.css">
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="assets/js/contributemod.js"></script>
@@ -42,14 +43,18 @@
     <aside id="sidebar-right-container">
     </aside>
 
-    <h1>Contribute Mod</h1>
-    <p>In order to recognize what mod is the craft using, we need to have mods to check.<br />By uploading mod(s), you help us recognize them. With that being said, thank you for contributing!</p>
-    <br />
-    Mod name: <input type="text" id="modName" placeholder="Mod name">
-    <br />
-    Mod link: <input type="text" id="modLink" placeholder="Mod link">
-    <br />
-    <button type="submit" id="submitButton">Submit</button>
+    <div class="main-content-container">
+        <h1>Contribute Mod</h1>
+        <p>In order to recognize what mod is the craft using, we need to have mods to check.<br />By uploading mod(s), you help us recognize them. With that being said, thank you for contributing!</p>
+        <br />
+        <label for="modName">Mod name:</label>
+        <input type="text" id="modName" placeholder="The name of the mod">
+        <br />
+        <label for="modLink">Mod link:</label>
+        <input type="text" id="modLink" placeholder="The link to the mod's page">
+        <br />
+        <button type="submit" id="submitButton">Submit</button>
+    </div>
 
     <footer id="footer-container"></footer>
     <script src="assets/js/global.js"></script>
