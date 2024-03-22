@@ -12,7 +12,6 @@ router.post('/',
     //    body('modLink').trim().escape()
     //],
     async (req, res) => {
-        // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -27,7 +26,7 @@ router.post('/',
                 { name: 'Mod Name', value: modName },
                 { name: 'Mod Link', value: modLink }
             ],
-            color: 0xFFA500,
+            color: 0xFFA500
         };
 
         // Send the embed to the Discord webhook

@@ -18,31 +18,35 @@ router.post('/',
             return res.status(400).json({ errors: errors.array() });
         }
         const { title, description } = req.body;
-        //logger.info('Received report with title: ' + title + 'and description: ' + description);
-        logger.info('Received report with title: ' + title);
+        if (title.length > 64 || description.length > 1024) {
+            return res.status(400).json({ error: 'Title or description too long.' });
+        } else if (title.length === 0 || description.length === 0) {
+            return res.status(400).json({ error: 'Title or description is empty' });
+        } else {
+            //logger.info('Received report with title: ' + title + 'and description: ' + description);
+            logger.info('Received report with title: ' + title);
 
-        // Create the embed object
-        const embed = {
-            title: 'Recieved Report',
-            fields: [
-                { name: 'Title', value: title },
-                { name: 'Description', value: description }
-            ]
-        };
+            const embed = {
+                title: 'Recieved Report',
+                fields: [
+                    { name: 'Title', value: title },
+                    { name: 'Description', value: description }
+                ]
+            };
 
-        // Send the embed to the Discord webhook
-        try {
-            await fetch(process.env.REPORT_WEBHOOK, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ embeds: [embed] })
-            });
-            res.sendStatus(200);
-        } catch (error) {
-            logger.error('Error sending embed to Discord webhook:', error);
-            res.sendStatus(500);
+            try {
+                await fetch(process.env.REPORT_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    body: JSON.stringify({ embeds: [embed] })
+                });
+                res.sendStatus(200).send('Report sent!');
+            } catch (error) {
+                logger.error('Error sending embed to Discord webhook:', error);
+                res.sendStatus(500);
+            }
         }
     }
 );
