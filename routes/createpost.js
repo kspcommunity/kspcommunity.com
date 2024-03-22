@@ -3,26 +3,42 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs-extra');
+const { v4: uuidv4 } = require('uuid');
 const logger = require('../utilities/logger');
 const database = require('../database');
 
-const imageupload = multer({ storage: multer.diskStorage({
-    destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, '..', 'uploads', 'images');
-        fs.ensureDir(uploadPath, (err) => {
-            if (err) {
-                logger.error(`Error creating image uploads directory: ${err.message}`);
-                cb(err);
-            } else {
-                logger.info(`Images upload directory created successfully at: ${uploadPath}`);
-                cb(null, uploadPath);
-            }
-        });
+const imageupload = multer({ 
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            const uploadPath = path.join(__dirname, '..', 'uploads', 'images');
+            fs.ensureDir(uploadPath, (err) => {
+                if (err) {
+                    logger.error(`Error creating image uploads directory: ${err.message}`);
+                    cb(err);
+                } else {
+                    logger.info(`Images upload directory created successfully at: ${uploadPath}`);
+                    cb(null, uploadPath);
+                }
+            });
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.originalname);
+        }
+    }), 
+    limits: { 
+        fileSize: 5 * 1024 * 1024 
     },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
+    fileFilter: function (req, file, cb) {
+        const allowedFileTypes = /jpeg|jpg|png|svg|gif/;
+        const extname = allowedFileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = allowedFileTypes.test(file.mimetype);
+        if (extname && mimetype) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed'));
+        }
     }
-}), limits: { fileSize: 5 * 1024 * 1024 } });
+});
 
 router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), async (req, res) => {
     logger.info('Received POST request to /createpost');

@@ -6,20 +6,34 @@ const fs = require('fs-extra');
 const logger = require('../utilities/logger');
 const database = require('../database');
 
-const craftupload = multer({ storage: multer.diskStorage({
-    destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, '..', 'uploads', 'craft');
-        fs.ensureDir(uploadPath, (err) => {
-            if (err) {
-                logger.error(`Error creating craft upload directory: ${err.message}`);
-                cb(err);
-            } else {
-                logger.info(`Craft upload directory created successfully at: ${uploadPath}`);
-                cb(null, uploadPath);
-            }
-        });
+const craftupload = multer({ 
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            const uploadPath = path.join(__dirname, '..', 'uploads', 'craft');
+            fs.ensureDir(uploadPath, (err) => {
+                if (err) {
+                    logger.error(`Error creating craft upload directory: ${err.message}`);
+                    cb(err);
+                } else {
+                    logger.info(`Craft upload directory created successfully at: ${uploadPath}`);
+                    cb(null, uploadPath);
+                }
+            });
+        }
+    }), 
+    limits: { 
+        fileSize: 5 * 1024 * 1024 
+    },
+    fileFilter: function (req, file, cb) {
+        if (!file.originalname.endsWith('.craft')) {
+            return cb(new Error('Please select a .craft file to upload'));
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            return cb(new Error('Please select a craft file smaller than 5 MB to upload'));
+        }
+        cb(null, true);
     }
-}), limits: { fileSize: 5 * 1024 * 1024 } });
+});
 
 router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req, res) => {
     logger.info('Received POST request to /uploadcraft');
