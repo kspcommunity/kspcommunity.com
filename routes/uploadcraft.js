@@ -39,8 +39,8 @@ const craftupload = multer({ storage: multer.diskStorage({
     }
 }), limits: { fileSize: 5 * 1024 * 1024 } });
 
-router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req, res) => {
-    logger.info('Received POST request to /uploadfiles');
+router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req, res) => {
+    logger.info('Received POST request to /uploadcraft');
     const title = req.body.title;
     const description = req.body.description;
     const images = req.files['images[]'];
@@ -51,21 +51,13 @@ router.post('/', imageupload.fields([{ name: 'images[]', maxCount: 10 }]), craft
     try {
         if (!title || !description) {
             throw new Error('Title or description is missing');
-        }
-
-        if (images.length < 1 || !craft) {
+        } else if (images.length < 1 || !craft) {
             throw new Error('Please select images and a craft file to upload');
-        }
-
-        if (images.length > 10) {
+        } else if (images.length > 10) {
             throw new Error('Please select 10 or fewer images to upload');
-        }
-
-        if (!craft.originalname.endsWith('.craft')) {
+        } else if (!craft.originalname.endsWith('.craft')) {
             throw new Error('Please select a .craft file to upload');
-        }
-
-        if (craft.size > 5 * 1024 * 1024) {
+        } else if (craft.size > 5 * 1024 * 1024) {
             throw new Error('Please select a craft file smaller than 5 MB to upload');
         }
 

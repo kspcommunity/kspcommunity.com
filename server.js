@@ -11,9 +11,10 @@ const database = require('./database');
 // Import routes
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
-const createPostRouter = require('./routes/create-post');
+const createPostRouter = require('./routes/createpost');
 const postsRouter = require('./routes/posts');
-const uploadfilesRouter = require('./routes/uploadfiles');
+const uploadcraftRouter = require('./routes/uploadcraft');
+const createpostRouter = require('./routes/createpost');
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -35,7 +36,8 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.use('/uploadfiles', uploadfilesRouter);
+app.use('/uploadcraft', uploadcraftRouter);
+app.use('/createpost', createpostRouter);
 
 // Serve pages without .html extension
 app.get('/:page', (req, res, next) => {
