@@ -7,31 +7,32 @@ require('dotenv').config();
 const router = express.Router();
 
 router.post('/', 
-    //[
-    //    body('modName').trim().escape(),
-    //    body('modLink').trim().escape()
-    //],
+//    [
+//        body('title').trim().escape(),
+//        body('description').trim().escape()
+//    ],
     async (req, res) => {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { modName, modLink } = req.body;
-        logger.info('Received mod contribution with name: ' + modName + 'and link: ' + modLink);
+        const { title, description } = req.body;
+        //logger.info('Received report with title: ' + title + 'and description: ' + description);
+        logger.info('Received report with title: ' + title);
 
         // Create the embed object
         const embed = {
-            title: 'New Mod Contribution',
+            title: 'Recieved Report',
             fields: [
-                { name: 'Mod Name', value: modName },
-                { name: 'Mod Link', value: modLink }
+                { name: 'Title', value: title },
+                { name: 'Description', value: description }
             ]
         };
 
         // Send the embed to the Discord webhook
         try {
-            await fetch(process.env.MOD_CONTRIBUTION_WEBHOOK, {
+            await fetch(process.env.REPORT_WEBHOOK, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
