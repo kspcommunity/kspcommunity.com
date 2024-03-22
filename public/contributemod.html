@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="KSP Community - Create Post">
+        <meta name="description" content="KSP Community - Contribute Mod">
         <meta name="keywords" content="ksp, ksp2, community">
         <meta name="author" content="g9aerospace & dave9123">
-        <meta property="og:title" content="KSP Community - Create Post">
+        <meta property="og:title" content="KSP Community - Contribute Mod">
         <meta property="og:description" content="Create a new post!🖊️">
         <meta property="og:image" content="https://i.imgur.com/e4W4ogo.png">
         <meta property="og:url" content="https://kspcommunity.com">
@@ -19,9 +19,9 @@
         <link rel="stylesheet" href="assets/css/footer.css">
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="assets/js/createpost.js"></script>
+        <script src="assets/js/contributemod.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap">
-        <title>KSP Community - Create Post</title>
+        <title>KSP Community - Contribute Mod</title>
 
         <style>
             body {
@@ -42,12 +42,14 @@
     <aside id="sidebar-right-container">
     </aside>
 
-    <h1>Create Post</h1>
-    <p>Please upload your craft file first</p>
+    <h1>Contribute Mod</h1>
+    <p>In order to recognize what mod is the craft using, we need to have mods to check.<br />By uploading mod(s), you help us recognize them. With that being said, thank you for contributing!</p>
     <br />
-    <p>Upload your craft<br><input type="file" id="craft" accept=".craft" /></p>
-    </br />
-    <button type="submit" id="uploadButton">Submit</button>
+    Mod name: <input type="text" id="modName" placeholder="Mod name">
+    <br />
+    Mod link: <input type="text" id="modLink" placeholder="Mod link">
+    <br />
+    <button type="submit" id="submitButton">Submit</button>
 
     <footer id="footer-container"></footer>
     <script src="assets/js/global.js"></script>
