@@ -62,6 +62,12 @@ app.get('/sitemap.xml', (req, res) => {
     res.sendFile(sitemapPath);
 });
 
+// Serve robots.txt
+app.get('/robots.txt', (req, res) => {
+    const robotsFilePath = path.join(__dirname, 'robots.txt');
+    res.sendFile(robotsFilePath);
+});
+
 // Handle 404
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
