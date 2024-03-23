@@ -27,11 +27,12 @@ router.post('/',
             logger.info('Received report with title: ' + title);
 
             const embed = {
-                title: 'Recieved Report',
+                title: 'Report',
                 fields: [
                     { name: 'Title', value: title },
                     { name: 'Description', value: description }
-                ]
+                ],
+                color: 0xFF0000
             };
 
             try {
