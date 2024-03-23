@@ -28,6 +28,10 @@
     --section-border-radius: 6px;
     --section-bg-color: #20212292;
 
+    --border-small-radius: 5px;
+    --border-medium-radius: 10px;
+    --border-large-radius: 20px;
+
     --sidebar-pc-width: 200px;
     --sidebar-tab-width: 200px;
     --sidebar-mobile-width: 200px;
