@@ -21,6 +21,9 @@
             initializeHamburgerIconL();
             initializeHamburgerIconR();
             checkDeviceWidth();
+
+            // Add scroll event listener for parallax effect
+            document.addEventListener("scroll", handleScroll);
         } catch (error) {
             console.error('Error loading components:', error);
         }
@@ -89,5 +92,18 @@
         hamburgerIconsR.forEach(function (hamburgerIcon) {
             hamburgerIcon.addEventListener('click', toggleSidebarR);
         });
+    }
+
+    // Function to update background position based on scroll for parallax effect
+    function updateBackgroundPosition() {
+        var scrollTop = window.scrollY;
+        var scrollSpeed = 0.2; // Adjust this value to change the scrolling speed
+        var backgroundPosition = 'center ' + (-scrollTop * scrollSpeed) + 'px';
+        document.body.style.backgroundPosition = backgroundPosition;
+    }
+
+    // Function to handle scroll event for parallax effect
+    function handleScroll() {
+        requestAnimationFrame(updateBackgroundPosition);
     }
 })();
