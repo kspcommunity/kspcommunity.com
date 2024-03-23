@@ -1,0 +1,22 @@
+{
+    "name": "Kerbal Space Program Community",
+    "short_name": "KSP-C",
+    "description": "KSP Community Website",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#2596be",
+    "icons": [
+      {
+        "src": "./assets/images/icons/kspcommunity 192x192px.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "./assets/images/icons/kspcommunity 512x512px.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
