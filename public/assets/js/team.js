@@ -4,7 +4,7 @@ var teamMembers = [
         "username": "G9 Aerospace",
         "iconPath": "assets/images/dev-pfps/g9aerospace.svg",
         "role": "Owner",
-        "description": "I coded most of the frontend"
+        "description": "I made the frontend and a part of the backend"
     },
     {
         "username": "Dave",
@@ -22,7 +22,7 @@ var teamMembers = [
         "username": "Kakashi",
         "iconPath": "assets/images/dev-pfps/kakashi.svg",
         "role": "Developer",
-        "description": "I contributed nothing, yet"
+        "description": "I contributed nothing, yet 😐"
     }
 ];
 
