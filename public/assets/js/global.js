@@ -1,45 +1,54 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Load Header
-    const headerContainer = document.getElementById('header-container');
-    fetch('assets/common/header.html')
-        .then(response => response.text())
-        .then(html => {
-            headerContainer.innerHTML = html;
-        })
-        .catch(error => console.error('Error loading header:', error));
+// Define an immediately invoked function expression (IIFE) to encapsulate the code
+(function () {
+    // Event listener for DOMContentLoaded event
+    document.addEventListener('DOMContentLoaded', async function () {
+        try {
+            // Load common components asynchronously
+            const [headerResponse, sidebarLeftResponse, sidebarRightResponse, footerResponse] = await Promise.all([
+                getCachedComponent('assets/common/header.html'),
+                getCachedComponent('assets/common/sidebar-left.html'),
+                getCachedComponent('assets/common/sidebar-right.html'),
+                getCachedComponent('assets/common/footer.html')
+            ]);
 
-    // Load Sidebar Left
-    const sidebarLeftContainer = document.getElementById('sidebar-left-container');
-    fetch('assets/common/sidebar-left.html')
-        .then(response => response.text())
-        .then(html => {
-            sidebarLeftContainer.innerHTML = html;
+            // Insert components into their respective containers
+            document.getElementById('header-container').innerHTML = headerResponse;
+            document.getElementById('sidebar-left-container').innerHTML = sidebarLeftResponse;
+            document.getElementById('sidebar-right-container').innerHTML = sidebarRightResponse;
+            document.getElementById('footer-container').innerHTML = footerResponse;
+
+            // Initialize hamburger icons and check device width after loading sidebars
             initializeHamburgerIconL();
-            checkDeviceWidth(); // Check device width after loading sidebar
-        })
-        .catch(error => console.error('Error loading sidebar left:', error));
-
-    // Load Sidebar Right
-    const sidebarRightContainer = document.getElementById('sidebar-right-container');
-    fetch('assets/common/sidebar-right.html')
-        .then(response => response.text())
-        .then(html => {
-            sidebarRightContainer.innerHTML = html;
             initializeHamburgerIconR();
-            checkDeviceWidth(); // Check device width after loading sidebar
-        })
-        .catch(error => console.error('Error loading sidebar right:', error));
+            checkDeviceWidth();
+        } catch (error) {
+            console.error('Error loading components:', error);
+        }
+    });
 
-    // Load Footer
-    const footerContainer = document.getElementById('footer-container');
-    fetch('assets/common/footer.html')
-        .then(response => response.text())
-        .then(html => {
-            footerContainer.innerHTML = html;
-        })
-        .catch(error => console.error('Error loading footer:', error));
+    // Function to fetch and cache components
+    function getCachedComponent(url) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                // Check if component is cached
+                const cachedComponent = localStorage.getItem(url);
+                if (cachedComponent) {
+                    resolve(cachedComponent);
+                } else {
+                    // Fetch component if not cached
+                    const response = await fetch(url);
+                    const component = await response.text();
+                    // Cache component in localStorage
+                    localStorage.setItem(url, component);
+                    resolve(component);
+                }
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
 
-    // Function to check device width and toggle sidebar if needed
+    // Function to check device width and toggle sidebars if needed
     function checkDeviceWidth() {
         const deviceWidth = window.innerWidth;
         const sidebarLeft = document.getElementById('sidebar-left');
@@ -50,31 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to update background position based on scroll
-    function updateBackgroundPosition() {
-        var scrollTop = window.scrollY;
-        var scrollSpeed = 0.3; // Adjust this value to change the scrolling speed
-        var backgroundPosition = 'center ' + (-scrollTop * scrollSpeed) + 'px';
-        document.body.style.backgroundPosition = backgroundPosition;
-    }
-
-    // Function to handle scroll event
-    function handleScroll() {
-        requestAnimationFrame(updateBackgroundPosition);
-    }
-
-    // Initialize background position
-    updateBackgroundPosition();
-
-    // Add scroll event listener
-    document.addEventListener("scroll", handleScroll);
-
     // Function to initialize hamburger icon for left sidebar
     function initializeHamburgerIconL() {
         const hamburgerIconsL = document.querySelectorAll('.hamburger-icon-L');
         const sidebarLeft = document.getElementById('sidebar-left');
 
-        // Function to toggle sidebar visibility and adjust width
+        // Function to toggle sidebar visibility
         function toggleSidebarL() {
             sidebarLeft.classList.toggle('hidden');
         }
@@ -90,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const hamburgerIconsR = document.querySelectorAll('.hamburger-icon-R');
         const sidebarRight = document.getElementById('sidebar-right');
 
-        // Function to toggle sidebar visibility and adjust width
+        // Function to toggle sidebar visibility
         function toggleSidebarR() {
             sidebarRight.classList.toggle('hidden');
         }
@@ -100,4 +90,4 @@ document.addEventListener('DOMContentLoaded', function () {
             hamburgerIcon.addEventListener('click', toggleSidebarR);
         });
     }
-});
+})();
