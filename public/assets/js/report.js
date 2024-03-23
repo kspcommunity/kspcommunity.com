@@ -2,7 +2,11 @@ async function submitReport(event) {
   event.preventDefault();
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
-  if (title.length > 64) {
+
+  if (title.length === 0 || description.length === 0) {
+    alert("Please fill out all fields.");
+    return;
+  } else if (title.length > 64) {
       alert("Title is too long. Please keep it under 64 characters.");
       return;
   } else if (description.length > 1024) {
