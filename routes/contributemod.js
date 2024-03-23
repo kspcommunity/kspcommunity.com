@@ -21,7 +21,7 @@ router.post('/',
 
         // Create the embed object
         const embed = {
-            title: 'New Mod Contribution',
+            title: 'Mod Contribution',
             fields: [
                 { name: 'Mod Name', value: modName },
                 { name: 'Mod Link', value: modLink }
