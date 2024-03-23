@@ -7,6 +7,7 @@ const logLevels = {
   INFO: 'INFO',
   WARNING: 'WARNING',
   ERROR: 'ERROR',
+  CUSTOM_WARNING: 'CUSTOM_WARNING', // Define custom warning level
 };
 
 // Create logs folder if it doesn't exist
@@ -71,6 +72,10 @@ function createEmbed(level, message) {
       title = '❌ Error';
       color = 0xFF0000; // Red for error
       break;
+    case logLevels.CUSTOM_WARNING:
+      title = '⚠️ Custom Warning';
+      color = 0xFFA500; // Orange for custom warning
+      break;
     default:
       title = 'ℹ️ Unknown';
       break;
@@ -99,10 +104,13 @@ async function log(level, message) {
   const logFilePath = path.join(logsFolder, `${formattedDate}.log`);
   fs.appendFileSync(logFilePath, logMessage + '\n');
 
-  // Create embed and add to Discord queue
-  const embed = createEmbed(level, message);
-  discordQueue.push(embed);
-  processQueue();
+  // Check if the level is warning, error, or custom warning
+  if (level === logLevels.WARNING || level === logLevels.ERROR || level === logLevels.CUSTOM_WARNING) {
+    // Create embed and add to Discord queue
+    const embed = createEmbed(level, message);
+    discordQueue.push(embed);
+    processQueue();
+  }
 }
 
 // Logger with different log levels
@@ -110,7 +118,7 @@ const logger = {
   info: (message) => log(logLevels.INFO, message),
   warn: (message) => log(logLevels.WARNING, message),
   error: (message) => log(logLevels.ERROR, message),
-  customWarn: (type, message) => log(logLevels.WARNING, `[${type} Warning]: ${message}`),
+  customWarn: (type, message) => log(logLevels.CUSTOM_WARNING, `[${type} Warning]: ${message}`),
 };
 
 module.exports = logger;
