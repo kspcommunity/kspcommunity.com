@@ -56,6 +56,12 @@ app.get('/:page', (req, res, next) => {
     });
 });
 
+// Serve sitemap.xml
+app.get('/sitemap.xml', (req, res) => {
+    const sitemapPath = path.join(__dirname, 'sitemap.xml');
+    res.sendFile(sitemapPath);
+});
+
 // Handle 404
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
