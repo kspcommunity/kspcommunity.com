@@ -2,7 +2,10 @@ async function submitModLink(event) {
     event.preventDefault();
     const modName = document.getElementById("modName").value;
     const modLink = document.getElementById("modLink").value;
-    if (modName.length > 32) {
+    if (modName.length === 0 || modLink.length === 0) {
+        alert("Please fill out all fields.");
+        return;
+    } else if (modName.length > 32) {
         alert("Mod name is too long. Please keep it under 32 characters.");
         return;
     } else if (modLink.length > 256) {
