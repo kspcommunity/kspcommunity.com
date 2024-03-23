@@ -9,6 +9,9 @@ footer {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    display: flex; /* Add flex display */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center; /* Vertically center items */
 }
 
 /* Style navigation links in the footer */
@@ -29,13 +32,13 @@ footer {
 
 /* Style the GitHub sponsor button */
 .footer-sponsor {
-    margin-top: 10px;
+    margin: 0 10px; /* Add margin to the Sponsor button */
     border: none;
 }
 
 /* Style the fan-made website disclaimer */
-.footer p {
-    margin-bottom: 10px;
+.footer-disclaimer {
+    margin-bottom: 10px; /* corrected the class name */
 }
 
 /* Style the copyright information */
@@ -62,6 +65,14 @@ footer {
     max-width: 40px; /* Adjust the value as needed */
     max-height: 40px; /* Adjust the value as needed */
     border: none;
+}
+
+/* Container for social media icons and sponsor button */
+.footer-social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; /* Add margin-top to create space between navigation links and social icons */
 }
 
 /* Media Queries for Responsive Design */
