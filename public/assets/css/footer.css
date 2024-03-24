@@ -69,10 +69,10 @@ footer {
 }
 
 .footer-social-container img {
-    width: auto;
-    max-height: 30px;
-    height: auto;
+    width: 30px; /* Adjust width of the social media icons */
+    height: 30px; /* Adjust height of the social media icons */
 }
+
 
 .footer-sponsor {
     border: none; /* Remove border */
