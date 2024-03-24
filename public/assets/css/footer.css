@@ -1,89 +1,106 @@
-/* Reset some default styles for the footer */
-footer {
-    margin-top: 20px;
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: var(--footer-bg-color);
-    color: var(--footer-text-color);
-    text-align: center;
-    border-radius: var(--section-border-radius);
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex; /* Add flex display */
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Vertically center items */
+    color: #ffffff;
 }
 
-/* Style navigation links in the footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.61);
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    border-radius: var(--border-medium-radius);
+}
+
+/* Footer Styles */
+.footer {
+    padding: 30px 0;
+}
+
+.footer-container {
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: var(--border-medium-radius);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+}
+
+.footer-logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100px;
+    height: auto;
+}
+
 .footer-nav {
-    margin-bottom: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer-nav a {
-    color: var(--link-text-color);
+    display: block; /* Change display to block */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide any overflow */
+    text-overflow: ellipsis; /* Add ellipsis if content overflows */
+    max-width: 100%; /* Limit the width of each link */
     text-decoration: none;
-    margin: 0 10px;
+    color: #ffffff; /* White text color */
+    margin: 10px 0; /* Add margin to create space between links */
 }
 
 .footer-nav a:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline;
+    color: #cccccc; /* Light gray hover color */
 }
 
-/* Style the GitHub sponsor button */
-.footer-sponsor {
-    margin: 0 10px; /* Add margin to the Sponsor button */
-    border: none;
-}
-
-/* Style the fan-made website disclaimer */
-.footer-disclaimer {
-    margin-bottom: 10px; /* corrected the class name */
-}
-
-/* Style the copyright information */
-.footer-copyright {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* Style the layout of navigation links */
-.footer-nav a {
-    display: inline-block;
-}
-
-/* Center all text content within the footer */
-.footer-nav,
-.footer p,
-.footer-copyright {
-    text-align: center;
-}
-
-/* Set max size for social media icons and logo */
-.footer-social img,
-.footer-logo {
-    max-width: 40px; /* Adjust the value as needed */
-    max-height: 40px; /* Adjust the value as needed */
-    border: none;
-}
-
-/* Container for social media icons and sponsor button */
 .footer-social-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px; /* Add margin-top to create space between navigation links and social icons */
+    text-align: center; /* Centering the social media icons horizontally */
+    margin-top: 20px;
 }
 
-/* Media Queries for Responsive Design */
-@media only screen and (max-width: 768px) {
-    footer {
-        padding: 10px;
+.footer-social-container a {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-social-container img {
+    width: auto;
+    max-height: 30px;
+    height: auto;
+}
+
+.footer-sponsor {
+    border: none; /* Remove border */
+}
+
+.footer-disclaimer,
+.footer-copyright {
+    color: #cccccc; /* Light gray text color */
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center; /* Centering the disclaimer and copyright text */
+    display: block; /* Ensure each paragraph appears on a separate line */
+}
+
+/* Responsive Layout */
+@media screen and (min-width: 768px) {
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
     }
-    
-    .footer-social img,
-    .footer-logo {
-        max-width: 30px;
-        max-height: 30px;
+
+    .footer-subcontainer {
+        width: 48%;
+    }
+
+    .footer-social-container {
+        margin-top: 0;
     }
 }
