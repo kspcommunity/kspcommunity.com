@@ -26,7 +26,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // Set EJS as view engine
+app.set('views', path.join(__dirname, 'views')); // Set views folder
 app.use(morgan('combined'));
 
 // Use routes
@@ -38,6 +39,9 @@ app.use('/uploadcraft', uploadcraftRouter);
 app.use('/createpost', createpostRouter);
 app.use('/api/contributemod', contributemodRouter);
 app.use('/api/report', reportRouter);
+
+// Serve static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 const featuredCrafts = [
     { img: 'usercontent/images/2d8d8444-ac2b-447d-8827-122251dcd81e.jpg', title: 'Craft 1' },
@@ -58,7 +62,7 @@ app.get('/:page', (req, res, next) => {
         if (err) {
             next(); // Pass the request to the next middleware
         } else {
-            res.render(pagePath);
+            res.render(page); // Render EJS file from views folder
         }
     });
 });
@@ -90,11 +94,9 @@ app.get('/usercontent/:type/:filename', (req, res) => {
     }
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Handle 404
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.ejs'));
     logger.warn(`Requested page "${req.url}" not found`);
 });
 
