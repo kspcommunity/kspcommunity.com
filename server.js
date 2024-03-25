@@ -14,8 +14,8 @@ const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const createPostRouter = require('./routes/createpost');
 const postsRouter = require('./routes/posts');
-//const uploadcraftRouter = require('./routes/uploadcraft');
-//const createpostRouter = require('./routes/createpost');
+const uploadcraftRouter = require('./routes/uploadcraft');
+const createpostRouter = require('./routes/createpost');
 const contributemodRouter = require('./routes/contributemod');
 const reportRouter = require('./routes/report');
 
@@ -34,8 +34,8 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-//app.use('/uploadcraft', uploadcraftRouter);
-//app.use('/createpost', createpostRouter);
+app.use('/uploadcraft', uploadcraftRouter);
+app.use('/createpost', createpostRouter);
 app.use('/api/contributemod', contributemodRouter);
 app.use('/api/report', reportRouter);
 
