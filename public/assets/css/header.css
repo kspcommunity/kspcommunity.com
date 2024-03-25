@@ -70,6 +70,7 @@ header {
     margin-left: 10px;
     font-size: 18px;
     color: #fff;
+    margin-right: 50px;
 }
 
 /* Style the user icon */
@@ -79,20 +80,4 @@ header {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-}
-
-/* Responsive layout */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .user-menu {
-        position: static;
-        margin-left: auto;
-    }
 }
