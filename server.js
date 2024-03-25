@@ -13,8 +13,8 @@ const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const createPostRouter = require('./routes/createpost');
 const postsRouter = require('./routes/posts');
-const uploadcraftRouter = require('./routes/uploadcraft');
-const createpostRouter = require('./routes/createpost');
+//const uploadcraftRouter = require('./routes/uploadcraft');
+//const createpostRouter = require('./routes/createpost');
 const contributemodRouter = require('./routes/contributemod');
 const reportRouter = require('./routes/report');
 
@@ -34,14 +34,13 @@ app.use(morgan('combined'));
 // Define static files directory without cache control for development
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 // Use routes
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/create-post', createPostRouter);
 app.use('/posts', postsRouter);
-app.use('/uploadcraft', uploadcraftRouter);
-app.use('/createpost', createpostRouter);
+//app.use('/uploadcraft', uploadcraftRouter);
+//app.use('/createpost', createpostRouter);
 app.use('/api/contributemod', contributemodRouter);
 app.use('/api/report', reportRouter);
 
@@ -68,6 +67,21 @@ app.get('/sitemap.xml', (req, res) => {
 app.get('/robots.txt', (req, res) => {
     const robotsFilePath = path.join(__dirname, 'robots.txt');
     res.sendFile(robotsFilePath);
+});
+
+app.get('/usercontent/:type/:filename', (req, res) => {
+    const type = req.params.type;
+    const filename = req.params.filename;
+    if (type !== undefined && filename !== undefined && (type === 'images' || type === 'craft')) {
+        const filePath = path.join(__dirname, 'uploads', type, filename);
+        fs.access(filePath, fs.constants.F_OK, (err) => {
+            if (err) {
+                res.status(404).send('File not found');
+            } else {
+                res.sendFile(filePath);
+            }
+        });
+    }
 });
 
 // Handle 404
