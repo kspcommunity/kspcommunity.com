@@ -1,7 +1,7 @@
 /* Root Variables */
 :root {
     --primary-bg-color: #000000;
-    --header-bg-color: transparent;
+    --header-bg-color: #00000098;
     --sidebar-bg-color: #0000008f;
     --sidebar-small-device-bg-color: #000000c5;
     --footer-bg-color: #00000061;
@@ -48,8 +48,8 @@ body {
     color: var(--primary-text-color);
     padding: var(--padding-medium-width);
     font-family: var(--font-family);
-    margin-left: calc(var(--sidebar-pc-width) + 2*var(--margin-large-width));
-    margin-right: calc(var(--sidebar-pc-width) + 2*var(--margin-large-width));
+    margin-left: var(--margin-large-width);
+    margin-right: var(--margin-large-width);
 }
 
 /* Fixed Background */
