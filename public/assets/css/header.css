@@ -1,4 +1,3 @@
-/* Apply styles to the header */
 header {
     background-color: var(--header-bg-color);
     padding: 20px;
@@ -18,15 +17,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-/* Style the logo */
-.logo {
+/* Style the title */
+.title {
     font-size: 24px;
     font-weight: bold;
     color: #fff;
     text-align: center;
     margin: 0;
+    flex: 1;
 }
 
 /* Style the navigation links */
@@ -35,7 +36,9 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 .nav-links li {
@@ -60,17 +63,13 @@ header {
 .user-menu {
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .user-menu h2 {
     margin-left: 10px;
     font-size: 18px;
-    color: #fff;
-    margin-right: 50px;
+    color: #f4ff81;
+    margin-right: 20px;
 }
 
 /* Style the user icon */
@@ -80,4 +79,63 @@ header {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links:first-child {
+        flex-direction: row;
+    }
+
+    .nav-links:last-child {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .username {
+        font-size: 18px;
+        color: #f4ff81;
+        margin: 0;
+    }
+
+    .nav-links li {
+        margin: 5px;
+    }
+
+    .title {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 }
