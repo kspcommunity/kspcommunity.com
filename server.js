@@ -28,10 +28,12 @@ app.use(session({
 app.use(morgan('combined'));
 
 // Define static files directory and cache control
-const staticFilesOptions = {
-    maxAge: '1d' // Cache files for 1 day
-};
-app.use(express.static(path.join(__dirname, 'public'), staticFilesOptions));
+//const staticFilesOptions = {
+//   maxAge: '1d' // Cache files for 1 day
+//};
+// Define static files directory without cache control for development
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Use routes
 app.use('/signup', signupRouter);
