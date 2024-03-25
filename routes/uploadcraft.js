@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs-extra');
 const logger = require('../utilities/logger');
+const processCraftFile = require("@kspcommunity/craft-file-reader");
 const database = require('../database');
 
 const craftupload = multer({ 
@@ -38,20 +39,42 @@ const craftupload = multer({
 router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req, res) => {
     logger.info('Received POST request to /uploadcraft');
     const craft = req.files['craft'][0];
-    //const userId = req.session.userId;
     logger.info(`Received a craft file`);
 
     try {
-        if (!craft.originalname.endsWith('.craft')) {
-            throw new Error('Please select a .craft file to upload');
-        } else if (craft.size > 5 * 1024 * 1024) {
-            throw new Error('Please select a craft file smaller than 5 MB to upload');
+        // Read the uploaded craft file using craft-file-reader
+        const processedCraftData = await processCraftFile(craft.path);
+
+        // Log craft details to console
+        console.log('\nCraft Details:');
+        console.log(`- Ship: ${processedCraftData.craftDetails.ship}`);
+        console.log(`- Description: ${processedCraftData.craftDetails.description}`);
+        console.log(`- Version: ${processedCraftData.craftDetails.version}`);
+        console.log(`- Type: ${processedCraftData.craftDetails.type}`);
+        console.log(`- Size: ${processedCraftData.craftDetails.size}`);
+        console.log(`- Vessel Type: ${processedCraftData.craftDetails.vesselType}`);
+        console.log(`- Total Part Count: ${processedCraftData.craftDetails.totalPartCount}`);
+
+        // Log parts details to console
+        console.log('\nParts in the craft file:');
+        for (const partDetails of processedCraftData.partsDetails) {
+            if (partDetails.notFoundInModData) {
+                console.log(`\nPart: ${partDetails.partName} (Not found in mod parts data)`);
+            } else {
+                console.log(`\n   Part: ${partDetails.partName}`);
+                console.log(`     Mod: ${partDetails.modName}`);
+                console.log(`     Mod Preferred Name: ${partDetails.preferredName}`);
+                console.log(`     Link: ${partDetails.link}`);
+                console.log(`     File Path: ${partDetails.filePath}`);
+            }
         }
 
         // Save the files to the database
         // const result = await database.saveFiles(title, description, images, craft, userId);
         logger.info('Files uploaded successfully');
-        res.status(200).json({ message: 'Files uploaded successfully' });
+
+        // Respond with craft details
+        res.status(200).json({ craftDetails: processedCraftData.craftDetails, partsDetails: processedCraftData.partsDetails });
     } catch (err) {
         logger.error(`Error handling file upload: ${err.message}`);
         res.status(400).json({ error: err.message });
