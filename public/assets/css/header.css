@@ -1,16 +1,16 @@
 /* Apply styles to the header */
 header {
-    background-color: var(--header-bg-color); /* Dark transparent background */
-    padding: 20px; /* Add padding */
-    margin-bottom: 20px; /* Add margin at the bottom */
-    position: relative; /* Ensure position relative for absolute positioning of elements */
+    background-color: var(--header-bg-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
     border-radius: var(--border-medium-radius);
 }
 
 .container {
-    width: 90%; /* Adjust as needed */
-    margin: 0 auto; /* Center the container */
-    max-width: 1200px; /* Maximum width for responsiveness */
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 /* Style the navigation bar */
@@ -24,9 +24,9 @@ header {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #fff; /* White text color */
-    text-align: center; /* Center the text */
-    margin: 0; /* Reset margin */
+    color: #fff;
+    text-align: center;
+    margin: 0;
 }
 
 /* Style the navigation links */
@@ -35,7 +35,7 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center; /* Align vertically */
+    align-items: center;
 }
 
 .nav-links li {
@@ -48,12 +48,12 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff; /* White text color */
+    color: #fff;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #ccc; /* Lighter text color on hover */
+    color: #ccc;
 }
 
 /* Style the user menu */
@@ -61,15 +61,15 @@ header {
     display: flex;
     align-items: center;
     position: absolute;
-    right: 20px; /* Adjust as needed */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .user-menu h2 {
     margin-left: 10px;
     font-size: 18px;
-    color: #fff; /* White text color */
+    color: #fff;
 }
 
 /* Style the user icon */
@@ -88,7 +88,7 @@ header {
     }
 
     .nav-links {
-        display: none; /* Hide navigation links */
+        display: none;
     }
 
     .user-menu {

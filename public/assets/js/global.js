@@ -4,7 +4,7 @@
     document.addEventListener('DOMContentLoaded', async function () {
         try {
             // Load common components asynchronously
-            const [headerResponse, sidebarLeftResponse, sidebarRightResponse, footerResponse] = await Promise.all([
+            const [headerResponse, footerResponse] = await Promise.all([
                 getCachedComponent('assets/common/header.html'),
                 getCachedComponent('assets/common/footer.html')
             ]);
