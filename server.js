@@ -5,6 +5,7 @@ const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs-extra');
+const ejs = require('ejs');
 const logger = require('./utilities/logger');
 const database = require('./database');
 
@@ -25,14 +26,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.set('view engine', 'ejs');
 app.use(morgan('combined'));
-
-// Define static files directory and cache control
-//const staticFilesOptions = {
-//   maxAge: '1d' // Cache files for 1 day
-//};
-// Define static files directory without cache control for development
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Use routes
 app.use('/signup', signupRouter);
@@ -44,15 +39,26 @@ app.use('/posts', postsRouter);
 app.use('/api/contributemod', contributemodRouter);
 app.use('/api/report', reportRouter);
 
-// Serve pages without .html extension
+const featuredCrafts = [
+    { img: 'usercontent/images/2d8d8444-ac2b-447d-8827-122251dcd81e.jpg', title: 'Craft 1' },
+    { img: 'usercontent/images/4d52d360-0786-4ff5-a18c-16f4a29aa226.jpg', title: 'Craft 2' },
+    { img: 'usercontent/images/57f1cb87-0239-4020-9af3-9a744d840378.jpg', title: 'Craft 3' },
+    { img: 'usercontent/images/62ee9f41-29cf-4804-9dbe-d6e0b0bc1ffb.jpg', title: 'Craft 4' },
+    { img: 'usercontent/images/352d0644-f1e0-4e39-9c7d-3127e0efbea5.jpg', title: 'Craft 5' }
+];
+
+app.get('/', (req, res) => {
+    res.render('index', { featuredCrafts: featuredCrafts });
+});
+
 app.get('/:page', (req, res, next) => {
     const page = req.params.page;
-    const pagePath = path.join(__dirname, 'public', `${page}.html`);
+    const pagePath = path.join(__dirname, 'views', `${page}.ejs`);
     fs.access(pagePath, fs.constants.F_OK, (err) => {
         if (err) {
             next(); // Pass the request to the next middleware
         } else {
-            res.sendFile(pagePath);
+            res.render(pagePath);
         }
     });
 });
@@ -83,6 +89,8 @@ app.get('/usercontent/:type/:filename', (req, res) => {
         });
     }
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle 404
 app.use((req, res, next) => {
