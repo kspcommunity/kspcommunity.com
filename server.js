@@ -36,7 +36,8 @@ app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: sessionStore
 }));
 app.set('view engine', 'ejs'); // Set EJS as view engine
 app.set('views', path.join(__dirname, 'views')); // Set views folder
