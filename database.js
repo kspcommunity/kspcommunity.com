@@ -60,6 +60,13 @@ const checkDatabaseStatus = async () => {
             password VARCHAR(100) NOT NULL,
             lastmodified DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
+        await pool.query(`CREATE TABLE IF NOT EXISTS tobeupload (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            uid VARCHAR(100) NOT NULL UNIQUE,
+            userid INT NOT NULL,
+            expirationtime DATETIME NOT NULL,
+            craftfilepath VARCHAR(100) NOT NULL
+        )`);
         if (!firstRun && !db1Online) {
             logger.info('Main database is back up, syncing data...');
             db1Online = true;
@@ -79,6 +86,13 @@ const checkDatabaseStatus = async () => {
                 username VARCHAR(100) NOT NULL UNIQUE,
                 password VARCHAR(100) NOT NULL,
                 lastmodified DATETIME DEFAULT CURRENT_TIMESTAMP
+            )`);
+            await backupPool.query(`CREATE TABLE IF NOT EXISTS tobeupload (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                uid VARCHAR(100) NOT NULL UNIQUE,
+                userid INT NOT NULL,
+                expirationtime DATETIME NOT NULL,
+                craftfilepath VARCHAR(100) NOT NULL
             )`);
             if (!firstRun && !db2Online) {
                 logger.info('Backup database is back up, syncing data...');
