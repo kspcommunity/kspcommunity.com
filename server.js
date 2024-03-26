@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs-extra');
 const ejs = require('ejs');
+const MySQLStore = require('express-mysql-session')(session);
 const logger = require('./utilities/logger');
 const database = require('./database');
 
@@ -18,6 +19,17 @@ const uploadcraftRouter = require('./routes/uploadcraft');
 const createpostRouter = require('./routes/createpost');
 const contributemodRouter = require('./routes/contributemod');
 const reportRouter = require('./routes/report');
+
+const option = {
+    host: process.env.MYSQL_HOST,
+    port: 3306,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS,
+    database: process.env.MYSQL_NAME,
+    expiration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    createDatabaseTable: true
+};
+const sessionStore = new MySQLStore(option);
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -123,14 +135,22 @@ app.listen(PORT, () => {
     logger.info(`Server is running on http://localhost:${PORT}`);
 });
 
+process.on('SIGINT', () => {
+    sessionStore.close()
+    logger.info('Server shutting down');
+    process.exit(0);
+});
+
 // Error handling for uncaught exceptions
 process.on('uncaughtException', (err) => {
+    sessionStore.close()
     logger.error(`Uncaught Exception: ${err.message}`);
     process.exit(1);
 });
 
 // Error handling for unhandled promise rejections
 process.on('unhandledRejection', (err) => {
+    sessionStore.close()
     logger.error(`Unhandled Promise Rejection: ${err.message}`);
     process.exit(1);
 });
