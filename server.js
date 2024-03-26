@@ -52,11 +52,21 @@ const featuredCrafts = [
 ];
 
 app.get('/', (req, res) => {
-    console.log(req.session.user); 
+    console.log(req.session); 
     res.render('index', { featuredCrafts: featuredCrafts });
 });
 
+app.get('/post', async (req, res, next) => {
+    console.log(req.session);
+    if (!req.session.user) {
+        return res.redirect('/login');
+    } else {
+        res.render(path.join(__dirname, 'views', 'post.ejs'));
+    }
+});
+
 app.get('/:page', (req, res, next) => {
+    console.log(req.session);
     const page = req.params.page;
     const pagePath = path.join(__dirname, 'views', `${page}.ejs`);
     fs.access(pagePath, fs.constants.F_OK, (err) => {
