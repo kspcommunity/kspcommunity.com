@@ -48,8 +48,10 @@ router.post('/',
                     logger.error('Failed to save session:', err);
                     return res.status(500).send('Failed to login');
                 } else {
+                    console.log("Current user session", req.session.user);
+                    console.log("To be stored user session", user);
                     logger.info(`User logged in: ${username}`);
-                    res.status(200).redirect('/');
+                    res.redirect('/');
                 }
             })
         } catch (err) {
