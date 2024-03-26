@@ -43,10 +43,15 @@ router.post('/',
 
             // Set the user session
             req.session.user = user;
-
-            // Send success response
-            res.status(200).send('Logged in');
-            logger.info(`User logged in: ${username}`);
+            req.session.save(function(err) {
+                if (err) {
+                    logger.error('Failed to save session:', err);
+                    return res.status(500).send('Failed to login');
+                } else {
+                    logger.info(`User logged in: ${username}`);
+                    res.status(200).redirect('/');
+                }
+            })
         } catch (err) {
             logger.error('Login failed:', err);
             res.status(500).send('Failed to login');
