@@ -52,6 +52,7 @@ const featuredCrafts = [
 ];
 
 app.get('/', (req, res) => {
+    console.log(req.session.user); 
     res.render('index', { featuredCrafts: featuredCrafts });
 });
 

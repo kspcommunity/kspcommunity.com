@@ -76,6 +76,7 @@ router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req
 
         uid = uuidv4();
         expirationTime = new Date(Date.now() + 1000 * 60 * 60 * 1); // 1 hour
+        // Include user ID as well
         database.poolQuery(`INSERT INTO uploads (uid, expirationtime, craftfilepath) VALUES ($1, $2, $3)`, [uid, expiringTime, craft.path]);
         res.status(200).json({ ship: processedCraftData.craftDetails.ship, partCount: processedCraftData.craftDetails.totalPartCount });
 
