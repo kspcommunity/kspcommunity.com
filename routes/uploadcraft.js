@@ -58,30 +58,31 @@ router.post('/', craftupload.fields([{ name: 'craft', maxCount: 1}]), async (req
 
         // Log parts details to console
         console.log('\nParts in the craft file:');
-        for (const partDetails of processedCraftData.partsDetails) {
-            if (partDetails.notFoundInModData) {
-                console.log(`\nPart: ${partDetails.partName} (Not found in mod parts data)`);
-            } else {
-                console.log(`\n   Part: ${partDetails.partName}`);
-                console.log(`     Mod: ${partDetails.modName}`);
-                console.log(`     Mod Preferred Name: ${partDetails.preferredName}`);
-                console.log(`     Link: ${partDetails.link}`);
-                console.log(`     File Path: ${partDetails.filePath}`);
-            }
-        }
+//        for (const partDetails of processedCraftData.partsDetails) {
+//            if (partDetails.notFoundInModData) {
+//                console.log(`\nPart: ${partDetails.partName} (Not found in mod parts data)`);
+//            } else {
+//                console.log(`\n   Part: ${partDetails.partName}`);
+//                console.log(`     Mod: ${partDetails.modName}`);
+//                console.log(`     Mod Preferred Name: ${partDetails.preferredName}`);
+//                console.log(`     Link: ${partDetails.link}`);
+//                console.log(`     File Path: ${partDetails.filePath}`);
+//            }
+//        }
 
         // Save the files to the database
         // const result = await database.saveFiles(title, description, images, craft, userId);
         logger.info('Files uploaded successfully');
 
-        uid = uuidv4();
-        expirationTime = new Date(Date.now() + 1000 * 60 * 60 * 1); // 1 hour
-        userid = req.session.user.id
-        database.poolQuery(`INSERT INTO tobeupload (uid, userid, expirationtime, craftfilepath) VALUES ($1, $2, $3)`, [uid, userid, expiringTime, craft.path]);
-        res.status(200).json({ ship: processedCraftData.craftDetails.ship, partCount: processedCraftData.craftDetails.totalPartCount });
-
+        const uuid = uuidv4();
+        const expirationTime = new Date(Date.now() + 1000 * 60 * 60 * 1); // 1 hour
+        const userid = req.session.user.id;
+        console.log(uuid, userid, expirationTime, craft.path);
+        a = await database.poolQuery("INSERT INTO tobeupload (uuid, userid, expirationtime, craftfilepath) VALUES (?, ?, ?, ?)", [uuid, userid, expirationTime, craft.path]);
+        console.log(a);
+        res.send(uuid);
         // Respond with craft details
-        res.status(200).json({ craftDetails: processedCraftData.craftDetails, partsDetails: processedCraftData.partsDetails });
+        //res.status(200).json({ craftDetails: processedCraftData.craftDetails, partsDetails: processedCraftData.partsDetails });
     } catch (err) {
         logger.error(`Error handling file upload: ${err.message}`);
         res.status(400).json({ error: err.message });

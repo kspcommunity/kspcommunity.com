@@ -62,7 +62,7 @@ const checkDatabaseStatus = async () => {
         )`);
         await pool.query(`CREATE TABLE IF NOT EXISTS tobeupload (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            uid VARCHAR(100) NOT NULL UNIQUE,
+            uuid VARCHAR(100) NOT NULL DEFAULT (UUID()),
             userid INT NOT NULL,
             expirationtime DATETIME NOT NULL,
             craftfilepath VARCHAR(100) NOT NULL
@@ -89,7 +89,7 @@ const checkDatabaseStatus = async () => {
             )`);
             await backupPool.query(`CREATE TABLE IF NOT EXISTS tobeupload (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                uid VARCHAR(100) NOT NULL UNIQUE,
+                uuid VARCHAR(100) NOT NULL DEFAULT (UUID()),
                 userid INT NOT NULL,
                 expirationtime DATETIME NOT NULL,
                 craftfilepath VARCHAR(100) NOT NULL
@@ -120,6 +120,7 @@ const checkDatabaseStatus = async () => {
 const poolQuery = async (...args) => {
     if (db1Online && db2Online) {
         try {
+            await backupPool.query(...args);
             return await pool.query(...args);
         } catch (error) {
             logger.error(`Error occured while querying main database: ${error}`);
@@ -133,6 +134,13 @@ const poolQuery = async (...args) => {
             checkDatabaseStatus();
         }
     } else if (db1Online && !db2Online) {
+        try {
+            return await pool.query(...args);
+        } catch (error) {
+            logger.error(`Error occured while querying main database: ${error}`);
+            checkDatabaseStatus();
+        }
+    } else if (!db1Online && !db2Online) {
         logger.error('Both databases are offline');
     } else {
         logger.error('Something went wrong');
