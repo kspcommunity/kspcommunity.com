@@ -27,6 +27,14 @@ function uploadCraft(event) {
       }
     };
     xhr.send(formData);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const uid = xhr.responseText;
+        window.location.href = `/postcraft/${uid}`;
+      } else {
+        console.error("Failed to get uid.");
+      }
+    };
   }
 }
 

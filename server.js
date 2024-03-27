@@ -78,6 +78,18 @@ app.get('/post', async (req, res, next) => {
     }
 });
 
+app.get('/postcraft/:uuid', async (req, res, next) => {
+    console.log(req.session);
+    if (!req.session.user) {
+        return res.redirect('/');
+    } else {
+        const uuid = req.params.uuid;
+        const result = await database.poolQuery('SELECT * FROM tobeupload WHERE uuid = ? AND userid = ?', [uuid, req.session.user.id]);
+        console.log(result);
+        res.send(result[0]);
+    }
+});
+
 app.get('/:page', (req, res, next) => {
     console.log(req.session);
     const page = req.params.page;
