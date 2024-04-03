@@ -1,13 +1,12 @@
 {
-    "name": "BBN One",
-    "short_name": "BBN",
-    "description": "Official BBN Web App to access all of the BBN One services",
+    "name": "KSP Community",
+    "short_name": "KSPC",
+    "description": "Official KSP Community Web App to access all of the KSP Community services",
     "categories": [
         "business",
-        "games",
-        "music"
+        "games"
     ],
-    "theme_color": "#db9321",
+    "theme_color": "#2596be",
     "background_color": "#000000",
     "display": "standalone",
     "orientation": "portrait",

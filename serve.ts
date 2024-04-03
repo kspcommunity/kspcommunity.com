@@ -2,24 +2,24 @@ import { serve } from "https://deno.land/x/esbuild_serve@1.3.4/mod.ts";
 // import { serve } from "../esbuild_serve/mod.ts";
 
 const title = new Map(Object.entries({
-    "admin": "BBN Admin",
-    "admin/review": "BBN Music - Review Drop",
-    "hosting": "BBN Hosting",
-    "hosting/create": "BBN Hosting",
-    "settings": "BBN - Settings",
-    "wallet": "BBN Wallet",
-    "music": "BBN Music",
-    "c/music": "BBN Music - Console",
-    "c/music/new-drop": "BBN Music - New Drop",
-    "c/music/edit": "BBN Music - Edit Drop",
-    "c/music/payout": "BBN Music - Payouts",
-    "p/privacy-policy": "BBN - Privacy Policy",
-    "p/terms-of-use": "BBN - Terms of Use",
+    "admin": "KSPC Admin",
+    "admin/review": "KSPC - Review Drop",
+    "hosting": "KSPC Hosting",
+    "hosting/create": "KSPC Hosting",
+    "settings": "KSPC - Settings",
+    "wallet": "KSPC Wallet",
+    "music": "KSPC Music",
+    "c/music": "KSPC Music - Console",
+    "c/music/new-drop": "KSPC Music - New Drop",
+    "c/music/edit": "KSPC Music - Edit Drop",
+    "c/music/payout": "KSPC Music - Payouts",
+    "p/privacy-policy": "KSPC - Privacy Policy",
+    "p/terms-of-use": "KSPC - Terms of Use",
 }));
 
 const description = new Map(Object.entries({
-    "default": "BBN Holding encompasses a variety of businesses, including music and hosting services. BBN Music provides music distribution, publishing, and label services, while BBN Hosting offers Minecraft hosting services.",
-    "music": "BBN Music, your gateway to unlimited music distribution at a low cost. Maximize your reach without limits. Join us and let the world hear your music.",
+    "default": "KSP Community encompasses a variety of businesses, including music and hosting services. KSPC provides music distribution, publishing, and label services, while BBN Hosting offers Minecraft hosting services.",
+    "music": "KSPC, your gateway to unlimited music distribution at a low cost. Maximize your reach without limits. Join us and let the world hear your music.",
 }));
 
 serve({
@@ -84,7 +84,7 @@ function createTemplate(name: string, path: string) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>${title.get(path) ?? "BBN Holding"}</title>
+    <title>${title.get(path) ?? "KSP Community"}</title>
     <link rel="manifest" href="/app.webmanifest">
     <meta charset='UTF-8'>
     <meta name="description" content="${description.get(path) ?? description.get("default")}">
@@ -92,7 +92,7 @@ function createTemplate(name: string, path: string) {
     <meta name='theme-color' content='black'>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="${title.get(path) ?? "BBN Holding"}">
+    <meta name="apple-mobile-web-app-title" content="${title.get(path) ?? "KSP Community"}">
     <meta name="google" content="notranslate"/>
     <link rel="apple-touch-icon" href="/images/apple.png">
     <link rel="stylesheet" href="${name}.css">

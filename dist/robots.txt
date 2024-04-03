@@ -1,6 +1,4 @@
 User-agent: *
 Disallow: /
 
-Allow: /public/
-
 Sitemap: https://kspcommunity.com/sitemap.xml
