@@ -132,7 +132,7 @@ app.get('/usercontent/:type/:filename', (req, res) => {
 
 // Handle 404
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.ejs'));
+    res.status(404).render('404'); // Render the 404 view with the appropriate status code
     logger.warn(`Requested page "${req.url}" not found`);
 });
 
