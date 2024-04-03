@@ -54,6 +54,7 @@ serve({
         "p/terms-of-use": "./pages/holding/termsOfUse.ts",
         "p/about": "./pages/holding/about.ts",
         "p/distribution-agreement": "./pages/holding/distributionAgreement.ts",
+        "p/cookies": "./pages/holding/cookies.ts",
         "signin": "./pages/user/signin.ts",
         "callback": "./pages/_legacy/misc/callback.ts",
         "oauth": "./pages/user/oauth.ts",

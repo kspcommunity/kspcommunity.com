@@ -18,9 +18,9 @@ export function Footer() {
             Box(
                 Box(
                     ...[
-                        ["Company", [
+                        ["KSP-C", [
                             ["About Us", "/p/about"],
-                            ["FAQs", "https://kspcommunity.com"],
+                            ["FAQs", "https://kspcommunity.com/faq"],
                             ["Terms of Use", "/p/terms-of-use"],
                             ["Privacy Policy", "/p/privacy-policy"],
                             ["Cookies Policy", "/p/cookies"],
@@ -35,7 +35,7 @@ export function Footer() {
                             ["Mod Parts List Endpoints", "https://mod-parts.kspcommunity.com"],
                         ]] as const,
 
-                        ["Use Cases", [
+                        ["Additional", [
                             ["Report", "/report"],
                             ["Contribute Mod", "/contribute"],
                         ]] as const,
