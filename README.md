@@ -1,8 +1,8 @@
-![The logo of BBN One](.github/logo.png)
+![The logo of KSP Community](.github/logo.png)
 
-# bbn.one
+# kspcommuntiy.com
 
-The BBN Website.
+The KSP Community website.
 
 ## External submissions
 

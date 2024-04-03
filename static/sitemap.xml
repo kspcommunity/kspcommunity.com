@@ -33,4 +33,6 @@
     </url>
     <url>
         <loc>https://kspcommunity.com/api/privacy-policy</loc>
-     
+        <priority>0.8</priority>
+    </url>
+</urlset>

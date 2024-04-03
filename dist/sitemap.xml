@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://bbn.one/</loc>
-        <lastmod>2024-03-14T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/</loc>
+        <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://bbn.one/music</loc>
-        <lastmod>2024-03-14T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/create-post</loc>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://bbn.one/signin</loc>
-        <lastmod>2023-07-30T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/login</loc>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://bbn.one/p/distribution-agreement</loc>
-        <lastmod>2023-07-30T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/posts</loc>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://bbn.one/p/privacy-policy</loc>
-        <lastmod>2023-07-30T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/uploadcraft</loc>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://bbn.one/p/terms-of-use</loc>
-        <lastmod>2023-07-30T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/createpost</loc>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://bbn.one/p/imprint</loc>
-        <lastmod>2023-07-30T12:00:00+00:00</lastmod>
+        <loc>https://kspcommunity.com/api/terms-of-service</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://kspcommunity.com/api/privacy-policy</loc>
+        <priority>0.8</priority>
     </url>
 </urlset>

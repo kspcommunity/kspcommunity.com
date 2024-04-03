@@ -7,3 +7,5 @@ logs
 start.sh
 gamedata
 old
+.DS_Store
+dist
