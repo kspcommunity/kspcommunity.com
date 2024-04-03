@@ -4,8 +4,6 @@ import { serve } from "https://deno.land/x/esbuild_serve@1.3.4/mod.ts";
 const title = new Map(Object.entries({
     "admin": "KSP Community Admin",
     "admin/review": "KSP Community - Review Drop",
-    "hosting": "KSP Community Hosting",
-    "hosting/create": "KSP Community Hosting",
     "settings": "KSP Community - Settings",
     "wallet": "KSP Community Wallet",
     "music": "KSP Community Music",
@@ -63,8 +61,6 @@ serve({
         "c/music/new-drop": "./pages/music/newDrop.ts",
         "c/music/edit": "./pages/_legacy/music/edit.ts",
         "c/music/payout": "./pages/payout/main.ts",
-        "hosting": "./pages/hosting/main.ts",
-        "hosting/create": "./pages/hosting/views/create.ts",
         "settings": "./pages/user/settings.ts",
         "admin": "./pages/admin/admin.ts",
         "admin/review": "./pages/admin/review.ts",

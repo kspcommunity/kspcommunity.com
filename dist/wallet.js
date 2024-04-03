@@ -9937,9 +9937,6 @@ var bbnHolding_default = "./bbnHolding-Z7WOZPKW.svg";
 // assets/img/bbnMusic.svg
 var bbnMusic_default = "./bbnMusic-DRY3HEUI.svg";
 
-// assets/img/bbnHosting.svg
-var bbnHosting_default = "./bbnHosting-MFNJZPY7.svg";
-
 // assets/img/bbnAdmin.svg
 var bbnAdmin_default = "./bbnAdmin-WUYEKLQ5.svg";
 
@@ -9951,13 +9948,11 @@ var pages = [
   [bbnHolding_default, [], "/", 0],
   [bbnMusic_default, [], "/c/music", 1],
   [bbnMusic_default, [], "/music", 2],
-  [bbnHosting_default, [], "/hosting", 0],
   [bbnWallet_default, [], "/wallet", 1],
   [bbnAdmin_default, ["/bbn/manage", "/hmsys/user"], "/admin", 1]
 ];
 var loginRequired = [
   "/c/music",
-  "/hosting",
   "/admin",
   "/oauth",
   "/wallet"
@@ -9965,9 +9960,6 @@ var loginRequired = [
 function activeTitle(type) {
   if (type == "Music") {
     return "KSPC Music";
-  }
-  if (type == "Hosting") {
-    return "KSPC Hosting";
   }
   if (type == "Wallet") {
     return "KSPC Wallet";

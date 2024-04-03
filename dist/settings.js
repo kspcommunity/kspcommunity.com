@@ -13968,9 +13968,6 @@ var bbnHolding_default = "./bbnHolding-Z7WOZPKW.svg";
 // assets/img/bbnMusic.svg
 var bbnMusic_default = "./bbnMusic-DRY3HEUI.svg";
 
-// assets/img/bbnHosting.svg
-var bbnHosting_default = "./bbnHosting-MFNJZPY7.svg";
-
 // assets/img/bbnAdmin.svg
 var bbnAdmin_default = "./bbnAdmin-WUYEKLQ5.svg";
 
@@ -13982,13 +13979,11 @@ var pages = [
   [bbnHolding_default, [], "/", 0],
   [bbnMusic_default, [], "/c/music", 1],
   [bbnMusic_default, [], "/music", 2],
-  [bbnHosting_default, [], "/hosting", 0],
   [bbnWallet_default, [], "/wallet", 1],
   [bbnAdmin_default, ["/bbn/manage", "/hmsys/user"], "/admin", 1]
 ];
 var loginRequired = [
   "/c/music",
-  "/hosting",
   "/admin",
   "/oauth",
   "/wallet"
@@ -13996,9 +13991,6 @@ var loginRequired = [
 function activeTitle(type) {
   if (type == "Music") {
     return "KSPC Music";
-  }
-  if (type == "Hosting") {
-    return "KSPC Hosting";
   }
   if (type == "Wallet") {
     return "KSPC Wallet";
@@ -14786,14 +14778,6 @@ init_main();
 init_popover_polyfill();
 
 // esbuild_serve:http-import:https://deno.land/std@0.221.0/async/mod.ts
-init_polyfill();
-init_bug_reporter();
-init_mod();
-init_urlpattern_polyfill();
-init_main();
-init_popover_polyfill();
-
-// esbuild_serve:http-import:https://deno.land/std@0.221.0/async/debounce.ts
 init_polyfill();
 init_bug_reporter();
 init_mod();

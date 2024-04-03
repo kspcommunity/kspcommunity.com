@@ -6,8 +6,6 @@ import "./landing.css";
 import { streamingPool } from "./loading.ts";
 // Main
 // @deno-types="https://raw.githubusercontent.com/lucsoft-DevTeam/lucsoft.de/master/custom.d.ts"
-import bbnHosting from "./resources/bbnHosting.svg";
-// @deno-types="https://raw.githubusercontent.com/lucsoft-DevTeam/lucsoft.de/master/custom.d.ts"
 import bbnMusic from "./resources/bbnMusic.svg";
 
 // External
@@ -45,16 +43,6 @@ Body(Box(
                 .setAttribute("data-tilt-scale", "1.07")
                 .addClass("music", "service-card")
                 .onClick(() => location.href = "/music"),
-            Box(
-                Image(bbnHosting, "An blue logo of BBN Hosting")
-                    .addClass("remove-text-clearance"),
-            )
-                .setAttribute("data-tilt")
-                .setAttribute("data-tilt-glare")
-                .setAttribute("data-tilt-max-glare", "0.1")
-                .setAttribute("data-tilt-scale", "1.08")
-                .addClass("hosting", "service-card")
-                .onClick(() => location.href = "/hosting"),
         )
             .addClass("bbn-one-services")
             .setRawColumns("max-content max-content"),

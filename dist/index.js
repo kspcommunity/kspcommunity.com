@@ -9516,9 +9516,6 @@ var bbnHolding_default = "./bbnHolding-Z7WOZPKW.svg";
 // assets/img/bbnMusic.svg
 var bbnMusic_default = "./bbnMusic-DRY3HEUI.svg";
 
-// assets/img/bbnHosting.svg
-var bbnHosting_default = "./bbnHosting-MFNJZPY7.svg";
-
 // assets/img/bbnAdmin.svg
 var bbnAdmin_default = "./bbnAdmin-WUYEKLQ5.svg";
 
@@ -9530,13 +9527,11 @@ var pages = [
   [bbnHolding_default, [], "/", 0],
   [bbnMusic_default, [], "/c/music", 1],
   [bbnMusic_default, [], "/music", 2],
-  [bbnHosting_default, [], "/hosting", 0],
   [bbnWallet_default, [], "/wallet", 1],
   [bbnAdmin_default, ["/bbn/manage", "/hmsys/user"], "/admin", 1]
 ];
 var loginRequired = [
   "/c/music",
-  "/hosting",
   "/admin",
   "/oauth",
   "/wallet"
@@ -9544,9 +9539,6 @@ var loginRequired = [
 function activeTitle(type) {
   if (type == "Music") {
     return "KSPC Music";
-  }
-  if (type == "Hosting") {
-    return "KSPC Hosting";
   }
   if (type == "Wallet") {
     return "KSPC Wallet";
@@ -14589,9 +14581,6 @@ var streamingPool = lazyInit(async () => {
   });
 });
 
-// pages/holding/resources/bbnHosting.svg
-var bbnHosting_default2 = "./bbnHosting-J2LRIZ6Y.svg";
-
 // pages/holding/resources/bbnMusic.svg
 var bbnMusic_default2 = "./bbnMusic-MTCOULD6.svg";
 
@@ -14696,10 +14685,7 @@ Body(Box(
     Grid(
       Box(
         Image(bbnMusic_default2, "An orange logo of BBN Music")
-      ).setAttribute("data-tilt").setAttribute("data-tilt-glare").setAttribute("data-tilt-max-glare", "0.1").setAttribute("data-tilt-scale", "1.07").addClass("music", "service-card").onClick(() => location.href = "/music"),
-      Box(
-        Image(bbnHosting_default2, "An blue logo of BBN Hosting").addClass("remove-text-clearance")
-      ).setAttribute("data-tilt").setAttribute("data-tilt-glare").setAttribute("data-tilt-max-glare", "0.1").setAttribute("data-tilt-scale", "1.08").addClass("hosting", "service-card").onClick(() => location.href = "/hosting")
+      ).setAttribute("data-tilt").setAttribute("data-tilt-glare").setAttribute("data-tilt-max-glare", "0.1").setAttribute("data-tilt-scale", "1.07").addClass("music", "service-card").onClick(() => location.href = "/music")
     ).addClass("bbn-one-services").setRawColumns("max-content max-content"),
     Box(
       Label("Grow now.", "h2"),
