@@ -9,12 +9,12 @@
 .background-image {
     position: absolute;
     inset: -0.5rem;
-    --image: url('../holding/resources/background.jpg');
+    --image: url('../holding/resources/bg8.svg');
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, #000 77.08%, #000 100%),
+        linear-gradient(180deg, rgba(120, 162, 253, 0.166) 0%, #000 77.08%, #000 100%),
         var(--image) no-repeat center center;
     background-size: cover;
-    filter: blur(4.5px);
+    filter: blur(.5px);
     z-index: -1;
 }
 
