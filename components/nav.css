@@ -18,6 +18,12 @@ nav {
     background-color: #1771f0;
 }
 
+.login-button:hover {
+    background-color: #0fc6de;
+    padding-left: 1.8%;
+    padding-right: 1.7%;
+}
+
 nav.settings {
     background: black;
 }
@@ -121,7 +127,6 @@ nav img {
 .drop-over .small-entry .wicon {
     font-size: 0.9rem;
     margin-left: 2rem;
-
 }
 
 .drop-over .small-entry.settings {

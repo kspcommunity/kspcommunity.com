@@ -14621,22 +14621,24 @@ function Footer() {
               ["FAQs", "https://kspcommunity.com"],
               ["Terms of Use", "/p/terms-of-use"],
               ["Privacy Policy", "/p/privacy-policy"],
+              ["Cookies Policy", "/p/cookies"],
               ["Contact Us", "mailto:support@kspcommunity.com"],
               ["Distribution Agreement", "/p/distribution-agreement"]
             ]],
             ["Products", [
-              ["Music", "/music"],
-              ["Hosting", "/hosting"]
+              ["Craft File Reader", "https://github.com/kspcommunity/Craft-File-Reader"],
+              ["Discord Bot", "https://github.com/kspcommunity/KSP-Community-Bot"],
+              ["Mod Parts List", "https://github.com/kspcommunity/Mod-Parts-Lister"],
+              ["Mod Parts List Endpoints", "https://mod-parts.kspcommunity.com"]
             ]],
             ["Use Cases", [
-              ["Newcomers", "/music"],
-              ["Personal", "/hosting"],
-              ["Small Business", "/hosting"]
+              ["Report", "/report"],
+              ["Contribute Mod", "/contribute"]
             ]],
             ["Resources", [
               ["Blog", "https://github.com/orgs/kspcommunity/discussions/2"],
               ["Status Page", "https://status.kspcommunity.com/"],
-              ["Open Source", "https://github.com/bbn-holding/"],
+              ["Open Source", "https://github.com/kspcommunity"],
               ["Support", "mailto:support@kspcommunity.com"]
             ]]
           ].map(

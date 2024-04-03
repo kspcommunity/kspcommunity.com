@@ -7909,6 +7909,11 @@ nav {
   height: 2rem;
   background-color: #1771f0;
 }
+.login-button:hover {
+  background-color: #0fc6de;
+  padding-left: 1.8%;
+  padding-right: 1.7%;
+}
 nav.settings {
   background: black;
 }
