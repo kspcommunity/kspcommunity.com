@@ -8054,11 +8054,13 @@ nav {
   z-index: 11;
   padding: 0 1rem;
   user-select: none;
+  background-color: #2090c585;
 }
 .login-button {
   border-radius: 10px;
   padding: 0 1.2rem 0.01rem;
   height: 2rem;
+  background-color: #1771f0;
 }
 nav.settings {
   background: black;

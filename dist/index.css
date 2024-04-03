@@ -7855,11 +7855,13 @@ nav {
   z-index: 11;
   padding: 0 1rem;
   user-select: none;
+  background-color: #2090c585;
 }
 .login-button {
   border-radius: 10px;
   padding: 0 1.2rem 0.01rem;
   height: 2rem;
+  background-color: #1771f0;
 }
 nav.settings {
   background: black;
@@ -7996,16 +7998,16 @@ body {
 .big-title .background-image {
   position: absolute;
   inset: -0.5rem;
-  --image: url("./background-PANXROII.jpg");
+  --image: url("./bg5-APOWLZ23.svg");
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.61) 0%,
-      #000 77.08%,
+      rgba(211, 211, 211, 0.17) 0%,
+      #050505 77.08%,
       #000 100%),
     var(--image) no-repeat center center;
   background-size: cover;
-  filter: blur(4.5px);
+  filter: blur(2px);
 }
 [data-theme=light] .big-title .background-image {
   background:
@@ -8019,7 +8021,7 @@ body {
 }
 @media (min-width: 1700px) {
   .big-title .background-image {
-    --image: url("./backgroundUltrawide-P4AEAPEU.jpg");
+    --image: url("./bg9-PJMUF3Z5.jpg");
   }
 }
 .big-title span {

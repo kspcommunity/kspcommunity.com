@@ -3,7 +3,7 @@ import "../../assets/css/main.css";
 import { DynaNavigation } from "../../components/nav.ts";
 import { RegisterAuthRefresh } from "../_legacy/helper.ts";
 import "./landing.css";
-import { data, streamingPool } from "./loading.ts";
+import { streamingPool } from "./loading.ts";
 // Main
 // @deno-types="https://raw.githubusercontent.com/lucsoft-DevTeam/lucsoft.de/master/custom.d.ts"
 import bbnHosting from "./resources/bbnHosting.svg";
@@ -11,7 +11,6 @@ import bbnHosting from "./resources/bbnHosting.svg";
 import bbnMusic from "./resources/bbnMusic.svg";
 
 // External
-import { Counter } from "shared/counter.ts";
 import { Footer } from "shared/footer.ts";
 // @deno-types="https://raw.githubusercontent.com/lucsoft-DevTeam/lucsoft.de/master/custom.d.ts"
 import bbnCard from "./resources/bbnCard.svg";
@@ -64,28 +63,6 @@ Body(Box(
             Label("Our BBN One platform is focused on building your projects.", "h3"),
         ).addClass("section"),
         Box(Box()).addClass("glowbs", "blue"),
-        Grid(
-            Grid(
-                Counter(data.stats.$drops)
-                    .addClass("title"),
-                Label("drops")
-                    .addClass("subtitle"),
-            ),
-            Grid(
-                Counter(data.stats.$servers)
-                    .addClass("title"),
-                Label("servers")
-                    .addClass("subtitle"),
-            ),
-            Grid(
-                Counter(data.stats.$users)
-                    .addClass("title"),
-                Label("users")
-                    .addClass("subtitle"),
-            ),
-        )
-            .addClass("live-stats")
-            .setRawColumns("auto auto auto"),
         LinkButton("Join and grow these numbers!", "/hosting"),
         Box(
             Label("Other things we do", "h2"),

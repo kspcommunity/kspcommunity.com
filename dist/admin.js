@@ -10135,18 +10135,18 @@ var loginRequired = [
 ];
 function activeTitle(type) {
   if (type == "Music") {
-    return "BBN Music";
+    return "KSPC Music";
   }
   if (type == "Hosting") {
-    return "BBN Hosting";
+    return "KSPC Hosting";
   }
   if (type == "Wallet") {
-    return "BBN Wallet";
+    return "KSPC Wallet";
   }
   if (type == "Admin") {
-    return "BBN Admin";
+    return "KSPC Admin";
   }
-  return "BBN Holding";
+  return "KSPC Holding";
 }
 
 // spec/music.ts

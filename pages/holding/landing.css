@@ -31,12 +31,12 @@ body {
 .big-title .background-image {
     position: absolute;
     inset: -0.5rem;
-    --image: url('./resources/background.jpg');
+    --image: url('./resources/bg5.svg');
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, #000 77.08%, #000 100%),
+        linear-gradient(180deg, rgba(211, 211, 211, 0.17) 0%, #050505 77.08%, #000 100%),
         var(--image) no-repeat center center;
     background-size: cover;
-    filter: blur(4.5px);
+    filter: blur(2px);
 }
 
 [data-theme=light] .big-title .background-image {
@@ -48,7 +48,7 @@ body {
 
 @media (min-width: 1700px) {
     .big-title .background-image {
-        --image: url('./resources/backgroundUltrawide.jpg');
+        --image: url('./resources/bg9.jpg');
     }
 }
 

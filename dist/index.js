@@ -9543,18 +9543,18 @@ var loginRequired = [
 ];
 function activeTitle(type) {
   if (type == "Music") {
-    return "BBN Music";
+    return "KSPC Music";
   }
   if (type == "Hosting") {
-    return "BBN Hosting";
+    return "KSPC Hosting";
   }
   if (type == "Wallet") {
-    return "BBN Wallet";
+    return "KSPC Wallet";
   }
   if (type == "Admin") {
-    return "BBN Admin";
+    return "KSPC Admin";
   }
-  return "BBN Holding";
+  return "KSPC Holding";
 }
 
 // spec/music.ts
@@ -9572,17 +9572,6 @@ init_mod();
 init_urlpattern_polyfill();
 init_main();
 init_popover_polyfill();
-
-// esbuild_serve:http-import:https://deno.land/std@0.221.0/collections/_utils.ts
-init_polyfill();
-init_bug_reporter();
-init_mod();
-init_urlpattern_polyfill();
-init_main();
-init_popover_polyfill();
-function randomInteger(lower, upper) {
-  return lower + Math.floor(Math.random() * (upper - lower + 1));
-}
 
 // esbuild_serve:http-import:https://deno.land/std@0.221.0/collections/sum_of.ts
 init_polyfill();
@@ -14606,65 +14595,6 @@ var bbnHosting_default2 = "./bbnHosting-J2LRIZ6Y.svg";
 // pages/holding/resources/bbnMusic.svg
 var bbnMusic_default2 = "./bbnMusic-MTCOULD6.svg";
 
-// pages/shared/counter.ts
-init_polyfill();
-init_bug_reporter();
-init_mod();
-init_urlpattern_polyfill();
-init_main();
-init_popover_polyfill();
-function Counter(value) {
-  const id = randomInteger(1e3, 1e5);
-  document.adoptedStyleSheets.push(css`
-        ::view-transition-old(${`counter-${id}`}) {
-            animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-                300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
-            display: inline-block;
-        }
-
-        ::view-transition-new(${`counter-${id}`}) {
-            animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-                300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
-            display: inline-block;
-        }
-    `);
-  const counter = asRef(Box());
-  function findDifferenceAndSplit(str1, str2) {
-    const minLength = Math.min(str1.length, str2.length);
-    let diffIndex = -1;
-    for (let i4 = 0; i4 < minLength; i4++) {
-      if (str1[i4] !== str2[i4]) {
-        diffIndex = i4;
-        break;
-      }
-    }
-    if (diffIndex === -1 && str1.length === str2.length) {
-      return { unchangedPart: str1, changedPart: "" };
-    } else if (diffIndex === -1) {
-      return {
-        unchangedPart: str1.length < str2.length ? str1 : str2,
-        changedPart: str1.length < str2.length ? "" : str2.slice(str1.length)
-      };
-    } else {
-      return {
-        unchangedPart: str1.slice(0, diffIndex),
-        changedPart: str2.slice(diffIndex)
-      };
-    }
-  }
-  value.listen((newVal, oldVal) => {
-    const { unchangedPart, changedPart } = findDifferenceAndSplit(oldVal?.toLocaleString() ?? "", newVal.toLocaleString());
-    function update() {
-      counter.setValue(Box(
-        Label(unchangedPart),
-        Label(changedPart).addClass(`updating-${id}`)
-      ));
-    }
-    update();
-  });
-  return counter.asRefComponent();
-}
-
 // pages/shared/footer.ts
 init_polyfill();
 init_bug_reporter();
@@ -14774,20 +14704,6 @@ Body(Box(
       Label("Our BBN One platform is focused on building your projects.", "h3")
     ).addClass("section"),
     Box(Box()).addClass("glowbs", "blue"),
-    Grid(
-      Grid(
-        Counter(data.stats.$drops).addClass("title"),
-        Label("drops").addClass("subtitle")
-      ),
-      Grid(
-        Counter(data.stats.$servers).addClass("title"),
-        Label("servers").addClass("subtitle")
-      ),
-      Grid(
-        Counter(data.stats.$users).addClass("title"),
-        Label("users").addClass("subtitle")
-      )
-    ).addClass("live-stats").setRawColumns("auto auto auto"),
     LinkButton("Join and grow these numbers!", "/hosting"),
     Box(
       Label("Other things we do", "h2"),
