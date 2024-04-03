@@ -15,6 +15,9 @@
 
             // Add scroll event listener for parallax effect
             document.addEventListener("scroll", handleScroll);
+
+            // Initial background position setup to start at the top of the page
+            document.body.style.backgroundPosition = 'center 0px';
         } catch (error) {
             console.error('Error loading components:', error);
         }
