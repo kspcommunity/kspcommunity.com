@@ -16,7 +16,6 @@ footer {
     border-radius: var(--border-medium-radius);
 }
 
-/* Footer Styles */
 .footer {
     padding: 30px 0;
 }
@@ -34,13 +33,6 @@ footer {
 .footer-container:last-child {
     display: flex;
     flex-direction: column;
-}
-
-.footer-logo {
-    display: block;
-    margin: 0 auto 20px;
-    max-width: 100px;
-    height: auto;
 }
 
 .footer-nav {
@@ -74,11 +66,15 @@ footer {
     margin-right: 15px;
 }
 
+.footer-social-container a:hover img {
+    filter: brightness(80%);
+    transition: filter 0.3s ease;
+}
+
 .footer-social-container img {
     width: 30px;
     height: 30px; 
 }
-
 
 .footer-sponsor {
     border: none;
@@ -100,8 +96,6 @@ footer {
     color: #cccccc;
     font-size: 14px;
 }
-
-
 
 /* Responsive Layout */
 @media screen and (min-width: 768px) {
