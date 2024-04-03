@@ -9,11 +9,9 @@ await RegisterAuthRefresh();
 Body(Box(
     DynaNavigation("Home"),
     Box(
-        Label("Imprint", "h2"),
-        Label(`BBN Holding Inc.`).setFontWeight("semibold").addClass("block"),
-        Label(`270 Trace Colony Park Dr, Suite B`).addClass("block"),
-        Box(Label(`Ridgeland - MS 39157`)),
-        Box(Label(`Email: support@bbn.one`)),
+        Label("About", "h2"),
+        Label(`KSP Community`).setFontWeight("semibold").addClass("block"),
+        Box(Label(`Email: support@kspcommunity.com`)),
         Horizontal(
             Label("See also:"),
             LinkButton("Privacy Policy", "/p/privacy-policy").setStyle(ButtonStyle.Inline),
@@ -22,14 +20,14 @@ Body(Box(
         ).addClass("block").setAlignItems("center"),
         Label(`Contents`, "h3"),
         Label(
-            `BBN Holding regularly examines and updates the contents of this website. However we give no guarantee for the accuracy, completeness, timeliness or reliability of the information provided and are not liable for claims resulting directly or indirectly from flawed or erroneous information.`,
+            `KSP Community regularly examines and updates the contents of this website. However we give no guarantee for the accuracy, completeness, timeliness or reliability of the information provided and are not liable for claims resulting directly or indirectly from flawed or erroneous information.`,
         ).addClass("block"),
         Label(
-            `In order to offer our customers additional information we occasionally provide links to other websites. We herewith state explicitly that we have no influence on the set-up, the timeliness or the contents of linked pages. For this reason we distance ourselves expressly from all contents on the pages linked with this Homepage and disclaim all forms of liability for these as well. We are not aware of any content which is illegal, objectionable or contrary to the rules of fair competition. Please inform BBN Holding if you believe that a linked page infringes upon these principles.`,
+            `In order to offer our customers additional information we occasionally provide links to other websites. We herewith state explicitly that we have no influence on the set-up, the timeliness or the contents of linked pages. For this reason we distance ourselves expressly from all contents on the pages linked with this Homepage and disclaim all forms of liability for these as well. We are not aware of any content which is illegal, objectionable or contrary to the rules of fair competition. Please inform KSP Community if you believe that a linked page infringes upon these principles.`,
         ).addClass("block"),
         Label(`Netiquette and Site Guidelines`, "h3"),
         Label(
-            `For many years, BBN Holding strives to provide helpful and relevant information on the BBN Holding company website. BBN Holding also shares news and information about latest events on maritime\xA0websites or social platforms like LinkedIn. We are happy to connect with you and read your feedback!`,
+            `For many years, KSP Community strives to provide helpful and relevant information on the KSP Community company website. KSP Community also shares news and information about latest events on maritime\xA0websites or social platforms like LinkedIn. We are happy to connect with you and read your feedback!`,
         ).addClass("block"),
         Label(`Please keep in mind: comments should be relevant and on-topic. Inappropriate or offensive comments, and in particular those that contain false\xA0/ misleading information or that engage in personal attacks (and similar), may be deleted.`).addClass("block"),
         Label(`In case of any questions, please send us an email: support@bbn.one`).addClass("block"),

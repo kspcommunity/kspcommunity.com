@@ -9259,11 +9259,11 @@ function Footer() {
         Box(
           ...[
             ["Company", [
-              ["About Us", "/p/imprint"],
-              ["FAQs", "https://bbn.one"],
+              ["About Us", "/p/about"],
+              ["FAQs", "https://kspcommunity.com"],
               ["Terms of Use", "/p/terms-of-use"],
               ["Privacy Policy", "/p/privacy-policy"],
-              ["Contact Us", "mailto:support@bbn.one"],
+              ["Contact Us", "mailto:support@kspcommunity.com"],
               ["Distribution Agreement", "/p/distribution-agreement"]
             ]],
             ["Products", [
@@ -9276,10 +9276,10 @@ function Footer() {
               ["Small Business", "/hosting"]
             ]],
             ["Resources", [
-              ["Blog", "https://blog.bbn.one/"],
-              ["Status Page", "https://status.bbn.one/"],
+              ["Blog", "https://github.com/orgs/kspcommunity/discussions/2"],
+              ["Status Page", "https://status.kspcommunity.com/"],
               ["Open Source", "https://github.com/bbn-holding/"],
-              ["Support", "mailto:support@bbn.one"]
+              ["Support", "mailto:support@kspcommunity.com"]
             ]]
           ].map(
             ([text, items]) => Grid(
@@ -9293,19 +9293,16 @@ function Footer() {
         Grid(
           Grid(
             ...[
-              ["youtube", "Youtube", "https://www.youtube.com/@bbn6775"],
-              ["twitch", "Twitch", "https://twitch.tv/gd_bbn"],
-              ["twitter", "Twiter", "https://twitter.com/BBN_Holding"],
-              ["facebook", "Facebook", "https://www.facebook.com/bbn.holding/"],
-              ["discord", "Discord", "https://discord.gg/dJevjw2fCe"],
-              ["instagram", "Instagram", "https://www.instagram.com/bbn.music/"],
-              ["github", "GitHub", "https://github.com/bbn-holding/"]
+              ["youtube", "Youtube", "https://www.youtube.com/@G9AEROSPACEYT"],
+              ["discord", "Discord", "https://discord.gg/jGmTUUPVtX"],
+              ["instagram", "Instagram", "https://www.instagram.com/g9aerospace"],
+              ["github", "GitHub", "https://github.com/kspcommunity"]
             ].map(
               ([icon, aria, link]) => IconButton(BIcon(icon), aria).addClass("icon").asLinkButton(link)
             )
           ).addClass("icons"),
           LinkButton("Join Now", "/signin").setStyle("secondary" /* Secondary */).addClass("round-button"),
-          LinkButton("Contact Us", "mailto:support@bbn.one").addClass("round-button")
+          LinkButton("Contact Us", "mailto:support@kspcommunity.com").addClass("round-button")
         ).addClass("icon-bar")
       ).addClass("area-bg")
     ).addClass("footer")

@@ -2,19 +2,20 @@ import { serve } from "https://deno.land/x/esbuild_serve@1.3.4/mod.ts";
 // import { serve } from "../esbuild_serve/mod.ts";
 
 const title = new Map(Object.entries({
-    "admin": "KSPC Admin",
-    "admin/review": "KSPC - Review Drop",
-    "hosting": "KSPC Hosting",
-    "hosting/create": "KSPC Hosting",
-    "settings": "KSPC - Settings",
-    "wallet": "KSPC Wallet",
-    "music": "KSPC Music",
-    "c/music": "KSPC Music - Console",
-    "c/music/new-drop": "KSPC Music - New Drop",
-    "c/music/edit": "KSPC Music - Edit Drop",
-    "c/music/payout": "KSPC Music - Payouts",
-    "p/privacy-policy": "KSPC - Privacy Policy",
-    "p/terms-of-use": "KSPC - Terms of Use",
+    "admin": "KSP Community Admin",
+    "admin/review": "KSP Community - Review Drop",
+    "hosting": "KSP Community Hosting",
+    "hosting/create": "KSP Community Hosting",
+    "settings": "KSP Community - Settings",
+    "wallet": "KSP Community Wallet",
+    "music": "KSP Community Music",
+    "c/music": "KSP Community Music - Console",
+    "c/music/new-drop": "KSP Community Music - New Drop",
+    "c/music/edit": "KSP Community Music - Edit Drop",
+    "c/music/payout": "KSP Community Music - Payouts",
+    "p/privacy-policy": "KSP Community - Privacy Policy",
+    "p/terms-of-use": "KSP Community - Terms of Use",
+    "p/about": "KSP Community - About"
 }));
 
 const description = new Map(Object.entries({
@@ -51,7 +52,7 @@ serve({
         "index": "./pages/holding/index.ts",
         "p/privacy-policy": "./pages/holding/privacyPolicy.ts",
         "p/terms-of-use": "./pages/holding/termsOfUse.ts",
-        "p/imprint": "./pages/holding/imprint.ts",
+        "p/about": "./pages/holding/about.ts",
         "p/distribution-agreement": "./pages/holding/distributionAgreement.ts",
         "signin": "./pages/user/signin.ts",
         "callback": "./pages/_legacy/misc/callback.ts",
