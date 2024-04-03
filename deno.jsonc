@@ -1,0 +1,36 @@
+{
+    "imports": {
+        "webgen/": "https://raw.githubusercontent.com/lucsoft/WebGen/d389a5b/",
+        // "webgen/": "../WebGen/",
+        "std/": "https://deno.land/std@0.221.0/",
+        "shared/": "./pages/shared/"
+    },
+    "lock": false,
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "dom.asynciterable",
+            "deno.ns",
+            "deno.unstable"
+        ]
+    },
+    "tasks": {
+        "start": "deno run -A serve.ts"
+    },
+    "lint": {
+        "exclude": [
+            "dist"
+        ]
+    },
+    "fmt": {
+        "exclude": [
+            "dist",
+            "assets",
+            "static"
+        ],
+        "indentWidth": 4,
+        "proseWrap": "never",
+        "lineWidth": 300
+    }
+}

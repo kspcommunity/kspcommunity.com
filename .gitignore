@@ -1,9 +1,9 @@
 .env
 node_modules
-.vscode/sftp.json
-ssl
 .vscode
+ssl
 .npm
 logs
 start.sh
 gamedata
+old

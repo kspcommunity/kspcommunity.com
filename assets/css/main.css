@@ -1,0 +1,188 @@
+:root {
+    --font: "Twemoji Country Flags", "Red Hat Display", "din alternate", system-ui, optima, avenir;
+}
+
+body {
+    color: var(--on-background-text);
+}
+
+@font-face {
+    font-family: "Twemoji Country Flags";
+    unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067,
+        U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+    src: url('https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.8/dist/TwemojiCountryFlags.woff2') format('woff2');
+    size-adjust: 90%;
+    font-display: swap;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #f3f5fa !important;
+    }
+}
+
+.link {
+    cursor: pointer;
+    margin: 0.1rem 0 0 0.2rem;
+    padding: 0 .2rem;
+    height: 20px;
+}
+
+.limited-width {
+    max-width: 80rem;
+    width: calc(100% - 2rem);
+    margin: 0 auto 0;
+}
+
+.wtags .wbutton {
+    --background-color-h: 31 !important;
+    --background-color-s: 100% !important;
+    --background-color-l: 66% !important;
+}
+
+.image-preview .wimage {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.subtitle {
+    opacity: 69%;
+}
+
+.history-list {
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    justify-content: start;
+    white-space: nowrap;
+}
+
+.history-entry {
+    opacity: 60%;
+    cursor: pointer;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+}
+
+.wbutton ul {
+    max-height: 14rem;
+    overflow: auto;
+}
+
+.upload-image {
+    position: relative;
+}
+
+.upload-image .wimage {
+    height: 12rem;
+    aspect-ratio: 1/1;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.upload-image .wiconbutton {
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    transform: translate(50%, -50%) scale(0.8);
+    border-radius: 100%;
+    padding: 1px 0 2px 1px;
+}
+
+.error-message {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+.error-message.hidden-message {
+    display: none;
+}
+
+.same-height {
+    line-height: 1;
+}
+
+/**
+ * Safari Hack: Custom Style for sliders.
+ * Why? Chromes Firefox and Edge have now usable sliders! Except Safari. so yeah fuck it.
+ */
+@supports (-webkit-appearance: -apple-pay-button) {
+    .wslider {
+        -webkit-appearance: none;
+        background: transparent;
+        height: 16px;
+    }
+
+    .wslider::-webkit-slider-runnable-track {
+        position: relative;
+        width: 100%;
+        background: rgb(190, 190, 190);
+        height: 8px;
+        border-radius: 10px;
+    }
+
+    .wslider::-webkit-slider-thumb {
+        margin-top: -5px;
+        color: blue;
+    }
+}
+
+.wtable .wbutton.low-level:has(ul.open) {
+    z-index: 10;
+}
+
+.list-title {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 22px;
+    font-weight: 700;
+    font-size: 23.17px;
+}
+
+.image-square {
+    height: 5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+}
+
+.small .image-square {
+    height: 44px;
+}
+
+.image-square .wimage {
+    height: 100%;
+    width: 100%;
+}
+
+.mobile-navigation {
+    margin: 1rem auto 1rem;
+}
+
+.navigation {
+    margin: 5rem auto 1rem;
+}
+
+.profile-picture {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border-radius: 9px;
+
+    font-weight: 800;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
