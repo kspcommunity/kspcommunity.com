@@ -18,6 +18,14 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    background-color: rgba(241, 241, 241, 0.022);
+    border-radius: var(--border-medium-radius);
+}
+
+.navbar-container {
+    padding-top: 5px;
+    width: 100%;
+
 }
 
 /* Style the title */
@@ -62,7 +70,9 @@ header {
 /* Style the user menu */
 .user-menu {
     display: flex;
-    align-items: center;
+    align-items: justify;
+    margin-left: 20px;
+
 }
 
 .user-menu h2 {
@@ -79,6 +89,8 @@ header {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    margin-left: 20px;
+    background-color: #ccc;
 }
 
 @media screen and (max-width: 768px) {
@@ -112,7 +124,7 @@ header {
 
     .user-info {
         display: flex;
-        align-items: center;
+        flex-direction: row;
     }
 
     .user-icon {

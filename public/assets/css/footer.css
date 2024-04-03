@@ -30,6 +30,11 @@ footer {
     padding-bottom: 6px;
 }
 
+.footer-container:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer-logo {
     display: block;
     margin: 0 auto 20px;
@@ -78,14 +83,24 @@ footer {
     border: none;
 }
 
-.footer-disclaimer,
+/* Footer Styles */
+.footer-disclaimer-container,
+.footer-copyright-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.footer-disclaimer {
+    color: #cccccc;
+    font-size: 14px;
+}
+
 .footer-copyright {
     color: #cccccc;
     font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
-    display: block;
 }
+
+
 
 /* Responsive Layout */
 @media screen and (min-width: 768px) {
