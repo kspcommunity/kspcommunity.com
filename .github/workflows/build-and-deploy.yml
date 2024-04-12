@@ -26,9 +26,15 @@ jobs:
         
     - name: Install dependencies
       run: npm install
-      
+    
+    - name: Change directory to frontend
+      run: cd frontend
+
     - name: Build
       run: npm run build
+
+    - name: Change directory to frontend
+      run: cd frontend
       
     - name: Deploy
       run: npm run deploy
