@@ -1,0 +1,21 @@
+{
+  "name": "kspcommunity.com",
+  "version": "1.0.0",
+  "description": "The KSPCommunity Website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kspcommunity/kspcommunity.com.git"
+  },
+  "keywords": [
+    "kspcommunity"
+  ],
+  "author": "G9Aerospace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kspcommunity/kspcommunity.com/issues"
+  },
+  "homepage": "https://github.com/kspcommunity/kspcommunity.com#readme"
+}
