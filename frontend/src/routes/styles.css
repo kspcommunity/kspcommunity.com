@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  background: var(--qwik-dark-background);
+  background-image: url(../media/background/bg2.svg);
   color: var(--qwik-dark-text);
   overflow-x: hidden;
 }
