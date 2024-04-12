@@ -16,9 +16,9 @@ export default component$(() => {
             <a href="/privacy-policy" target="blank">Privacy Policy</a>
             <a href="/terms-of-service" target="blank">Terms of Service</a>
             <a href="/cookies" target="blank">Cookies</a>
-            <a href="/report" target="blank">Report</a>
-            <a href="/contributemod" target="blank">Contribute Mod</a>
-            <a href="/about" target="blank">About Us</a>
+            <a href="/report">Report</a>
+            <a href="/contributemod">Contribute Mod</a>
+            <a href="/about">About Us</a>
             <a href="https://github.com/orgs/kspcommunity/discussions/2" target="blank">Dev Blog</a>
           </nav>
         </div>
