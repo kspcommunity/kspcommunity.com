@@ -21,6 +21,11 @@ jobs:
       with:
         node-version: '21.7.2'
 
+    - name: Load environment variables
+      run: |
+        echo "CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID" >> .env
+        echo "CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN" >> .env
+
     - name: Build & Deploy
       run: |
         cd frontend && npm install && npm run build && npm run deploy 
