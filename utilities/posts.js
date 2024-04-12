@@ -1,1 +1,0 @@
-const database = require('../database');

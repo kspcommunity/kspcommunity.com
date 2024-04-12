@@ -1,9 +1,0 @@
-.env
-node_modules
-.vscode/sftp.json
-ssl
-.vscode
-.npm
-logs
-start.sh
-gamedata
