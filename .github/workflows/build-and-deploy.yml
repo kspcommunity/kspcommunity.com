@@ -20,9 +20,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '21.7.2'
-
-    - name: Change directory to frontend
-      run: cd frontend
         
     - name: Install dependencies
       run: npm install
