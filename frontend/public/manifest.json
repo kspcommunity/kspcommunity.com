@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "KSP Community",
-  "short_name": "KSP Community",
-  "start_url": "/",
+  "name": "qwik-project-name",
+  "short_name": "Welcome to Qwik",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#000",
-  "description": "A community website for Kerbal Space Program."
+  "background_color": "#fff",
+  "description": "A Qwik project app."
 }
