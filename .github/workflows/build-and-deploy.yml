@@ -13,28 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: Change directory to frontend
-      run: cd frontend
-      
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '21.7.2'
 
-    - name: Change directory to frontend
-      run: cd frontend
-        
-    - name: Install dependencies
-      run: npm install
-    
-    - name: Change directory to frontend
-      run: cd frontend
+    - name: Build-&-Deploy
+      run: npm run go
 
-    - name: Build
-      run: npm run build
-
-    - name: Change directory to frontend
-      run: cd frontend
-      
-    - name: Deploy
-      run: npm run deploy
