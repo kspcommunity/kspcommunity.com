@@ -23,4 +23,5 @@ jobs:
 
     - name: Build & Deploy
       run: |
-        npm run go
+        export CF_ACCOUNT_ID=23807e3ab32b2b792e2b37b7e6232e3c
+        wrangler pages deploy ./dist --account-id $CF_ACCOUNT_ID
