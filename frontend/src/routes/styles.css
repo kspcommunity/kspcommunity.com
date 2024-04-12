@@ -1,6 +1,3 @@
-/* THIS FILE IS JUST FOR EXAMPLES, DELETE IT IF YOU DON'T NEED IT */
-
-/* SHELL ---------------------------------------- */
 html {
   font-family:
     ui-sans-serif,
@@ -20,7 +17,8 @@ html {
 }
 
 body {
-  background-image: url(../media/background/bg2.svg);
+  background-repeat: no-repeat;
+  background-color:rgb(28, 28, 28);
   color: var(--qwik-dark-text);
   overflow-x: hidden;
 }

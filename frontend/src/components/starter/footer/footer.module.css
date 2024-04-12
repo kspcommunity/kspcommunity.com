@@ -7,6 +7,10 @@
   backdrop-filter: blur(15px);
 }
 
+a {
+  width: fit-content;
+}
+
 .topBox {
   display: flex;
   justify-content: space-between;
@@ -21,6 +25,7 @@
   margin-top: 20px;
   text-align: center;
   color: rgb(120, 120, 120);
+  background-color: linear-gradient(to bottom, #096a9e67, #000000);
 }
 
 .column {
