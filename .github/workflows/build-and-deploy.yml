@@ -23,4 +23,4 @@ jobs:
 
     - name: Build & Deploy
       run: |
-        npm run go
+        cd frontend && npm install && npm run build && npm run deploy 
