@@ -1,1 +1,0 @@
-import{r as o,z as s,k as t,_ as r}from"./q-CRWKGQQ8.js";import{K as e,L as i,M as a}from"./q-i2KoBccl.js";const n=[],c=e(s("s_VMJUTdq2hzw")),l=i(s("s_tCQ608gnjnQ"),a()),L=o(t(()=>r(()=>import("./q-DnfDqDs0.js"),[]),"s_J4V2qsF7Yxo")),u={title:"Qwik Todo List"};export{L as default,u as head,n as list,l as useAddToListAction,c as useListLoader};
