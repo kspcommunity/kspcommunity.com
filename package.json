@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "go": "cd frontend && npm install && npm run build && npm run deploy",
     "start": "cd frontend && npm run start",
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && npm run build",
+    "start:frontend": "node frontend/server/entry.express.js",
+    "start:backend": "node backend/server.js"
   },
   "repository": {
     "type": "git",
