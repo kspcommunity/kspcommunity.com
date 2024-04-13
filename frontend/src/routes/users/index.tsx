@@ -11,10 +11,10 @@ interface User {
 import dotenv from 'dotenv';
 dotenv.config();
 
-const API_PORT = process.env.API_PORT || '1234';
+const API_ADDRESS = process.env.API_ADDRESS || 'localhost:3001';
 
 export const useServerData = routeLoader$(async () => {
-  const response = await fetch(`http://localhost:${API_PORT}/api/users`, {
+  const response = await fetch(`http://${API_ADDRESS}/api/users`, {
     headers: { Accept: 'application/json' },
   });
   return await response.json() as User[];
