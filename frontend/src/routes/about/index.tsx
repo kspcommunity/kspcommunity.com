@@ -4,10 +4,12 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Infobox from "../../components/starter/infobox/infobox";
+import backgroundImage from "../../media/background/bg2.svg";
 
 export default component$(() => {
   return (
     <>
+    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', minHeight: '100vh' }}>
       <div class="container container-center container-spacing-xl">
         <h1>About KSP Community</h1>
         <p>
@@ -42,6 +44,7 @@ export default component$(() => {
             Our mission is to provide a welcoming and inclusive space for KSP players of all skill levels to learn, collaborate, and have fun together.
           </p>
         </Infobox>
+      </div>
       </div>
     </>
   );
