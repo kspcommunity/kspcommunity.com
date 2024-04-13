@@ -6,7 +6,7 @@
  *
  */
 
-:root {
+ :root {
   --qwik-dark-blue: #006ce9;
   --qwik-light-blue: #18b6f6;
   --qwik-light-purple: #ac7ff4;
@@ -14,6 +14,10 @@
   --qwik-dirty-black: #1d2033;
   --qwik-dark-background: #151934;
   --qwik-dark-text: #ffffff;
+
+  --header-background-color: linear-gradient(to bottom, #0b0d1c, #00000044);
+  --footer-background-color: linear-gradient(to bottom, #010c1267, #000000);  
+  --footer-hover-text-color: #3f83d0;
 }
 
 html {
