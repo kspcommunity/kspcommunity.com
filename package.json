@@ -4,7 +4,9 @@
   "description": "The KSPCommunity Website",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go": "cd frontend && npm install && npm run build && npm run deploy"
+    "go": "cd frontend && npm install && npm run build && npm run deploy",
+    "start": "cd frontend && npm run start",
+    "build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/kspcommunity/kspcommunity.com/issues"
   },
-  "homepage": "https://github.com/kspcommunity/kspcommunity.com#readme"
+  "homepage": "https://github.com/kspcommunity/kspcommunity.com#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
