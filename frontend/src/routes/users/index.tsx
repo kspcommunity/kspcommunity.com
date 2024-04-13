@@ -4,7 +4,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Infobox from "../../components/starter/infobox/infobox";
 
 // Import the background image
-import backgroundImage from "../media/background/bg3.svg";
+import backgroundImage from "../../media/background/bg3.svg";
 
 export default component$(() => {
   return (
