@@ -7,7 +7,7 @@ import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
 
 // Import the background image
-import backgroundImage from "../media/background/bg2.svg";
+import backgroundImage from "../media/background/bg3.svg";
 
 export default component$(() => {
   return (
