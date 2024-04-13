@@ -7,8 +7,14 @@ interface User {
   age: string;
 }
 
+// Import dotenv and configure it to load environment variables from .env file
+import dotenv from 'dotenv';
+dotenv.config();
+
+const API_PORT = process.env.API_PORT || '1234';
+
 export const useServerData = routeLoader$(async () => {
-  const response = await fetch('http://localhost:1234/api/users', {
+  const response = await fetch(`http://localhost:${API_PORT}/api/users`, {
     headers: { Accept: 'application/json' },
   });
   return await response.json() as User[];
