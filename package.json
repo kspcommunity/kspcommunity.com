@@ -2,11 +2,11 @@
   "name": "kspcommunity.com",
   "version": "1.0.0",
   "description": "The KSPCommunity Website",
+  "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd frontend && npm run start",
     "build": "cd frontend && npm install && npm run build",
-    "start:frontend": "npm run build && node frontend/server/entry.express.js",
     "start:backend": "node backend/server.js"
   },
   "repository": {
