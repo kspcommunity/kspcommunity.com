@@ -4,11 +4,10 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 export default component$(() => {
   return (
     <div>
-      <div role="presentation" class="ellipsis ellipsis-pink"></div>
-
+      <div role="presentation" class="ellipsis ellipsis-green"></div>
       <div class="container container-center container-spacing-xl">
         <h3>
-          Terms of Service
+          Privacy Policy
         </h3>
       </div>
 
@@ -44,11 +43,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Terms of Service",
+  title: "Privacy Policy",
   meta: [
     {
       name: "description",
-      content: "Terms of Service for our website",
+      content: "Privacy Policy for our website",
     },
   ],
 };
