@@ -62,6 +62,10 @@ a {
   margin-right: 10px;
 }
 
+.socials:hover {
+  filter: brightness(0.8);
+}
+
 .row {
   margin-top: 10px;
 }
