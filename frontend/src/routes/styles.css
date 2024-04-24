@@ -23,8 +23,6 @@ body {
   background: var(--body-background-color);
   color: var(--text-color-primary);
   overflow-x: hidden;
-  padding-bottom: 50px;
-  margin-bottom: 30px;
 }
 
 /* HEADINGS ------------------------------------- */
