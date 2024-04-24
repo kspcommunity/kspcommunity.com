@@ -1,3 +1,6 @@
+/* THIS FILE IS JUST FOR EXAMPLES, DELETE IT IF YOU DON'T NEED IT */
+
+/* SHELL ---------------------------------------- */
 html {
   font-family:
     ui-sans-serif,
@@ -17,8 +20,7 @@ html {
 }
 
 body {
-  background-repeat: no-repeat;
-  background-color:rgb(28, 28, 28);
+  background: var(--qwik-dark-background);
   color: var(--qwik-dark-text);
   overflow-x: hidden;
 }
@@ -170,30 +172,6 @@ button.button-small {
   background: radial-gradient(
     50% 50% at 50% 50%,
     rgba(172, 127, 244, 0.5) 0%,
-    rgba(21, 25, 52, 0) 100%
-  );
-  transform: rotate(-5deg);
-}
-.ellipsis.ellipsis-green {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(54, 110, 32, 0.763) 0%,
-    rgba(21, 25, 52, 0) 100%
-  );
-  transform: rotate(-5deg);
-}
-.ellipsis.ellipsis-pink {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(53, 15, 51, 0.763) 0%,
-    rgba(21, 25, 52, 0) 100%
-  );
-  transform: rotate(-5deg);
-}
-.ellipsis.ellipsis-yellow {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(45, 46, 5, 0.763) 0%,
     rgba(21, 25, 52, 0) 100%
   );
   transform: rotate(-5deg);
