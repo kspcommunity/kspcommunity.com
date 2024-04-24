@@ -3,12 +3,13 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: #1a1a1a;
+  background-color: var(--sidebar-background-color);
   color: #fff;
   width: 250px;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  z-index: 1000;
 }
 
 .wrapper {
@@ -19,9 +20,9 @@
 
 .logo {
   display: flex;
-  align-items: center; /* Updated */
+  align-items: center;
   justify-content: center;
-  margin-bottom: 10px; /* Updated */
+  margin-bottom: 10px;
   position: relative;
   height: 130px;
   transition: border 0.2s ease, transform 0.3s ease;
@@ -195,10 +196,4 @@
 .socialIcons img {
   width: 100%;
   height: 100%;
-}
-
-.sponsorContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
