@@ -36,7 +36,8 @@
   --button-background-color: #005eec;
   --input-background-color: #7fa5c0;
   --header-background-color: #303135;
-  --footer-background-color: #27282a;
+  --sidebar-background-color: #171717;
+  --footer-background-color: #222222;
   --modal-background-color: #212a43;
   --overlay-background-color: rgba(0, 0, 0, 0.5);
 
@@ -127,7 +128,7 @@
   --font-weight-bold: 700;
 
   /* Text Colors */
-  --text-color-primary: #333333;
+  --text-color-primary: #ffffff;
   --text-color-secondary: #00aeff;
   --text-color-tertiary: #999999;
 
