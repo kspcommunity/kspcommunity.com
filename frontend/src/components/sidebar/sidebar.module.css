@@ -1,0 +1,204 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #1a1a1a;
+  color: #fff;
+  width: 250px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Updated */
+  justify-content: center;
+  margin-bottom: 10px; /* Updated */
+  position: relative;
+  height: 130px;
+  transition: border 0.2s ease, transform 0.3s ease;
+}
+
+.logo img {
+  border: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.logo:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  transition: transform 0.3s ease;
+}
+
+.title {
+  color: #2a7aff;
+  flex: 0.5;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.title a {
+  text-decoration: none;
+  color: #2a7aff;
+}
+
+.title:hover {
+  text-decoration: none;
+  cursor:default;
+}
+
+.separator {
+  color: #d6d6d69d;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.sections {
+  margin-top: 0px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navList li {
+  margin-bottom: 10px;
+}
+
+.navList li:last-child {
+  margin-bottom: 0;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navList li a:hover {
+  color: #2198e7;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background-color: transparent;
+  padding: 3px 0px;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  transition: color 0.3s;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dropbtn:hover {
+  background-color: transparent;
+}
+
+.dropbtn a {
+  color: #fff;
+}
+
+.dropbtn a:hover {
+  color: #2198e7;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  background-color: #2f2f2fe3;
+  margin-left: 10px;
+}
+
+.dropdownContent a {
+  color: #fff;
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.dropdownContent a:hover {
+  background-color: #555;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+/* Social Media Icons*/
+.socialContainer { /* New class for containing social icons and sponsor button */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column; /* Updated */
+  align-items: center; /* Updated */
+  justify-content: center; /* Updated */
+  width: 100%;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  margin-bottom: 10px; /* Updated */
+}
+
+.socialIcons a {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.1s ease;
+}
+
+.socialIcons a:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
+}
+
+.socialIcons img {
+  width: 100%;
+  height: 100%;
+}
+
+.sponsorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
