@@ -6,12 +6,9 @@ import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 import Starter from "../components/starter/next-steps/next-steps";
 
-// Import the background image
-import backgroundImage from "../media/background/bg3.svg";
-
 export default component$(() => {
   return (
-    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', minHeight: '100vh' }}>
+    <>
       <Hero />
       <Starter />
 
@@ -100,7 +97,7 @@ export default component$(() => {
           </Infobox>
         </div>
       </div>
-    </div>
+    </>
   );
 });
 
