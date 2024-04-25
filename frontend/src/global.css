@@ -131,7 +131,8 @@
 
   /* Text Colors */
   --text-color-primary: #ffffff;
-  --text-color-secondary: #00aeff;
+  --text-color-secondary: #0582bc;
+  --text-color-secondary-hover: #04acfa;
   --text-color-tertiary: #999999;
 
   /* Icon Sizes */
