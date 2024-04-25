@@ -1,5 +1,7 @@
 # KSP Community Website
 
+[![KSP Community Badge](https://avatars.githubusercontent.com/u/162987893?s=50&v=4)](https://kspcommunity.com/)
+
 ## Project Status:
 ![License](https://img.shields.io/github/license/kspcommunity/kspcommunity.com)
 ![GitHub issues](https://img.shields.io/github/issues/kspcommunity/kspcommunity.com)
@@ -69,3 +71,7 @@ See the [LICENSE](LICENSE) file for details.
 ## Contact
 
 For any inquiries or support, feel free to contact us at [info@kspcommunity.com](mailto:info@kspcommunity.com).
+
+
+[![Privacy Policy](https://img.shields.io/badge/Privacy%20Policy-View-blue)](https://kspcommunity.com/privacy-policy/)
+[![Terms of Service](https://img.shields.io/badge/Terms%20of%20Service-View-blue)](https://kspcommunity.com/terms-of-service/)
