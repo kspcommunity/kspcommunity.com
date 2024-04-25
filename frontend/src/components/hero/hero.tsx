@@ -73,6 +73,7 @@ export default component$(() => {
           href="https://qwik.dev/docs"
           target="_blank"
           class="button button-dark"
+          rel="noopener"
         >
           Explore the docs
         </a>
