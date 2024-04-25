@@ -25,7 +25,7 @@ export default component$(() => {
         <a class={styles.title}>KSP Community</a>
         <hr class={styles.separator} />
         <div class={styles.sections}>
-          {/* Other Sections */}
+          {/* Sections */}
           <div class={styles.section}>
             <ul class={styles.navList}>
               <li><a href="/">Home</a></li>

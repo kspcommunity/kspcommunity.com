@@ -14,7 +14,17 @@ export default component$(() => {
         </p>
         <h4 class={styles.sectionTitle}>Information Collection and Use</h4>
         <p>
-          I collect several different types of information for various purposes to provide and improve my Service to you.
+          While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:
+        </p>
+        <ul>
+          <li>Email address</li>
+          <li>First name and last name</li>
+          <li>Phone number</li>
+          <li>Address, State, Province, ZIP/Postal code, City</li>
+          <li>Cookies and Usage Data</li>
+        </ul>
+        <p>
+          We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
         </p>
         <h4 class={styles.sectionTitle}>Contact Me</h4>
         <p>
