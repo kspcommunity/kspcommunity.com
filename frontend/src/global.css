@@ -36,12 +36,12 @@
   --button-background-color: #005eec;
   --input-background-color: #7fa5c0;
   --header-background-color: #303135;
-  --sidebar-background-color: #171717;
-  --sidebar-minimized-background-color: #17171724;
+  --sidebar-background-color: #1a1a1ae5;
+  --sidebar-minimized-background-color: #1717170f;
   --footer-background-color: #222222;
   --modal-background-color: #212a43;
   --overlay-background-color: rgba(0, 0, 0, 0.5);
-  --hover-background-color: #ffffff36;
+  --hover-background-color: #ffffff29;
 
   /* Sizes */
   --extra-large: 32px;

@@ -5,12 +5,13 @@
   bottom: 0;
   background-color: var(--sidebar-background-color);
   color: #fff;
-  width: 250px;
+  max-width: 16%;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 1000;
   transition: width 1s ease, background-color 2s ease;
+  min-width: 150px;
 }
 
 .sidebarOpen {
@@ -20,8 +21,8 @@
 .sidebarMinimized {
   width: 30px;
   background-color: var(--sidebar-minimized-background-color);
+  min-width: 0px;
 }
-
 
 .wrapper {
   display: flex;
@@ -64,6 +65,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  margin-top: 50px;
   position: relative;
   height: 130px;
   transition: border 0.2s ease, transform 0.3s ease;
