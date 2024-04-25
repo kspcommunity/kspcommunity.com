@@ -37,12 +37,11 @@
   --input-background-color: #7fa5c0;
   --header-background-color: #303135;
   --sidebar-background-color: #171717;
+  --sidebar-minimized-background-color: #17171724;
   --footer-background-color: #222222;
   --modal-background-color: #212a43;
   --overlay-background-color: rgba(0, 0, 0, 0.5);
   --hover-background-color: #ffffff36;
-  --hover-background-color: #ffffff36;
- 
 
   /* Sizes */
   --extra-large: 32px;
