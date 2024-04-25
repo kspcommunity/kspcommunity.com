@@ -10,12 +10,53 @@
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 1000;
+  transition: width 0.4s ease;
+}
+
+.sidebarOpen {
+  width: 250px;
+}
+
+.sidebarMinimized {
+  width: 50px;
+}
+
+/* Hide elements when sidebar is minimized */
+.sidebarMinimized .wrapper,
+.sidebarMinimized .socialContainer {
+  display: none;
+}
+
+/* Ensure hamburger icon remains visible when sidebar is minimized */
+.sidebarMinimized .hamburger {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.hamburger {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1100;
+  transition: background-color 0.4s ease;
+  padding: 2px 4px 2px;
+  border-radius: 2px;
+}
+
+.hamburger:hover {
+ background-color: var(--hover-background-color);
+}
+
+.hamburger img {
+  width: 30px;
 }
 
 .logo {
