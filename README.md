@@ -1,11 +1,29 @@
 # KSP Community Website
 
+## Project Status:
+![License](https://img.shields.io/github/license/kspcommunity/kspcommunity.com)
+![GitHub issues](https://img.shields.io/github/issues/kspcommunity/kspcommunity.com)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/kspcommunity/kspcommunity.com)
+![GitHub contributors](https://img.shields.io/github/contributors/kspcommunity/kspcommunity.com)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/kspcommunity/kspcommunity.com)
+![GitHub release date](https://img.shields.io/github/release-date/kspcommunity/kspcommunity.com)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kspcommunity/kspcommunity.com)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/kspcommunity/kspcommunity.com)
+
+## Community Engagement:
+![GitHub stars](https://img.shields.io/github/stars/kspcommunity/kspcommunity.com?style=social)
+![GitHub forks](https://img.shields.io/github/forks/kspcommunity/kspcommunity.com?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/kspcommunity/kspcommunity.com?style=social)
+
+## Development and Quality:
+![GitHub last commit](https://img.shields.io/github/last-commit/kspcommunity/kspcommunity.com)
+![GitHub workflow status](https://img.shields.io/github/workflow/status/kspcommunity/kspcommunity.com/CI)
+![GitHub top language](https://img.shields.io/github/languages/top/kspcommunity/kspcommunity.com)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kspcommunity/kspcommunity.com)
+![GitHub language count](https://img.shields.io/github/languages/count/kspcommunity/kspcommunity.com)
+![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/kspcommunity/kspcommunity.com)
+
 Welcome to the KSP Community Website repository! This repository contains the source code for the KSP Community Website, a platform for sharing resources, mods, and discussions related to Kerbal Space Program (KSP).
-
-## Status Badges
-
-- **Main Branch:** [![Run Tests](https://github.com/kspcommunity/kspcommunity.com/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/kspcommunity/kspcommunity.com/actions/workflows/main.yml)
-- **Preview Branch:** [![Run Tests](https://github.com/kspcommunity/kspcommunity.com/actions/workflows/main.yml/badge.svg)](https://github.com/kspcommunity/kspcommunity.com/actions/workflows/main.yml)
 
 ## About
 
@@ -27,6 +45,15 @@ We welcome contributions from the KSP community! Whether you're a developer, des
 ## Getting Started
 
 To get started with contributing to the KSP Community Website, follow these steps:
+
+### Branches
+
+- **Main Branch (Production):** The main branch is designated for production-ready code. Changes merged into this branch should be thoroughly tested and verified for stability.
+- **Preview Branch (Pre-Production):** The preview branch serves as a staging area for pre-production changes. Commits should be made to this branch, tested extensively, and reviewed before merging into the main branch.
+
+### Workflow
+
+To ensure a seamless integration of changes into the production environment, follow this workflow:
 
 1. **Clone the Repository:** `git clone https://github.com/kspcommunity/kspcommunity.com.git`
 2. **Install Dependencies:** `npm install`
