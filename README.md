@@ -2,7 +2,8 @@
 
 [![KSP Community Badge](https://avatars.githubusercontent.com/u/162987893?s=50&v=4)](https://kspcommunity.com/)
 
-## Project Status:
+## Project Status
+
 ![License](https://img.shields.io/github/license/kspcommunity/kspcommunity.com)
 ![GitHub issues](https://img.shields.io/github/issues/kspcommunity/kspcommunity.com)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/kspcommunity/kspcommunity.com)
@@ -12,12 +13,14 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kspcommunity/kspcommunity.com)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/kspcommunity/kspcommunity.com)
 
-## Community Engagement:
+## Community Engagement
+
 ![GitHub stars](https://img.shields.io/github/stars/kspcommunity/kspcommunity.com?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/kspcommunity/kspcommunity.com?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/kspcommunity/kspcommunity.com?style=social)
 
-## Development and Quality:
+## Development and Quality
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/kspcommunity/kspcommunity.com)
 ![GitHub workflow status](https://img.shields.io/github/workflow/status/kspcommunity/kspcommunity.com/CI)
 ![GitHub top language](https://img.shields.io/github/languages/top/kspcommunity/kspcommunity.com)
@@ -71,7 +74,6 @@ See the [LICENSE](LICENSE) file for details.
 ## Contact
 
 For any inquiries or support, feel free to contact us at [info@kspcommunity.com](mailto:info@kspcommunity.com).
-
 
 [![Privacy Policy](https://img.shields.io/badge/Privacy%20Policy-View-blue)](https://kspcommunity.com/privacy-policy/)
 [![Terms of Service](https://img.shields.io/badge/Terms%20of%20Service-View-blue)](https://kspcommunity.com/terms-of-service/)
