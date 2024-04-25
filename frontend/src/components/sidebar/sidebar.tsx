@@ -1,10 +1,21 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, $ } from "@builder.io/qwik";
 import styles from "./sidebar.module.css";
 import kspcommunitylogo from "../../media/kspcommunity.png";
+import hamburgerIcon from "../../media/icons/hamburger.svg";
 
 export default component$(() => {
+  const toggleSidebar = $(() => {
+    const sidebar = document.querySelector(`.${styles.sidebar}`);
+    if (sidebar) {
+      sidebar.classList.toggle(styles.sidebarMinimized);
+    }
+  });
+
   return (
-    <aside class={styles.sidebar}>
+    <aside class={`${styles.sidebar} ${styles.sidebarOpen}`}>
+      <div class={styles.hamburger} onClick$={toggleSidebar}>
+        <img src={hamburgerIcon} alt="Hamburger" />
+      </div>
       <div class={styles.wrapper}>
         <div class={styles.logo}>
           <img src={kspcommunitylogo} alt="KSP Community Icon" width="100" height="100" />
@@ -50,4 +61,3 @@ export default component$(() => {
     </aside>
   );
 });
-
