@@ -2,10 +2,6 @@
 
 Thank you for considering contributing to kspcommunity.com! We appreciate your interest in helping to improve our project.
 
-## Code of Conduct
-
-Please note that this project is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project, you are expected to uphold this code.
-
 ## Getting Started
 
 Before you start contributing, please make sure you have read the [README.md](README.md) file to understand the project's goals and how to set it up locally.
@@ -23,6 +19,7 @@ When making changes to the codebase, please create a new branch for your work. B
 ### Code Quality
 
 We strive to maintain high code quality standards. Before submitting a pull request, please ensure the following:
+
 - Your code follows the existing coding style and conventions.
 - All tests pass successfully.
 - Any new features or changes are thoroughly documented.
