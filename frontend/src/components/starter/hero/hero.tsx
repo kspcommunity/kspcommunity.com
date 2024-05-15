@@ -1,17 +1,17 @@
 import { component$ } from "@builder.io/qwik";
 import styles from "./hero.module.css";
-import ImgThunder from "../../media/thunder.png?jsx";
+import ImgThunder from "../../../media/thunder.png?jsx";
 
 export default component$(() => {
   return (
     <div class={["container", styles.hero]}>
       <ImgThunder class={styles["hero-image"]} alt="Image thunder" />
       <h1>
-        Welcome to <span class="highlight">KSP</span>
+        So <span class="highlight">fantastic</span>
         <br />
-        <span class="highlight">Community</span> website!
+        to have <span class="highlight">you</span> here
       </h1>
-      <p>This site is under development!</p>
+      <p>Have fun building your App with Qwik.</p>
       <div class={styles["button-group"]}>
         <button
           onClick$={async () => {
@@ -73,7 +73,6 @@ export default component$(() => {
           href="https://qwik.dev/docs"
           target="_blank"
           class="button button-dark"
-          rel="noopener"
         >
           Explore the docs
         </a>

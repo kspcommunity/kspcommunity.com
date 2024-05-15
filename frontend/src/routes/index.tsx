@@ -1,10 +1,10 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Counter from "../components/counter/counter";
-import Hero from "../components/hero/hero";
-import Infobox from "../components/infobox/infobox";
-import Starter from "../components/next-steps/next-steps";
+import Counter from "../components/starter/counter/counter";
+import Hero from "../components/starter/hero/hero";
+import Infobox from "../components/starter/infobox/infobox";
+import Starter from "../components/starter/next-steps/next-steps";
 
 export default component$(() => {
   return (
@@ -83,7 +83,7 @@ export default component$(() => {
               </li>
               <li>
                 <span>Open issues and contribute on </span>
-                <a href="https://github.com/BuilderIO/qwik" target="_blank">
+                <a href="https://github.com/QwikDev/qwik" target="_blank">
                   GitHub
                 </a>
               </li>
@@ -102,11 +102,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Home",
+  title: "Welcome to Qwik",
   meta: [
     {
       name: "description",
-      content: "KSP Community Homepage",
+      content: "Qwik site description",
     },
   ],
 };
