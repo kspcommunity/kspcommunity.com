@@ -10,11 +10,11 @@ COPY . /backend
 # Install any needed packages specified in package.json
 RUN npm install
 
-# Make port 3001 available to the world outside this container
-EXPOSE 3001
+# Expose the port specified by the environment variable or fallback to 3001
+EXPOSE ${API_PORT:-3001}
 
 # Define environment variable
 ENV NODE_ENV production
 
 # Run server.js when the container launches
-CMD ["sh", "-c", "API_PORT=${API_PORT:-3001} node server.js"]
+CMD ["sh", "-c", "node server.js"]
