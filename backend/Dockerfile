@@ -1,20 +1,20 @@
-# Use an official image as a parent image
+# Use an official Node runtime as a parent image
 FROM node:14
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /backend
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the current directory contents into the container at /backend
+COPY . /backend
 
 # Install any needed packages specified in package.json
 RUN npm install
 
-# Make port 8080 available to the world outside this container
-EXPOSE 8080
+# Make port 3001 available to the world outside this container
+EXPOSE 3001
 
 # Define environment variable
 ENV NODE_ENV production
 
 # Run server.js when the container launches
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "API_PORT=${API_PORT:-3001} node server.js"]
