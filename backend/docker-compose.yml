@@ -4,8 +4,8 @@ services:
   app:
     build: .
     ports:
-      - "8080:8080"
+      - "${API_PORT:-3001}:3001"
     volumes:
-      - .:/app
+      - .:/backend  # Adjusted volume mapping to match the new directory structure
     environment:
       NODE_ENV: production
