@@ -1,17 +1,21 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const app = express();
 require('dotenv').config();
 
-// Dummy data for users
-const users = [
-  { id: 1, name: 'John Doe', age: 30 },
-  { id: 2, name: 'Jane Smith', age: 25 },
-  { id: 3, name: 'Bob Johnson', age: 40 }
-];
-
 // Route to display all users
 app.get('/api/users', (req, res) => {
-  res.json(users);
+  const filePath = path.join(__dirname, 'storage', 'users.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading users.json:', err);
+      res.status(500).json({ error: 'Failed to read user data' });
+      return;
+    }
+    const users = JSON.parse(data);
+    res.json(users);
+  });
 });
 
 // Start the server
