@@ -2,12 +2,12 @@
   "name": "kspcommunity.com",
   "version": "1.0.0",
   "description": "The KSPCommunity Website",
-  "main": "backend/server.js",
+  "main": "api/server.js",
   "scripts": {
     "test": "npm run build",
     "start": "cd frontend && npm run start",
     "build": "cd frontend && npm install && npm run build",
-    "start:backend": "node backend/server.js"
+    "start:backend": "node api/server.js"
   },
   "repository": {
     "type": "git",
