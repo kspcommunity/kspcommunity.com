@@ -1,4 +1,4 @@
-.vscode
+.vscode/sftp.json
 .env
 node_modules
 backend/firebaseconfig.json
