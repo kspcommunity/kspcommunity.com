@@ -13,6 +13,7 @@
         ".git",
         ".DS_Store",
         "qwik",
-        "api/node_modules"
+        "api/node_modules",
+        "node_modules"
     ]
 }
