@@ -1,9 +1,5 @@
 import { component$, useSignal } from '@builder.io/qwik';
-
-import {
-  Form,
-  routeAction$,
-} from '@builder.io/qwik-city';
+import { Form, routeAction$ } from '@builder.io/qwik-city';
 
 export const usePostFeedbackAction = routeAction$((props) => {
   console.log('usePostFeedbackAction', props);
@@ -41,13 +37,14 @@ export default component$(() => {
 
   const postFeedbackAction = usePostFeedbackAction();
   return (
-    <section class='section'>
+    <section class='feedback-section'>
       <Form action={postFeedbackAction}>
         <input
           type='text'
           name='name'
           placeholder='Enter your name'
           required
+          class='feedback-input'
           onChange$={(e) =>
             (nameSignal.value = (e.target as HTMLInputElement).value)
           }
@@ -58,6 +55,7 @@ export default component$(() => {
           name='email'
           placeholder='Enter your email'
           required
+          class='feedback-input'
           onChange$={(e) =>
             (emailSignal.value = (e.target as HTMLInputElement).value)
           }
@@ -67,6 +65,7 @@ export default component$(() => {
           name='message'
           placeholder='Enter your feedback'
           required
+          class='feedback-textarea'
           onChange$={(e) =>
             (messageSignal.value = (e.target as HTMLTextAreaElement).value)
           }
@@ -74,6 +73,7 @@ export default component$(() => {
         ></textarea>
         <button
           type='submit'
+          class='feedback-submit-btn'
           onClick$={() => {
             nameSignal.value = '';
             emailSignal.value = '';
