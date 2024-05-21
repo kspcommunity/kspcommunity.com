@@ -2,4 +2,5 @@
 .env
 node_modules
 api/ssl
-api/firebase
+api/firebase/firebaseconfig.json
+api/firebase/firebaseServiceAccount.json
