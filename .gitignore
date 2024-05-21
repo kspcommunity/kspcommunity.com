@@ -1,5 +1,6 @@
 .vscode/sftp.json
 .env
 node_modules
-api/firebaseconfig.json
 api/ssl
+api/firebase/firebaseconfig.json
+api/firebase/firebaseServiceAccount.json
