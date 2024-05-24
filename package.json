@@ -7,7 +7,8 @@
     "test": "npm run build",
     "start": "cd frontend && npm run start",
     "build": "cd frontend && npm install && npm run build",
-    "start:backend": "node api/server.js"
+    "start:backend": "node api/server.js",
+    "fullinstall": "npm install && cd api && npm install && cd ../qwik && npm install"
   },
   "repository": {
     "type": "git",
