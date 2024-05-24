@@ -5,6 +5,8 @@ import Counter from "../components/counter/counter";
 import Hero from "../components/hero/hero";
 import Infobox from "../components/infobox/infobox";
 import Starter from "../components/next-steps/next-steps";
+import secondaryFooter from "../components/secondary footer/secondary-footer";
+import SecondaryFooter from "../components/secondary footer/secondary-footer";
 
 export default component$(() => {
   return (
@@ -97,6 +99,7 @@ export default component$(() => {
           </Infobox>
         </div>
       </div>
+      <SecondaryFooter />
     </>
   );
 });
