@@ -1,43 +1,26 @@
 import { component$ } from "@builder.io/qwik";
-import { QwikLogo } from "../icons/qwik";
+import QwikLogo from "../../media/icons/icon-72x72.png?jsx";
+import { Link } from "@builder.io/qwik-city";
 import styles from "./header.module.css";
 
 export default component$(() => {
   return (
     <header class={styles.header}>
-      <div class={["container", styles.wrapper]}>
-        <div class={styles.logo}>
-          <a href="/" title="qwik">
-            <QwikLogo height={50} width={143} />
-          </a>
-        </div>
-        <ul>
-          <li>
-            <a
-              href="https://qwik.dev/docs/components/overview/"
-              target="_blank"
-            >
-              Docs
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://qwik.dev/examples/introduction/hello-world/"
-              target="_blank"
-            >
-              Examples
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://qwik.dev/tutorial/welcome/overview/"
-              target="_blank"
-            >
-              Tutorials
-            </a>
-          </li>
-        </ul>
+      <div class={styles.logo}>
+        <QwikLogo />
       </div>
+      <h1>KSP Community</h1>
+      <ul>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/upload">Upload</Link>
+        </li>
+        <li>
+          <Link href="/settings">Settings</Link>
+        </li>
+      </ul>
     </header>
   );
 });

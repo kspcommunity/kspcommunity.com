@@ -1,44 +1,38 @@
-.wrapper {
+header {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
 }
 
-.logo {
+header .logo {
   display: inline-block;
-}
-.logo a {
-  display: block;
+  margin-left: 30px;
 }
 
-.header ul {
-  margin: 0;
-  padding: 0;
+header h1 {
+  font-size: 32px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: auto auto auto 20px;
+}
+
+header ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  flex-direction: row;
+  margin: auto 0 auto auto;
 }
 
-.header li {
-  display: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.7rem;
+header ul li {
+  padding: 12px 9px;
+  color: rgb(255, 255, 255);
+  border-radius: 2px;
 }
 
-.header li a {
-  color: white;
-  display: inline-block;
-  padding: 0;
-  text-decoration: none;
-}
-
-.header li a:hover {
-  color: var(--qwik-light-blue);
-}
-
-@media (min-width: 450px) {
-  .header li {
-    display: inline-block;
-  }
+header ul li:hover {
+  background-color: rgba(193, 193, 193, 0.096);
 }
