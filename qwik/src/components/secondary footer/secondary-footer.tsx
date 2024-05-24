@@ -1,5 +1,7 @@
+/* eslint-disable qwik/jsx-a */
 import { component$ } from "@builder.io/qwik";
 import styles from "./secondary-footer.module.css";
+import Socials from "../socials/socials";
 
 export default component$(() => {
 
@@ -84,6 +86,10 @@ export default component$(() => {
             </a>
           </li>
         </ul>
+      </div>
+
+      <div class={styles.column}>
+        <Socials />
       </div>
 
     </div>

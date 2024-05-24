@@ -10,6 +10,12 @@
   flex: 1;
 }
 
+.column:last-child
+  {
+    padding-top: 30px;
+  }
+
+
 .columnheading {
   font-size: 18px;
   font-weight: bold;
