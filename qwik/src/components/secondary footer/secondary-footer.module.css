@@ -1,0 +1,39 @@
+.secondaryFooter {
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
+  color: #fff;
+  padding: 30px 100px;
+}
+
+.column {
+  flex: 1;
+}
+
+.columnheading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.columnlinks {
+  margin-top: 5px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.columnlinks li {
+  margin-bottom: 3px;
+}
+
+.columnlinks a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.columnlinks a:hover {
+  color: #fff;
+}
