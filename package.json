@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/kspcommunity/kspcommunity.com#readme",
   "dependencies": {
+    "axios": "^1.7.2",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
   }
 }

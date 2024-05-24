@@ -15,14 +15,24 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
 
+// Import and use routers
 const usersRouter = require('./routes/users');
 const feedbackRouter = require('./routes/feedback');
+const signupRouter = require('./routes/signup');
 
 app.use('/api/users', usersRouter);
 app.use('/api/feedback', feedbackRouter);
+app.use('/api/signup', signupRouter);
 
+// Determine port and mode
 const port = process.env.API_PORT || 3001;
 const isDevMode = process.env.NODE_ENV === 'development';
+
+// Error handling middleware (optional but recommended)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
+});
 
 if (isDevMode) {
   console.log('Running in development mode: SSL is disabled');
