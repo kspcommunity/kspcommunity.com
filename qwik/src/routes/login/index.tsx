@@ -10,7 +10,7 @@ export default component$(() => {
       <div class="container container-center container-spacing-xl">
         
         <Login />
-
+        <br/>
         Don't have an account yet? <Link href="/signup">Sign up</Link>
       </div>
     </>

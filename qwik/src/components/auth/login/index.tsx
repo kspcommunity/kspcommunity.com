@@ -1,6 +1,7 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
 import sharedStyles from "../auth.module.css";
 import styles from "./login.module.css";
+import { LuLogIn  } from "@qwikest/icons/lucide";
 
 export default component$(() => {
   const email = useSignal('');
@@ -46,7 +47,7 @@ export default component$(() => {
     <>
       <div class={`${sharedStyles.container} ${sharedStyles['container-center']} ${styles.container}`}>
         <p class={sharedStyles.heading}>
-          Log <span class={sharedStyles.highlight}>In</span>
+          <LuLogIn/> Log <span class={sharedStyles.highlight}>In</span>
         </p>
         {errorMessage.value && <pre class={sharedStyles.error}>{errorMessage.value}</pre>}
         {successMessage.value && <pre class={sharedStyles.success}>{successMessage.value}</pre>}
