@@ -3,6 +3,14 @@
     "development"
   ],
   "hints": {
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "text-size-adjust"
+        ]
+      }
+    ]
   }
 }
