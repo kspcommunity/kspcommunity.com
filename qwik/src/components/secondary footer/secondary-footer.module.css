@@ -1,6 +1,6 @@
 .secondaryFooter {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #222;
   color: #fff;
   padding: 30px 100px;
@@ -8,13 +8,15 @@
 
 .column {
   flex: 1;
+  width: 100%;
+  max-width: 15%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.column:last-child
-  {
-    padding-top: 30px;
-  }
-
+.column:last-child {
+  padding-top: 30px;
+}
 
 .columnheading {
   font-size: 18px;

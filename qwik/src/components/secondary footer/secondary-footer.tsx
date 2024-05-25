@@ -1,6 +1,8 @@
 /* eslint-disable qwik/jsx-a */
 import { component$ } from "@builder.io/qwik";
 import styles from "./secondary-footer.module.css";
+import { Link } from "@builder.io/qwik-city";
+import { LuPlane, LuFolderKanban, LuLayers } from "@qwikest/icons/lucide";
 import Socials from "../socials/socials";
 
 export default component$(() => {
@@ -10,34 +12,41 @@ export default component$(() => {
       {/*KSP-C Section */}
       <div class={styles.column}>
         <a class={styles.columnheading}>
-          KSP-C
+        <LuPlane />KSP-C
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <a
+            <Link
               href="/about"
               >
               About us
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/terms-of-service"
               >
               Terms of Service
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/privacy-policy"
               >
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="mailto:info@kspcommunity.com">
+            <Link
+              href="/feedback"
+              >
+              Feedback
+            </Link>
+          </li>
+          <li>
+            <Link href="mailto:info@kspcommunity.com">
               Contact us
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -45,22 +54,24 @@ export default component$(() => {
       {/*Products Section */}
       <div class={styles.column}>
         <a class={styles.columnheading}>
-          Products
+          <LuFolderKanban /> Products
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <a
+            <Link
               href="https://github.com/kspcommunity/Craft-File-Reader"
+              target="_blank"
               >
               Craft File Reader
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://github.com/kspcommunity/Mod-Parts-Lister"
+              target="_blank"
               >
               Mod Parts Lister
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -68,22 +79,24 @@ export default component$(() => {
       {/*Resources Section */}
       <div class={styles.column}>
         <a class={styles.columnheading}>
-          Resources
+          <LuLayers /> Resources
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <a
+            <Link
               href="https://status.kspcommunity.com"
+              target="_blank"
               >
               Status page
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://github.com/kspcommunity/kspcommunity.com"
+              target="_blank"
               >
               Open Source
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
