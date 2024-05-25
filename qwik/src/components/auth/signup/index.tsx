@@ -1,4 +1,5 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
+import sharedStyles from "../auth.module.css";
 import styles from "./signup.module.css";
 
 export default component$(() => {
@@ -41,13 +42,13 @@ export default component$(() => {
 
   return (
     <>
-      <div class={[styles.container, styles["container-center"]].join(' ')}>
-        <p class={styles.heading}>
-          Sign <span class={styles.highlight}>Up</span>
+      <div class={`${sharedStyles.container} ${sharedStyles['container-center']} ${styles.container}`}>
+        <p class={sharedStyles.heading}>
+          Sign <span class={sharedStyles.highlight}>Up</span>
         </p>
-        {errorMessage.value && <pre class={styles.error}>{errorMessage.value}</pre>}
-        {successMessage.value && <pre class={styles.success}>{successMessage.value}</pre>}
-        <form onSubmit$={handleSubmit} class={styles["signup-form"]}>
+        {errorMessage.value && <pre class={sharedStyles.error}>{errorMessage.value}</pre>}
+        {successMessage.value && <pre class={sharedStyles.success}>{successMessage.value}</pre>}
+        <form onSubmit$={handleSubmit} class={sharedStyles['auth-form']}>
           <div>
             <label for="username">Username:</label>
             <input
