@@ -1,99 +1,28 @@
-import { component$, useSignal, $ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import "./signup.css";
+
+import Signup from "../../components/auth/signup";
 
 export default component$(() => {
-  const username = useSignal('');
-  const email = useSignal('');
-  const password = useSignal('');
-  const successMessage = useSignal<string | null>(null);
-  const errorMessage = useSignal<string | null>(null);
-
-  const handleSubmit = $(async (event: Event) => {
-    event.preventDefault();
-    errorMessage.value = null;
-    successMessage.value = null;
-
-    try {
-      const response = await fetch("https://api.kspcommunity.com/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username.value,
-          email: email.value,
-          password: password.value,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to sign up. Please try again.");
-      }
-
-      successMessage.value = "Signup successful!";
-      username.value = '';
-      email.value = '';
-      password.value = '';
-    } catch (error) {
-      errorMessage.value = (error as Error).message;
-    }
-  });
-
   return (
     <>
-      <div class="container container-center">
-        <p class="heading">
-          Sign <span class="highlight">Up</span>
-        </p>
-        {errorMessage.value && <pre class="error">{errorMessage.value}</pre>}
-        {successMessage.value && <pre class="success">{successMessage.value}</pre>}
-        <form onSubmit$={handleSubmit} class="signup-form">
-          <div>
-            <label for="username">Username:</label>
-            <input
-              id="username"
-              type="text"
-              value={username.value}
-              onInput$={(e) => (username.value = (e.target as HTMLInputElement).value)}
-              required
-            />
-          </div>
-          <div>
-            <label for="email">Email:</label>
-            <input
-              id="email"
-              type="email"
-              value={email.value}
-              onInput$={(e) => (email.value = (e.target as HTMLInputElement).value)}
-              required
-            />
-          </div>
-          <div>
-            <label for="password">Password:</label>
-            <input
-              id="password"
-              type="password"
-              value={password.value}
-              onInput$={(e) => (password.value = (e.target as HTMLInputElement).value)}
-              required
-            />
-          </div>
-          <div>
-            <button type="submit">Sign Up</button>
-          </div>
-        </form>
+      <div class="container container-center container-spacing-xl">
+        
+        <Signup />
+        
+        Have an existing account? <Link href="/login">Login</Link>
       </div>
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Sign Up",
+  title: "Welcome to Qwik",
   meta: [
     {
       name: "description",
-      content: "Sign up for an account!",
+      content: "Qwik site description",
     },
   ],
 };
