@@ -24,6 +24,7 @@
   "homepage": "https://github.com/kspcommunity/kspcommunity.com#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "firebase": "^10.12.1"
   }
 }
