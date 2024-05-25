@@ -8,12 +8,13 @@ margin: 0 10px;
 transition: transform 0.2s ease-in-out;
 }
   
-.iconLink:hover {
-transform: scale(1.05);
-}
-  
 .icon {
-width: 25px;
-height: auto;
+    width: 25px;
+    height: auto;
+    color: #ffffff79;
+}
+
+.icon:hover {
+    color: white;
 }
   
