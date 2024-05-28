@@ -8,7 +8,7 @@ const router = express.Router();
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 
-router.post('/signup', (req, res) => {
+router.post('/', (req, res) => {
     const { email, password } = req.body;
 
     createUserWithEmailAndPassword(auth, email, password)
