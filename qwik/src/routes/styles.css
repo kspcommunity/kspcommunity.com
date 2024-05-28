@@ -98,9 +98,7 @@ ul {
 .container.container-center {
   text-align: center;
 }
-.container.container-flex {
-  /* does nothing on mobile */
-}
+
 .container.container-spacing-xl {
   padding: 50px 40px;
 }

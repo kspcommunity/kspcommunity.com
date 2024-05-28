@@ -1,0 +1,43 @@
+.login-form {
+    margin-top: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #444;
+    color: #fff;
+}
+
+.login-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FFA500;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #FF8C00;
+}
+
+.login-form button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+.login-form p {
+    color: #ccc;
+}
