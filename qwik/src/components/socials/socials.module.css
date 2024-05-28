@@ -1,0 +1,20 @@
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+  
+.iconLink {
+margin: 0 10px;
+transition: transform 0.2s ease-in-out;
+}
+  
+.icon {
+    width: 25px;
+    height: auto;
+    color: #ffffff79;
+}
+
+.icon:hover {
+    color: white;
+}
+  
