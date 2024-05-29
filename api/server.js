@@ -15,15 +15,11 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
 
-const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
-const feedbackRouter = require('./routes/feedback');
 
-app.use('/api/users', usersRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/feedback', feedbackRouter);
 
 const port = process.env.API_PORT || 3001;
 const isDevMode = process.env.NODE_ENV === 'development';
