@@ -1,3 +1,7 @@
+footer {
+  text-align: center;
+}
+
 .anchor {
   color: white !important;
   display: block;
@@ -9,6 +13,12 @@
 
 .anchor span:not(.spacer) {
   display: block;
+}
+
+.disclaimer {
+  color: rgb(145, 145, 145) !important;
+  font-size: small;
+  text-align: center;
 }
 
 .spacer {
