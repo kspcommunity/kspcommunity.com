@@ -1,26 +1,28 @@
 import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
+
+import Login from "../../../components/auth/login";
 
 export default component$(() => {
   return (
     <>
-      <div role="presentation" class="ellipsis"></div>
-
       <div class="container container-center container-spacing-xl">
-        <h3>
-          Signup <span class="highlight">Failed!</span>
-        </h3>
+        
+        <Login />
+        <br/>
+        Don't have an account yet? <Link href="/signup">Sign up</Link>
       </div>
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Signup Success",
+  title: "Login",
   meta: [
     {
       name: "description",
-      content: "",
+      content: "LogIn to your account",
     },
   ],
 };
