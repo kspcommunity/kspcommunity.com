@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import QwikLogo from "../../media/icons/icon-72x72.png?jsx";
 import { Link } from "@builder.io/qwik-city";
+import Auth from "./auth";
 import { LuHome, LuFilePlus2, LuSettings } from "@qwikest/icons/lucide";
 import styles from "./header.module.css";
 
@@ -21,6 +22,7 @@ export default component$(() => {
         <li>
           <Link href="/settings"><LuSettings/> Settings</Link>
         </li>
+        <Auth/>
       </ul>
     </header>
   );
