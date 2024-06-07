@@ -9,9 +9,6 @@ interface SignupResponse {
 export const usePostSignupAction = routeAction$(async (props): Promise<SignupResponse> => {
   console.log('usePostSignupAction', props);
   const { email, password } = props;
-  console.log('email', email);
-  console.log('password', password);
-  const signupData = { email, password };
 
   try {
     const response = await fetch('https://api.kspcommunity.com/api/signup', {
@@ -19,7 +16,7 @@ export const usePostSignupAction = routeAction$(async (props): Promise<SignupRes
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(signupData),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await response.json();
@@ -53,6 +50,7 @@ export default component$(() => {
           onChange$={(e) => (emailSignal.value = (e.target as HTMLInputElement).value)}
           value={emailSignal.value}
         />
+        <br />
         <input
           type='password'
           name='password'
@@ -62,6 +60,7 @@ export default component$(() => {
           onChange$={(e) => (passwordSignal.value = (e.target as HTMLInputElement).value)}
           value={passwordSignal.value}
         />
+        <br />
         <button
           type='submit'
           class='signup-submit-btn'>
