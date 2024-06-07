@@ -10,7 +10,7 @@ export const usePostSignupAction = routeAction$((props) => {
     email,
     password
   };
-  fetch('https://api.kspcommunity.com/api/signup', {
+  return fetch('https://api.kspcommunity.com/api/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,6 @@ export const usePostSignupAction = routeAction$((props) => {
   })
   .catch(error => {
     console.error('Error submitting signup:', error);
-
   });
 });
 
