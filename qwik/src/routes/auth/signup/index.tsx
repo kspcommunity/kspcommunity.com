@@ -1,5 +1,6 @@
 import { component$, useSignal } from '@builder.io/qwik';
 import { Form, routeAction$ } from '@builder.io/qwik-city';
+import styles from "../auth.module.css";
 
 interface SignupResponse {
   error?: string;
@@ -39,35 +40,39 @@ export default component$(() => {
 
   const postSignupAction = usePostSignupAction();
   return (
-    <section class='signup-section'>
-      <Form action={postSignupAction}>
-        <input
-          type='email'
-          name='email'
-          placeholder='Enter your email'
-          required
-          class='signup-input'
-          onChange$={(e) => (emailSignal.value = (e.target as HTMLInputElement).value)}
-          value={emailSignal.value}
-        />
-        <br />
-        <input
-          type='password'
-          name='password'
-          placeholder='Enter your password'
-          required
-          class='signup-input'
-          onChange$={(e) => (passwordSignal.value = (e.target as HTMLInputElement).value)}
-          value={passwordSignal.value}
-        />
-        <br />
-        <button
-          type='submit'
-          class='signup-submit-btn'>
-          Submit
-        </button>
-      </Form>
-      {postSignupAction.value?.error && <p>{postSignupAction.value.error}</p>}
-    </section>
+    <>
+      <section class={styles.section}>
+      <p class={styles.heading}>Sign Up</p>
+      <p class={styles.subheading}>Already have an account? <a href='/auth/login'>Login</a></p>
+        <Form action={postSignupAction} class={styles.form}>
+          <input
+            type='email'
+            name='email'
+            placeholder='Enter your email'
+            required
+            class={styles.input}
+            onChange$={(e) => (emailSignal.value = (e.target as HTMLInputElement).value)}
+            value={emailSignal.value}
+          />
+          <br />
+          <input
+            type='password'
+            name='password'
+            placeholder='Enter your password'
+            required
+            class={styles.input}
+            onChange$={(e) => (passwordSignal.value = (e.target as HTMLInputElement).value)}
+            value={passwordSignal.value}
+          />
+          <br />
+          <button
+            type='submit'
+            class={styles.submit}>
+            Submit
+          </button>
+        </Form>
+        {postSignupAction.value?.error && <p>{postSignupAction.value.error}</p>}
+      </section>
+    </>
   );
 });
