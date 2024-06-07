@@ -8,26 +8,28 @@ const router = express.Router();
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const { email, password } = req.body;
 
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        res.status(200).send({ authenticated: true, credentials: userCredential.user });
+    try {
+        // Create the user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-        sendEmailVerification(auth.currentUser)
-        .then(() => {
-            res.status(200).send({ email: true });
-        })
-        .catch((error) => {
-            res.status(500).send({ email: false, error: error.message });
-            console.error(error);
-        });
-    })
-    .catch((error) => {
-        res.status(500).send({ authenticated: false, error: error.message });
+        try {
+            // Send verification email
+            await sendEmailVerification(userCredential.user);
+
+            // Send response back
+            res.status(200).send({ authenticated: true, email: true, credentials: userCredential.user });
+        } catch (emailError) {
+            // If sending email fails, still respond with user created status
+            res.status(200).send({ authenticated: true, email: false, credentials: userCredential.user, error: emailError.message });
+        }
+    } catch (error) {
+        // Send error response
+        res.status(500).send({ authenticated: false, email: false, error: error.message });
         console.error(error);
-    });
+    }
 });
 
 module.exports = router;
