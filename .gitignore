@@ -5,3 +5,4 @@ api/ssl
 api/firebase/firebaseconfig.json
 api/firebase/firebaseServiceAccount.json
 .vscode/settings.json
+api/logs.log

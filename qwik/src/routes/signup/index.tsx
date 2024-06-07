@@ -20,11 +20,10 @@ export const usePostSignupAction = routeAction$((props) => {
   .then(response => response.json())
   .then(data => {
     console.log('Signup submitted successfully:', data);
-    // Handle success response if needed
   })
   .catch(error => {
     console.error('Error submitting signup:', error);
-    // Handle error if needed
+
   });
 });
 
