@@ -5,9 +5,10 @@
   "main": "api/server.js",
   "scripts": {
     "test": "npm run build",
-    "start": "cd frontend && npm run start",
-    "build": "cd frontend && npm install && npm run build",
-    "start:backend": "node api/server.js"
+    "start": "cd qwik && npm run start",
+    "build": "cd qwik && npm install && npm run build",
+    "start:backend": "node api/server.js",
+    "dev": "cd qwik && npm run dev"
   },
   "repository": {
     "type": "git",
