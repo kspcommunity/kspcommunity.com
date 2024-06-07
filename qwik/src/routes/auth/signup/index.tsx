@@ -25,7 +25,7 @@ export const usePostSignupAction = routeAction$(async (props): Promise<SignupRes
     const data = await response.json();
     if (!data.error) {      //Success
       console.log('Signup submitted successfully:', data);
-      return {};
+      return { error: "Please check your email for verification." };
     } else {    //Failure
       console.error('Error submitting signup:', data.error);
       return { error: data.error };
