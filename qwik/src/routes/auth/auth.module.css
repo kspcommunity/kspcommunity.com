@@ -3,7 +3,10 @@
 }
 
 section {
-    background-color: #3333339e;
+    position: relative; /* Ensure the container is positioned relative to its normal position */
+    background-image: url(../../media/background/electric-design.svg);
+    background-position: center; /* Center the background image */
+    background-size: cover; /* Cover the entire section with the background image */
     border-radius: var(--border-radius);
     padding: 20px;
     margin: 20px;
@@ -24,7 +27,7 @@ section {
 }
 
 .form {
-    background-color: #333;
+    background-color: #a9a9a92c;
     padding: 30px 50px;
     border-radius: var(--border-radius);
     max-width: 500px;
