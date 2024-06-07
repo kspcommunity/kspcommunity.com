@@ -3,7 +3,7 @@ import { Form, routeAction$ } from '@builder.io/qwik-city';
 
 interface SignupResponse {
   error?: string;
-  [key: string]: any; // other properties can be added as needed
+  [key: string]: any;
 }
 
 export const usePostSignupAction = routeAction$(async (props): Promise<SignupResponse> => {
@@ -23,10 +23,10 @@ export const usePostSignupAction = routeAction$(async (props): Promise<SignupRes
     });
 
     const data = await response.json();
-    if (!data.error) {
+    if (!data.error) {      //Success
       console.log('Signup submitted successfully:', data);
       return {};
-    } else {
+    } else {    //Failure
       console.error('Error submitting signup:', data.error);
       return { error: data.error };
     }
