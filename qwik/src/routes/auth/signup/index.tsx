@@ -50,9 +50,7 @@ export default component$(() => {
           placeholder='Enter your email'
           required
           class='signup-input'
-          onChange$={(e) =>
-            (emailSignal.value = (e.target as HTMLInputElement).value)
-          }
+          onChange$={(e) => (emailSignal.value = (e.target as HTMLInputElement).value)}
           value={emailSignal.value}
         />
         <input
@@ -61,18 +59,12 @@ export default component$(() => {
           placeholder='Enter your password'
           required
           class='signup-input'
-          onChange$={(e) =>
-            (passwordSignal.value = (e.target as HTMLInputElement).value)
-          }
+          onChange$={(e) => (passwordSignal.value = (e.target as HTMLInputElement).value)}
           value={passwordSignal.value}
         />
         <button
           type='submit'
-          class='signup-submit-btn'
-          onClick$={() => {
-            emailSignal.value = '';
-            passwordSignal.value = '';
-          }}>
+          class='signup-submit-btn'>
           Submit
         </button>
       </Form>
