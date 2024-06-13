@@ -3,10 +3,10 @@
 }
 
 section {
-    position: relative; /* Ensure the container is positioned relative to its normal position */
-    background-image: url(../../media/background/electric-design.svg);
-    background-position: center; /* Center the background image */
-    background-size: cover; /* Cover the entire section with the background image */
+    position: relative;
+    background-color: #dcdcdc10;
+    background-position: center;
+    background-size: cover;
     border-radius: var(--border-radius);
     padding: 20px;
     margin: 20px;

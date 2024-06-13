@@ -1,20 +1,26 @@
 .socialIcons {
     display: flex;
-    justify-content: center;
-}
-  
-.iconLink {
-margin: 0 10px;
-transition: transform 0.2s ease-in-out;
-}
-  
-.icon {
-    width: 25px;
-    height: auto;
-    color: #ffffff79;
+    gap: 10px;
+    background-color: hsla(0, 0%, 82%, 0.085);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 25px;
+    align-items: center;
 }
 
-.icon:hover {
+.iconLink {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     color: white;
+    text-align: center;
+    align-items: center;
+    line-height: 32px;
+    transition: background-color 0.3s ease;
 }
-  
+
+.iconLink:hover {
+    background-color: rgba(112, 112, 112, 0.7);
+}
