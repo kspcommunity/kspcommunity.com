@@ -12,7 +12,7 @@ export default component$(() => {
       {/*KSP-C Section */}
       <div class={styles.column}>
         <a class={styles.columnheading}>
-        <LuPlane />KSP-C
+        <LuPlane /> KSP-C
         </a>
         <ul class={styles.columnlinks}>
           <li>
