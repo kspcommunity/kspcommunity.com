@@ -17,6 +17,11 @@ footer {
   display: block;
 }
 
+.version {
+  font-size: smaller;
+  color: rgb(148, 148, 148);
+}
+
 .disclaimer {
   color: rgb(145, 145, 145) !important;
   font-size: small;
