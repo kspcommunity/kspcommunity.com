@@ -6,14 +6,12 @@ export default component$(() => {
 
   return (
     <footer>
-      <div class="container">
-        <a class={styles.anchor}>
-          <span>&copy; kspcommunity.com 2024</span>
-        </a>
-        <a class={styles.disclaimer}>
-          KSP Community and its projects are not affiliated with Interactive Games, the KSP Game, Curseforge or Spacedock
-        </a>
-      </div>
+      <a class={styles.anchor}>
+        <span>&copy; kspcommunity.com 2024</span>
+      </a>
+      <a class={styles.disclaimer}>
+        KSP Community and its projects are not affiliated with Interactive Games, the KSP Game, Curseforge or Spacedock
+      </a>
     </footer>
   );
 });
