@@ -1,5 +1,7 @@
 footer {
   text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
 
 .anchor {
@@ -13,6 +15,11 @@ footer {
 
 .anchor span:not(.spacer) {
   display: block;
+}
+
+.version {
+  font-size: smaller;
+  color: rgb(148, 148, 148);
 }
 
 .disclaimer {

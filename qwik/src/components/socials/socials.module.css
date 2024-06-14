@@ -10,17 +10,22 @@
 }
 
 .iconLink {
-    display: block;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     color: white;
     text-align: center;
-    align-items: center;
-    line-height: 32px;
     transition: background-color 0.3s ease;
 }
 
 .iconLink:hover {
     background-color: rgba(112, 112, 112, 0.7);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
 }
