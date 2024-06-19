@@ -1,3 +1,4 @@
+/* eslint-disable qwik/no-use-visible-task */
 import { component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
@@ -42,7 +43,7 @@ const cookie: Cookie = {
     } : null;
   },
   set: (key: string, value: string | number | Record<string, any>, options?: CookieOptions) => {
-    let cookieValue = typeof value === 'object' ? encodeURIComponent(JSON.stringify(value)) : encodeURIComponent(value.toString());
+    const cookieValue = typeof value === 'object' ? encodeURIComponent(JSON.stringify(value)) : encodeURIComponent(value.toString());
     let cookieString = `${key}=${cookieValue};`;
     
     if (options) {
