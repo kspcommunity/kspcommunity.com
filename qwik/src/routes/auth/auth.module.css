@@ -1,0 +1,60 @@
+:root {
+    --border-radius:5px;
+}
+
+section {
+    position: relative;
+    background-color: #dcdcdc10;
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.heading {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.subheading {
+    margin-bottom: 30px;
+}
+
+.form {
+    background-color: #a9a9a92c;
+    padding: 30px 50px;
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    margin: 10px auto;
+}
+
+.input {
+    background-color: #444;
+    color: #eee;
+    border: 1px solid #888;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}

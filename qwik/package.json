@@ -45,6 +45,7 @@
     "wrangler": "^3.0.0"
   },
   "dependencies": {
+    "@modular-forms/qwik": "^0.25.0",
     "@qwikest/icons": "^0.0.13"
   }
 }
