@@ -16,37 +16,37 @@ export default component$(() => {
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <Link
+            <a
               href="/about"
               >
               About us
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               href="/terms-of-service"
               >
               Terms of Service
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               href="/privacy-policy"
               >
               Privacy Policy
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               href="/feedback"
               >
               Feedback
-            </Link>
+            </a>
           </li>
           <li>
-            <Link href="mailto:info@kspcommunity.com">
+            <a href="mailto:info@kspcommunity.com">
               Contact us
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
@@ -58,20 +58,20 @@ export default component$(() => {
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <Link
+            <a
               href="https://github.com/kspcommunity/Craft-File-Reader"
               target="_blank"
               >
               Craft File Reader
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               href="https://github.com/kspcommunity/Mod-Parts-Lister"
               target="_blank"
               >
               Mod Parts Lister
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
@@ -83,20 +83,20 @@ export default component$(() => {
         </a>
         <ul class={styles.columnlinks}>
           <li>
-            <Link
+            <a
               href="https://status.kspcommunity.com"
               target="_blank"
               >
               Status page
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               href="https://github.com/kspcommunity/kspcommunity.com"
               target="_blank"
               >
               Open Source
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
