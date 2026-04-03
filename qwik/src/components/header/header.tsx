@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import QwikLogo from "../../media/icons/icon-72x72.png?jsx";
-import { Link } from "@builder.io/qwik-city";
 import Auth from "./auth";
 import { BsHouse, BsPencilSquare, BsGear } from "@qwikest/icons/bootstrap";
 import styles from "./header.module.css";
@@ -14,13 +13,13 @@ export default component$(() => {
       <h1>KSP Community</h1>
       <ul>
         <li>
-          <Link href="/"><BsHouse/> Home</Link>
+          <a href="/"><BsHouse/> Home</a>
         </li>
         <li>
-          <Link href="/create"><BsPencilSquare/> Create</Link>
+          <a href="/create"><BsPencilSquare/> Create</a>
         </li>
         <li>
-          <Link href="/settings"><BsGear/> Settings</Link>
+          <a href="/settings"><BsGear/> Settings</a>
         </li>
         <Auth/>
       </ul>
